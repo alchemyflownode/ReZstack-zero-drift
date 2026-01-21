@@ -1,0 +1,40 @@
+{
+  "models": {
+    "phi4:latest": {
+      "type": "local",
+      "capabilities": ["reasoning", "complex", "architecture"],
+      "tokensPerSecond": 45,
+      "memoryMB": 9000,
+      "brushType": "WASH",
+      "temperatureRange": [0.1, 0.8],
+      "contextWindow": 131072
+    },
+    "deepseek-coder:latest": {
+      "type": "local",
+      "capabilities": ["coding", "debugging", "technical"],
+      "tokensPerSecond": 150,
+      "memoryMB": 800,
+      "brushType": "LINEWORK",
+      "temperatureRange": [0.1, 0.5],
+      "contextWindow": 16384
+    },
+    "llama3.2:latest": {
+      "type": "local",
+      "capabilities": ["general", "creative", "balanced"],
+      "tokensPerSecond": 85,
+      "memoryMB": 2000,
+      "brushType": "DRYBRUSH",
+      "temperatureRange": [0.3, 0.9],
+      "contextWindow": 8192
+    },
+    "codellama:7b-instruct-q4_K_M": {
+      "type": "local",
+      "capabilities": ["coding", "instruction", "structured"],
+      "tokensPerSecond": 65,
+      "memoryMB": 4100,
+      "brushType": "GLAZE",
+      "temperatureRange": [0.2, 0.7],
+      "contextWindow": 16384
+    }
+  }
+}

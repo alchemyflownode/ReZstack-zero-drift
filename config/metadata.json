@@ -1,0 +1,8 @@
+{
+  "name": "Copy of Copy of Rezonic Sovereign Stack",
+  "description": "A high-tier Local AI Orchestration dashboard featuring intelligent model routing, performance monitoring, and glassmorphic UI design.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ]
+}

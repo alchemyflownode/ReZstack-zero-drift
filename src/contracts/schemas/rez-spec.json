@@ -1,0 +1,27 @@
+import { rezValidator } from './src/contracts/rez-validator';
+
+const myConstitution = {
+  id: "core-react-v1",
+  version: "1.0.0",
+  constraints: {
+    required: ["functional-component", "typescript-interface"],
+    forbidden: ["class-component", "any-type"],
+    bounds: {
+      maxLinesPerFile: 150,
+      maxFiles: 5,
+      maxCyclomaticComplexity: 5
+    }
+  },
+  capabilityBudget: {
+    tokens: 4000,
+    files: 2,
+    operations: ["create-component", "edit-logic"]
+  },
+  technicalSpec: {
+    generationTarget: "component"
+  }
+};
+
+// This adds the createdAt, author, and the crucial sha256 checksum
+const signedSpec = rezValidator.createSignature(myConstitution, "Architect-User");
+console.log(JSON.stringify(signedSpec, null, 2));

@@ -1,0 +1,26 @@
+{
+  "rezstack": {
+    "version": "1.0.0",
+    "mode": "hybrid",
+    "determinism": {
+      "enabled": true,
+      "seed": 42,
+      "trustThreshold": 85
+    },
+    "models": {
+      "local": ["phi4:latest", "deepseek-coder:latest", "llama3.2:latest"],
+      "cloud": ["chatgpt", "claude", "gemini"],
+      "fallbackOrder": ["local", "cloud", "browser"]
+    },
+    "hardware": {
+      "gpuAllocation": "dynamic",
+      "memoryBudget": 4096,
+      "cpuCores": 2
+    },
+    "patterns": {
+      "autoLearn": true,
+      "crossDomainTransfer": true,
+      "successTracking": true
+    }
+  }
+}

@@ -1,0 +1,157 @@
+﻿import React from 'react'
+import ReactDOM from 'react-dom/client'
+import App from './App.tsx'
+import './index.css'
+
+// Clear any existing content
+const rootElement = document.getElementById('root')
+if (rootElement) {
+  console.log('🎯 Root element found, clearing...')
+  rootElement.innerHTML = ''
+} else {
+  console.error('❌ Root element (#root) not found in index.html')
+  document.body.innerHTML = `
+    <div style="
+      background: #0a0a0f;
+      color: white;
+      padding: 40px;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      text-align: center;
+    ">
+      <h1 style="color: #ef4444; margin-bottom: 20px;">Configuration Error</h1>
+      <p>Root element (#root) not found. Check index.html</p>
+      <button onclick="location.reload()" style="
+        background: #8b5cf6;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 6px;
+        margin-top: 20px;
+        cursor: pointer;
+      ">
+        Reload Page
+      </button>
+    </div>
+  `
+  throw new Error('Root element not found')
+}
+
+// Create new root
+const root = ReactDOM.createRoot(rootElement!)
+
+// Simple Error Boundary component
+class ErrorBoundary extends React.Component<{children: React.ReactNode}> {
+  state = { hasError: false, error: null as Error | null }
+
+  static getDerivedStateFromError(error: Error) {
+    return { hasError: true, error }
+  }
+
+  componentDidCatch(error: Error, errorInfo: React.ErrorInfo) {
+    console.error('React Error Boundary caught:', error, errorInfo)
+  }
+
+  render() {
+    if (this.state.hasError) {
+      return (
+        <div style={{
+          background: '#0a0a0f',
+          color: 'white',
+          padding: '40px',
+          height: '100vh',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          flexDirection: 'column',
+          textAlign: 'center'
+        }}>
+          <h1 style={{ color: '#ef4444', marginBottom: '20px' }}>
+            Application Error
+          </h1>
+          <p style={{ marginBottom: '20px' }}>
+            Something went wrong. Check the browser console (F12) for details.
+          </p>
+          <pre style={{
+            background: '#1e1e2e',
+            padding: '15px',
+            borderRadius: '8px',
+            maxWidth: '600px',
+            overflow: 'auto',
+            textAlign: 'left',
+            marginBottom: '20px'
+          }}>
+            {this.state.error?.message || 'Unknown error'}
+          </pre>
+          <button
+            onClick={() => location.reload()}
+            style={{
+              background: 'linear-gradient(135deg, #4f46e5, #8b5cf6)',
+              color: 'white',
+              border: 'none',
+              padding: '12px 24px',
+              borderRadius: '8px',
+              cursor: 'pointer',
+              fontWeight: 'bold'
+            }}
+          >
+            Reload Application
+          </button>
+        </div>
+      )
+    }
+
+    return this.props.children
+  }
+}
+
+// Render with error boundary
+console.log('🚀 Starting RezStack render...')
+
+try {
+  root.render(
+    <React.StrictMode>
+      <ErrorBoundary>
+        <App />
+      </ErrorBoundary>
+    </React.StrictMode>
+  )
+  console.log('✅ React app rendered successfully')
+} catch (error) {
+  console.error('❌ Failed to render React app:', error)
+  
+  // Fallback error display
+  root.render(
+    <div style={{
+      background: '#0a0a0f',
+      color: 'white',
+      padding: '40px',
+      height: '100vh',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      flexDirection: 'column',
+      textAlign: 'center'
+    }}>
+      <h1 style={{ color: '#ef4444', marginBottom: '20px' }}>
+        Critical Render Error
+      </h1>
+      <p style={{ marginBottom: '20px' }}>
+        The application failed to render. Please check the console for errors.
+      </p>
+      <pre style={{
+        background: '#1e1e2e',
+        padding: '15px',
+        borderRadius: '8px',
+        maxWidth: '600px',
+        overflow: 'auto',
+        textAlign: 'left'
+      }}>
+        {error instanceof Error ? error.stack : String(error)}
+      </pre>
+    </div>
+  )
+}

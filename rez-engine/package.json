@@ -1,0 +1,14 @@
+{
+  "name": "rez-engine",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "start": "node rez-cli.js",
+    "build": "tsc",
+    "test": "node -e \"import('./rez-engine-core.js').then(m => m.quickStart())\""
+  },
+  "devDependencies": {
+    "typescript": "^5.0.0",
+    "@types/node": "^20.0.0"
+  }
+}

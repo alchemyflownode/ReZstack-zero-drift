@@ -1,0 +1,68 @@
+{
+  "name": "rezonic-cli",
+  "version": "2.0.0",
+  "description": "🧠 RezStack AI CLI - Powerful, Safe, Enterprise-Grade. Phase 1+2 with Safety Layer.",
+  "type": "module",
+  "bin": {
+    "rezonic": "./bin/rezonic.js",
+    "rz": "./bin/rezonic.js"
+  },
+  "main": "src/index.js",
+  "exports": {
+    ".": "./src/index.js",
+    "./client": "./src/core/client.js",
+    "./safety": "./src/core/safety.js"
+  },
+  "scripts": {
+    "start": "node bin/rezonic.js",
+    "dev": "node --watch bin/rezonic.js",
+    "test": "node --test test/*.test.js",
+    "lint": "eslint src/",
+    "format": "prettier --write src/",
+    "build": "echo 'No build step needed for ESM CLI'",
+    "help": "node bin/rezonic.js --help",
+    "version": "node bin/rezonic.js --version"
+  },
+  "keywords": [
+    "rezstack",
+    "ai",
+    "cli",
+    "ollama",
+    "comfyui",
+    "generation",
+    "safety",
+    "rollback"
+  ],
+  "author": "RezStack Team",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "dependencies": {
+    "commander": "^11.0.0",
+    "inquirer": "^9.2.0",
+    "chalk": "^5.3.0",
+    "ora": "^6.1.0",
+    "cli-table3": "^0.6.3",
+    "boxen": "^7.1.1",
+    "figures": "^5.0.0",
+    "gradient-string": "^2.0.2",
+    "chokidar": "^3.5.3",
+    "p-queue": "^7.3.0",
+    "cli-progress": "^3.12.0",
+    "lowdb": "^4.0.0",
+    "blessed": "^0.1.81"
+  },
+  "devDependencies": {
+    "eslint": "^9.0.0",
+    "prettier": "^3.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/okiru/rezstack.git"
+  },
+  "bugs": {
+    "url": "https://github.com/okiru/rezstack/issues"
+  },
+  "homepage": "https://github.com/okiru/rezstack"
+}

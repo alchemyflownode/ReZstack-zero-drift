@@ -1,0 +1,370 @@
+﻿{
+    "Passed":  41,
+    "Timestamp":  "2026-01-21 14:38:19",
+    "TotalTests":  45,
+    "Failed":  4,
+    "Results":  [
+                    {
+                        "Passed":  true,
+                        "Service":  "zero-drift",
+                        "Timestamp":  "14:38:18",
+                        "Error":  null,
+                        "TestName":  "file exists",
+                        "Details":  "4.64 KB, 122 lines"
+                    },
+                    {
+                        "Passed":  true,
+                        "Service":  "zero-drift",
+                        "Timestamp":  "14:38:18",
+                        "Error":  null,
+                        "TestName":  "exports check",
+                        "Details":  "zeroDriftAI export: True"
+                    },
+                    {
+                        "Passed":  true,
+                        "Service":  "zero-drift",
+                        "Timestamp":  "14:38:18",
+                        "Error":  null,
+                        "TestName":  "methods check",
+                        "Details":  "curate: True, refine: True"
+                    },
+                    {
+                        "Passed":  true,
+                        "Service":  "zero-drift",
+                        "Timestamp":  "14:38:18",
+                        "Error":  null,
+                        "TestName":  "TypeScript types",
+                        "Details":  "CurationResult interface: True"
+                    },
+                    {
+                        "Passed":  true,
+                        "Service":  "zero-drift",
+                        "Timestamp":  "14:38:18",
+                        "Error":  null,
+                        "TestName":  "pattern detection",
+                        "Details":  "any: True, lodash: True, vibeScore: True"
+                    },
+                    {
+                        "Passed":  true,
+                        "Service":  "sovereign-orchestrator",
+                        "Timestamp":  "14:38:18",
+                        "Error":  null,
+                        "TestName":  "file exists",
+                        "Details":  "10.1 KB"
+                    },
+                    {
+                        "Passed":  false,
+                        "Service":  "sovereign-orchestrator",
+                        "Timestamp":  "14:38:18",
+                        "Error":  null,
+                        "TestName":  "orchestration logic",
+                        "Details":  "process method: False"
+                    },
+                    {
+                        "Passed":  false,
+                        "Service":  "sovereign-orchestrator",
+                        "Timestamp":  "14:38:18",
+                        "Error":  null,
+                        "TestName":  "service integration",
+                        "Details":  "service references found: False"
+                    },
+                    {
+                        "Passed":  false,
+                        "Service":  "sovereign-orchestrator",
+                        "Timestamp":  "14:38:18",
+                        "Error":  null,
+                        "TestName":  "error handling",
+                        "Details":  "error handling: False, logging: True"
+                    },
+                    {
+                        "Passed":  true,
+                        "Service":  "googleGeminiService",
+                        "Timestamp":  "14:38:18",
+                        "Error":  null,
+                        "TestName":  "module structure",
+                        "Details":  "Size: 4.53KB, Exports: True, Functions: True"
+                    },
+                    {
+                        "Passed":  true,
+                        "Service":  "googleGeminiService",
+                        "Timestamp":  "14:38:18",
+                        "Error":  null,
+                        "TestName":  "GemAPI config",
+                        "Details":  "API key: False, model config: True"
+                    },
+                    {
+                        "Passed":  true,
+                        "Service":  "geminiService",
+                        "Timestamp":  "14:38:18",
+                        "Error":  null,
+                        "TestName":  "module structure",
+                        "Details":  "Size: 3.89KB, Exports: True, Functions: True"
+                    },
+                    {
+                        "Passed":  true,
+                        "Service":  "geminiService",
+                        "Timestamp":  "14:38:18",
+                        "Error":  null,
+                        "TestName":  "GemAPI config",
+                        "Details":  "API key: False, model config: True"
+                    },
+                    {
+                        "Passed":  true,
+                        "Service":  "ollama-stream-service",
+                        "Timestamp":  "14:38:18",
+                        "Error":  null,
+                        "TestName":  "module structure",
+                        "Details":  "Size: 4.17KB, Exports: True, Functions: True"
+                    },
+                    {
+                        "Passed":  true,
+                        "Service":  "ollama-stream-service",
+                        "Timestamp":  "14:38:18",
+                        "Error":  null,
+                        "TestName":  "Ollama config",
+                        "Details":  "base URL: True, streaming: True"
+                    },
+                    {
+                        "Passed":  true,
+                        "Service":  "simple-ollama-service",
+                        "Timestamp":  "14:38:18",
+                        "Error":  null,
+                        "TestName":  "module structure",
+                        "Details":  "Size: 1.1KB, Exports: True, Functions: True"
+                    },
+                    {
+                        "Passed":  false,
+                        "Service":  "simple-ollama-service",
+                        "Timestamp":  "14:38:18",
+                        "Error":  null,
+                        "TestName":  "Ollama config",
+                        "Details":  "base URL: False, streaming: True"
+                    },
+                    {
+                        "Passed":  true,
+                        "Service":  "hardened-router",
+                        "Timestamp":  "14:38:18",
+                        "Error":  null,
+                        "TestName":  "routing patterns",
+                        "Details":  "10.19KB, Routing logic: True, Exports: True"
+                    },
+                    {
+                        "Passed":  true,
+                        "Service":  "intent-router",
+                        "Timestamp":  "14:38:18",
+                        "Error":  null,
+                        "TestName":  "routing patterns",
+                        "Details":  "16.76KB, Routing logic: True, Exports: True"
+                    },
+                    {
+                        "Passed":  true,
+                        "Service":  "smartRouter",
+                        "Timestamp":  "14:38:18",
+                        "Error":  null,
+                        "TestName":  "routing patterns",
+                        "Details":  "4.16KB, Routing logic: True, Exports: True"
+                    },
+                    {
+                        "Passed":  true,
+                        "Service":  "view-dispatcherx",
+                        "Timestamp":  "14:38:18",
+                        "Error":  null,
+                        "TestName":  "routing patterns",
+                        "Details":  "2.84KB, Routing logic: True, Exports: True"
+                    },
+                    {
+                        "Passed":  true,
+                        "Service":  "view-dispatcherx",
+                        "Timestamp":  "14:38:18",
+                        "Error":  null,
+                        "TestName":  "React component",
+                        "Details":  "React: True, Components: True"
+                    },
+                    {
+                        "Passed":  true,
+                        "Service":  "TruthVerifier",
+                        "Timestamp":  "14:38:18",
+                        "Error":  null,
+                        "TestName":  "validation patterns",
+                        "Details":  "2.71KB, Validation: True, Rules: False"
+                    },
+                    {
+                        "Passed":  true,
+                        "Service":  "WabiSariProtocol",
+                        "Timestamp":  "14:38:18",
+                        "Error":  null,
+                        "TestName":  "validation patterns",
+                        "Details":  "3.93KB, Validation: False, Rules: True"
+                    },
+                    {
+                        "Passed":  true,
+                        "Service":  "SovereignCuration",
+                        "Timestamp":  "14:38:19",
+                        "Error":  null,
+                        "TestName":  "validation patterns",
+                        "Details":  "9.42KB, Validation: True, Rules: True"
+                    },
+                    {
+                        "Passed":  true,
+                        "Service":  "vram-safety",
+                        "Timestamp":  "14:38:19",
+                        "Error":  null,
+                        "TestName":  "monitoring patterns",
+                        "Details":  "7.68KB, Monitoring: True, Metrics: True"
+                    },
+                    {
+                        "Passed":  true,
+                        "Service":  "gpu-analyzer",
+                        "Timestamp":  "14:38:19",
+                        "Error":  null,
+                        "TestName":  "monitoring patterns",
+                        "Details":  "2.74KB, Monitoring: True, Metrics: True"
+                    },
+                    {
+                        "Passed":  true,
+                        "Service":  "sovereign-memory",
+                        "Timestamp":  "14:38:19",
+                        "Error":  null,
+                        "TestName":  "storage patterns",
+                        "Details":  "6.21KB, Storage: True, Data: True"
+                    },
+                    {
+                        "Passed":  true,
+                        "Service":  "StateVault",
+                        "Timestamp":  "14:38:19",
+                        "Error":  null,
+                        "TestName":  "storage patterns",
+                        "Details":  "3.3KB, Storage: True, Data: True"
+                    },
+                    {
+                        "Passed":  true,
+                        "Service":  "sovereign-engine",
+                        "Timestamp":  "14:38:19",
+                        "Error":  null,
+                        "TestName":  "file integrity",
+                        "Details":  "Size: 1939 bytes, Lines: 53"
+                    },
+                    {
+                        "Passed":  true,
+                        "Service":  "sovereign-engine",
+                        "Timestamp":  "14:38:19",
+                        "Error":  null,
+                        "TestName":  "core logic",
+                        "Details":  "Core processing patterns: True"
+                    },
+                    {
+                        "Passed":  true,
+                        "Service":  "autonomous-codebase-service",
+                        "Timestamp":  "14:38:19",
+                        "Error":  null,
+                        "TestName":  "file integrity",
+                        "Details":  "Size: 6261 bytes, Lines: 192"
+                    },
+                    {
+                        "Passed":  true,
+                        "Service":  "autonomous-codebase-service",
+                        "Timestamp":  "14:38:19",
+                        "Error":  null,
+                        "TestName":  "core logic",
+                        "Details":  "Core processing patterns: True"
+                    },
+                    {
+                        "Passed":  true,
+                        "Service":  "constitutional-generator",
+                        "Timestamp":  "14:38:19",
+                        "Error":  null,
+                        "TestName":  "file integrity",
+                        "Details":  "Size: 5626 bytes, Lines: 164"
+                    },
+                    {
+                        "Passed":  true,
+                        "Service":  "constitutional-generator",
+                        "Timestamp":  "14:38:19",
+                        "Error":  null,
+                        "TestName":  "core logic",
+                        "Details":  "Core processing patterns: True"
+                    },
+                    {
+                        "Passed":  true,
+                        "Service":  "sce-service",
+                        "Timestamp":  "14:38:19",
+                        "Error":  null,
+                        "TestName":  "file integrity",
+                        "Details":  "Size: 438 bytes, Lines: 14"
+                    },
+                    {
+                        "Passed":  true,
+                        "Service":  "sce-service",
+                        "Timestamp":  "14:38:19",
+                        "Error":  null,
+                        "TestName":  "core logic",
+                        "Details":  "Core processing patterns: True"
+                    },
+                    {
+                        "Passed":  true,
+                        "Service":  "comfyui-service",
+                        "Timestamp":  "14:38:19",
+                        "Error":  null,
+                        "TestName":  "file integrity",
+                        "Details":  "Size: 710 bytes, Lines: 27"
+                    },
+                    {
+                        "Passed":  true,
+                        "Service":  "comfyui-service",
+                        "Timestamp":  "14:38:19",
+                        "Error":  null,
+                        "TestName":  "core logic",
+                        "Details":  "Core processing patterns: True"
+                    },
+                    {
+                        "Passed":  true,
+                        "Service":  "index",
+                        "Timestamp":  "14:38:19",
+                        "Error":  null,
+                        "TestName":  "export aggregation",
+                        "Details":  "Exports found: 2"
+                    },
+                    {
+                        "Passed":  true,
+                        "Service":  "index",
+                        "Timestamp":  "14:38:19",
+                        "Error":  null,
+                        "TestName":  "export content",
+                        "Details":  "Exports: "
+                    },
+                    {
+                        "Passed":  true,
+                        "Service":  "types",
+                        "Timestamp":  "14:38:19",
+                        "Error":  null,
+                        "TestName":  "type definitions",
+                        "Details":  "Type definitions found: 3"
+                    },
+                    {
+                        "Passed":  true,
+                        "Service":  "all",
+                        "Timestamp":  "14:38:19",
+                        "Error":  null,
+                        "TestName":  "total services count",
+                        "Details":  "Found 28 service files"
+                    },
+                    {
+                        "Passed":  true,
+                        "Service":  "critical",
+                        "Timestamp":  "14:38:19",
+                        "Error":  null,
+                        "TestName":  "zero-drift.ts exists",
+                        "Details":  ""
+                    },
+                    {
+                        "Passed":  true,
+                        "Service":  "critical",
+                        "Timestamp":  "14:38:19",
+                        "Error":  null,
+                        "TestName":  "sovereign-orchestrator.ts exists",
+                        "Details":  ""
+                    }
+                ],
+    "PassRate":  91.11,
+    "Project":  "RezStack"
+}

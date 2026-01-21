@@ -1,0 +1,22 @@
+import Dashboard from './Dashboard';
+import Orchestrator from './Orchestrator';
+import KnowledgeBase from './KnowledgeBase';
+import GenerativeIDE from './GenerativeIDE';
+import WorkerRegistry from './WorkerRegistry';
+import RezonicCanvas from './RezonicCanvas';
+import AutonomousCodebase from './AutonomousCodebase';
+import Home from './Home';
+import TestPage from './TestPage';
+export { Dashboard, Orchestrator, KnowledgeBase, GenerativeIDE, WorkerRegistry, RezonicCanvas, AutonomousCodebase, Home, TestPage };
+declare const views: {
+    Dashboard: any;
+    Orchestrator: any;
+    KnowledgeBase: any;
+    GenerativeIDE: () => import("react").JSX.Element;
+    WorkerRegistry: any;
+    RezonicCanvas: any;
+    AutonomousCodebase: any;
+    Home: typeof Home;
+    TestPage: typeof TestPage;
+};
+export default views;
