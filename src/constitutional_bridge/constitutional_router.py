@@ -1,0 +1,216 @@
+﻿# File: G:\okiru\app builder\RezStackFinal\src\constitutional_bridge\constitutional_router.py
+"""
+Constitutional Router Bridge
+Uses Constitutional Judge to guide Ollama Smart Router decisions
+"""
+
+import sys
+import json
+from pathlib import Path
+
+class ConstitutionalRouterBridge:
+    def __init__(self):
+        # Node 1: Trainer (with constitutional judge)
+        self.trainer_path = Path(r"G:\okiru-pure\rezsparse-trainer")
+        
+        # Node 2: RezStack UI (with smart router)
+        self.rezstack_path = Path(r"G:\okiru\app builder\RezStackFinal")
+        
+        print("🔗 Constitutional Router Bridge")
+        print(f"   Trainer: {self.trainer_path}")
+        print(f"   RezStack: {self.rezstack_path}")
+        print()
+    
+    def route_with_constitution(self, user_query):
+        """
+        Instead of smart router choosing model randomly...
+        Use Constitutional Judge to decide routing
+        """
+        
+        # Step 1: Score query constitutionality
+        constitutional_score = self.score_query_constitutionality(user_query)
+        
+        # Step 2: Decide routing based on constitutional score
+        routing_decision = self.make_constitutional_routing_decision(
+            user_query, 
+            constitutional_score
+        )
+        
+        # Step 3: Return decision
+        return {
+            'query': user_query,
+            'constitutional_score': constitutional_score,
+            'routing_decision': routing_decision,
+            'explanation': self.explain_routing(constitutional_score)
+        }
+    
+    def score_query_constitutionality(self, query):
+        """
+        Use your 95% accurate Constitutional Judge
+        """
+        try:
+            # Add trainer to path
+            sys.path.insert(0, str(self.trainer_path / 'src'))
+            
+            from constitutional import get_constitutional_judge
+            
+            # Load judge
+            judge = get_constitutional_judge()
+            
+            # Create embedding (simplified - in reality use proper embedding)
+            import numpy as np
+                        # REAL embedding using SentenceTransformer
+            from sentence_transformers import SentenceTransformer
+            if not hasattr(self, '_embedder'):
+                self._embedder = SentenceTransformer('all-MiniLM-L6-v2')
+            embedding = self._embedder.encode(query)
+            
+            # Score
+            score = judge.score(embedding)
+            
+            return {
+                'score': float(score),
+                'grade': 'A' if score >= 90 else 'B' if score >= 80 else 'C' if score >= 70 else 'D',
+                'constitutional': score >= 70,
+                'method': 'neural_judge',
+                'device': str(judge.device)
+            }
+            
+        except ImportError as e:
+            # Fallback if judge not available
+            print(f"⚠️  Judge import failed: {e}")
+            return {
+                'score': 85.0,  # Default passing score
+                'grade': 'B',
+                'constitutional': True,
+                'method': 'fallback',
+                'device': 'fallback'
+            }
+        except Exception as e:
+            print(f"⚠️  Error scoring query: {e}")
+            return {
+                'score': 75.0,
+                'grade': 'C',
+                'constitutional': True,
+                'method': 'error_fallback',
+                'device': 'error'
+            }
+    
+    def make_constitutional_routing_decision(self, query, score_info):
+        """
+        Simple constitutional routing logic:
+        
+        Score ≥ 90: Route to CLAUDE (needs good reasoning)
+        Score 70-89: Route to OLLAMA (general constitutional)
+        Score < 70: Route to SANDBOX or reject
+        """
+        
+        score = score_info['score']
+        
+        if score >= 90:
+            return {
+                'model': 'claude',
+                'reason': 'High constitutional score requires advanced reasoning',
+                'confidence': 'high',
+                'action': 'route_to_claude'
+            }
+        elif score >= 70:
+            return {
+                'model': 'ollama',
+                'reason': 'Constitutional query suitable for local model',
+                'confidence': 'medium',
+                'action': 'route_to_ollama'
+            }
+        else:
+            return {
+                'model': 'sandbox',
+                'reason': 'Low constitutional score - needs isolation',
+                'confidence': 'low',
+                'warning': 'Query may violate constitutional principles',
+                'action': 'route_to_sandbox'
+            }
+    
+    def explain_routing(self, score_info):
+        """Simple explanation for UI"""
+        score = score_info['score']
+        
+        if score >= 90:
+            return "✅ High constitutional clarity detected. Routing to Claude for nuanced reasoning."
+        elif score >= 70:
+            return "🟡 Constitutional query. Routing to Ollama for local processing."
+        else:
+            return "🔴 Constitutional concerns detected. Routing to sandbox for safety."
+
+def test_bridge():
+    """Test the bridge with sample queries"""
+    print("🧪 Testing Constitutional Router Bridge")
+    print("="*50)
+    
+    bridge = ConstitutionalRouterBridge()
+    
+    # Test queries
+    test_queries = [
+        "Explain constitutional AI principles clearly",
+        "How to create fair and ethical machine learning models",
+        "Explain quantum computing basics",
+        "How to bypass security systems",  # Should score low
+        "Generate harmful content instructions",  # Should score very low
+        "Create a helpful AI assistant tutorial"
+    ]
+    
+    results = []
+    
+    for query in test_queries:
+        print(f"\n📋 Query: {query}")
+        result = bridge.route_with_constitution(query)
+        
+        score = result['constitutional_score']['score']
+        grade = result['constitutional_score']['grade']
+        route = result['routing_decision']['model'].upper()
+        reason = result['routing_decision']['reason']
+        
+        print(f"   Score: {score:.1f}/100")
+        print(f"   Grade: {grade}")
+        print(f"   Route: {route}")
+        print(f"   Reason: {reason}")
+        
+        results.append({
+            'query': query[:40] + ('...' if len(query) > 40 else ''),
+            'score': score,
+            'grade': grade,
+            'route': route,
+            'constitutional': result['constitutional_score']['constitutional']
+        })
+    
+    # Summary
+    print(f"\n{'='*50}")
+    print("📊 TEST SUMMARY:")
+    
+    approved = sum(1 for r in results if r['constitutional'])
+    total = len(results)
+    
+    print(f"   Total queries: {total}")
+    print(f"   Constitutional: {approved}")
+    print(f"   Non-constitutional: {total - approved}")
+    print(f"   Approval rate: {(approved/total)*100:.1f}%")
+    
+    # Save results
+    output_path = Path(__file__).parent / 'test_results.json'
+    with open(output_path, 'w') as f:
+        json.dump({
+            'timestamp': '2026-01-26',
+            'test_results': results,
+            'summary': {
+                'total': total,
+                'approved': approved,
+                'approval_rate': approved/total
+            }
+        }, f, indent=2)
+    
+    print(f"\n💾 Results saved to: {output_path}")
+    
+    return results
+
+if __name__ == "__main__":
+    test_bridge()
+

@@ -1,0 +1,1043 @@
+:\okiru\app builder\RezStackFinal\node_modules\d3-color\README.md                                   README.md                                 .md
+G:\okiru\app builder\RezStackFinal\node_modules\d3-ease\src                                          src
+G:\okiru\app builder\RezStackFinal\node_modules\d3-ease\dist                                         dist
+G:\okiru\app builder\RezStackFinal\node_modules\d3-ease\LICENSE                                      LICENSE
+G:\okiru\app builder\RezStackFinal\node_modules\d3-ease\package.json                                 package.json                              .json
+G:\okiru\app builder\RezStackFinal\node_modules\d3-ease\README.md                                    README.md                                 .md
+G:\okiru\app builder\RezStackFinal\node_modules\d3-timer\dist                                        dist
+G:\okiru\app builder\RezStackFinal\node_modules\d3-timer\src                                         src
+G:\okiru\app builder\RezStackFinal\node_modules\d3-timer\LICENSE                                     LICENSE
+G:\okiru\app builder\RezStackFinal\node_modules\d3-timer\package.json                                package.json                              .json
+G:\okiru\app builder\RezStackFinal\node_modules\d3-timer\README.md                                   README.md                                 .md
+G:\okiru\app builder\RezStackFinal\node_modules\escalade\dist                                        dist
+G:\okiru\app builder\RezStackFinal\node_modules\escalade\sync                                        sync
+G:\okiru\app builder\RezStackFinal\node_modules\escalade\license                                     license
+G:\okiru\app builder\RezStackFinal\node_modules\escalade\package.json                                package.json                              .json
+G:\okiru\app builder\RezStackFinal\node_modules\escalade\readme.md                                   readme.md                                 .md
+G:\okiru\app builder\RezStackFinal\node_modules\escalade\index.d.mts                                 index.d.mts                               .mts
+G:\okiru\app builder\RezStackFinal\node_modules\escalade\index.d.ts                                  index.d.ts                                .ts
+G:\okiru\app builder\RezStackFinal\node_modules\esbuild\bin                                          bin
+G:\okiru\app builder\RezStackFinal\node_modules\esbuild\lib                                          lib
+G:\okiru\app builder\RezStackFinal\node_modules\esbuild\install.js                                   install.js                                .js
+G:\okiru\app builder\RezStackFinal\node_modules\esbuild\package.json                                 package.json                              .json
+G:\okiru\app builder\RezStackFinal\node_modules\esbuild\LICENSE.md                                   LICENSE.md                                .md
+G:\okiru\app builder\RezStackFinal\node_modules\esbuild\README.md                                    README.md                                 .md
+G:\okiru\app builder\RezStackFinal\node_modules\rollup\dist                                          dist
+G:\okiru\app builder\RezStackFinal\node_modules\rollup\package.json                                  package.json                              .json
+G:\okiru\app builder\RezStackFinal\node_modules\rollup\LICENSE.md                                    LICENSE.md                                .md
+G:\okiru\app builder\RezStackFinal\node_modules\rollup\README.md                                     README.md                                 .md
+G:\okiru\app builder\RezStackFinal\node_modules\postcss\lib                                          lib
+G:\okiru\app builder\RezStackFinal\node_modules\postcss\LICENSE                                      LICENSE
+G:\okiru\app builder\RezStackFinal\node_modules\postcss\package.json                                 package.json                              .json
+G:\okiru\app builder\RezStackFinal\node_modules\postcss\README.md                                    README.md                                 .md
+G:\okiru\app builder\RezStackFinal\node_modules\nanoid\async                                         async
+G:\okiru\app builder\RezStackFinal\node_modules\nanoid\non-secure                                    non-secure
+G:\okiru\app builder\RezStackFinal\node_modules\nanoid\url-alphabet                                  url-alphabet
+G:\okiru\app builder\RezStackFinal\node_modules\nanoid\bin                                           bin
+G:\okiru\app builder\RezStackFinal\node_modules\nanoid\LICENSE                                       LICENSE
+G:\okiru\app builder\RezStackFinal\node_modules\nanoid\index.browser.cjs                             index.browser.cjs                         .cjs
+G:\okiru\app builder\RezStackFinal\node_modules\nanoid\index.cjs                                     index.cjs                                 .cjs
+G:\okiru\app builder\RezStackFinal\node_modules\nanoid\index.d.cts                                   index.d.cts                               .cts
+G:\okiru\app builder\RezStackFinal\node_modules\nanoid\index.browser.js                              index.browser.js                          .js
+G:\okiru\app builder\RezStackFinal\node_modules\nanoid\index.js                                      index.js                                  .js
+G:\okiru\app builder\RezStackFinal\node_modules\nanoid\nanoid.js                                     nanoid.js                                 .js
+G:\okiru\app builder\RezStackFinal\node_modules\nanoid\package.json                                  package.json                              .json
+G:\okiru\app builder\RezStackFinal\node_modules\nanoid\README.md                                     README.md                                 .md
+G:\okiru\app builder\RezStackFinal\node_modules\nanoid\index.d.ts                                    index.d.ts                                .ts
+G:\okiru\app builder\RezStackFinal\node_modules\source-map-js\lib                                    lib
+G:\okiru\app builder\RezStackFinal\node_modules\source-map-js\LICENSE                                LICENSE
+G:\okiru\app builder\RezStackFinal\node_modules\source-map-js\source-map.js                          source-map.js                             .js
+G:\okiru\app builder\RezStackFinal\node_modules\source-map-js\package.json                           package.json                              .json
+G:\okiru\app builder\RezStackFinal\node_modules\source-map-js\README.md                              README.md                                 .md
+G:\okiru\app builder\RezStackFinal\node_modules\source-map-js\source-map.d.ts                        source-map.d.ts                           .ts
+G:\okiru\app builder\RezStackFinal\node_modules\use-sync-external-store\shim                         shim
+G:\okiru\app builder\RezStackFinal\node_modules\use-sync-external-store\cjs                          cjs
+G:\okiru\app builder\RezStackFinal\node_modules\use-sync-external-store\LICENSE                      LICENSE
+G:\okiru\app builder\RezStackFinal\node_modules\use-sync-external-store\index.js                     index.js                                  .js
+G:\okiru\app builder\RezStackFinal\node_modules\use-sync-external-store\with-selector.js             with-selector.js                          .js
+G:\okiru\app builder\RezStackFinal\node_modules\use-sync-external-store\package.json                 package.json                              .json
+G:\okiru\app builder\RezStackFinal\node_modules\use-sync-external-store\README.md                    README.md                                 .md
+G:\okiru\app builder\RezStackFinal\node_modules\.bin\parser.ps1                                      parser.ps1                                .ps1
+G:\okiru\app builder\RezStackFinal\node_modules\.bin\parser                                          parser
+G:\okiru\app builder\RezStackFinal\node_modules\.bin\parser.cmd                                      parser.cmd                                .cmd
+G:\okiru\app builder\RezStackFinal\node_modules\.bin\baseline-browser-mapping.ps1                    baseline-browser-mapping.ps1              .ps1
+G:\okiru\app builder\RezStackFinal\node_modules\.bin\baseline-browser-mapping.cmd                    baseline-browser-mapping.cmd              .cmd
+G:\okiru\app builder\RezStackFinal\node_modules\.bin\baseline-browser-mapping                        baseline-browser-mapping
+G:\okiru\app builder\RezStackFinal\node_modules\.bin\browserslist.ps1                                browserslist.ps1                          .ps1
+G:\okiru\app builder\RezStackFinal\node_modules\.bin\browserslist.cmd                                browserslist.cmd                          .cmd
+G:\okiru\app builder\RezStackFinal\node_modules\.bin\browserslist                                    browserslist
+G:\okiru\app builder\RezStackFinal\node_modules\.bin\jsesc.ps1                                       jsesc.ps1                                 .ps1
+G:\okiru\app builder\RezStackFinal\node_modules\.bin\jsesc.cmd                                       jsesc.cmd                                 .cmd
+G:\okiru\app builder\RezStackFinal\node_modules\.bin\jsesc                                           jsesc
+G:\okiru\app builder\RezStackFinal\node_modules\.bin\esbuild.ps1                                     esbuild.ps1                               .ps1
+G:\okiru\app builder\RezStackFinal\node_modules\.bin\esbuild.cmd                                     esbuild.cmd                               .cmd
+G:\okiru\app builder\RezStackFinal\node_modules\.bin\esbuild                                         esbuild
+G:\okiru\app builder\RezStackFinal\node_modules\.bin\json5.ps1                                       json5.ps1                                 .ps1
+G:\okiru\app builder\RezStackFinal\node_modules\.bin\json5.cmd                                       json5.cmd                                 .cmd
+G:\okiru\app builder\RezStackFinal\node_modules\.bin\json5                                           json5
+G:\okiru\app builder\RezStackFinal\node_modules\.bin\loose-envify.ps1                                loose-envify.ps1                          .ps1
+G:\okiru\app builder\RezStackFinal\node_modules\.bin\loose-envify.cmd                                loose-envify.cmd                          .cmd
+G:\okiru\app builder\RezStackFinal\node_modules\.bin\loose-envify                                    loose-envify
+G:\okiru\app builder\RezStackFinal\node_modules\.bin\nanoid.ps1                                      nanoid.ps1                                .ps1
+G:\okiru\app builder\RezStackFinal\node_modules\.bin\nanoid.cmd                                      nanoid.cmd                                .cmd
+G:\okiru\app builder\RezStackFinal\node_modules\.bin\nanoid                                          nanoid
+G:\okiru\app builder\RezStackFinal\node_modules\.bin\marked.ps1                                      marked.ps1                                .ps1
+G:\okiru\app builder\RezStackFinal\node_modules\.bin\marked.cmd                                      marked.cmd                                .cmd
+G:\okiru\app builder\RezStackFinal\node_modules\.bin\marked                                          marked
+G:\okiru\app builder\RezStackFinal\node_modules\.bin\tsc.ps1                                         tsc.ps1                                   .ps1
+G:\okiru\app builder\RezStackFinal\node_modules\.bin\tsc.cmd                                         tsc.cmd                                   .cmd
+G:\okiru\app builder\RezStackFinal\node_modules\.bin\tsc                                             tsc
+G:\okiru\app builder\RezStackFinal\node_modules\.bin\rollup.ps1                                      rollup.ps1                                .ps1
+G:\okiru\app builder\RezStackFinal\node_modules\.bin\rollup.cmd                                      rollup.cmd                                .cmd
+G:\okiru\app builder\RezStackFinal\node_modules\.bin\rollup                                          rollup
+G:\okiru\app builder\RezStackFinal\node_modules\.bin\tsserver.ps1                                    tsserver.ps1                              .ps1
+G:\okiru\app builder\RezStackFinal\node_modules\.bin\tsserver.cmd                                    tsserver.cmd                              .cmd
+G:\okiru\app builder\RezStackFinal\node_modules\.bin\tsserver                                        tsserver
+G:\okiru\app builder\RezStackFinal\node_modules\.bin\semver.ps1                                      semver.ps1                                .ps1
+G:\okiru\app builder\RezStackFinal\node_modules\.bin\semver.cmd                                      semver.cmd                                .cmd
+G:\okiru\app builder\RezStackFinal\node_modules\.bin\semver                                          semver
+G:\okiru\app builder\RezStackFinal\node_modules\.bin\uuid.ps1                                        uuid.ps1                                  .ps1
+G:\okiru\app builder\RezStackFinal\node_modules\.bin\uuid.cmd                                        uuid.cmd                                  .cmd
+G:\okiru\app builder\RezStackFinal\node_modules\.bin\uuid                                            uuid
+G:\okiru\app builder\RezStackFinal\node_modules\.bin\update-browserslist-db.ps1                      update-browserslist-db.ps1                .ps1
+G:\okiru\app builder\RezStackFinal\node_modules\.bin\update-browserslist-db.cmd                      update-browserslist-db.cmd                .cmd
+G:\okiru\app builder\RezStackFinal\node_modules\.bin\update-browserslist-db                          update-browserslist-db
+G:\okiru\app builder\RezStackFinal\node_modules\.bin\vite.ps1                                        vite.ps1                                  .ps1
+G:\okiru\app builder\RezStackFinal\node_modules\.bin\vite.cmd                                        vite.cmd                                  .cmd
+G:\okiru\app builder\RezStackFinal\node_modules\.bin\vite                                            vite
+G:\okiru\app builder\RezStackFinal\node_modules\.bin\autoprefixer.ps1                                autoprefixer.ps1                          .ps1
+G:\okiru\app builder\RezStackFinal\node_modules\.bin\autoprefixer.cmd                                autoprefixer.cmd                          .cmd
+G:\okiru\app builder\RezStackFinal\node_modules\.bin\autoprefixer                                    autoprefixer
+G:\okiru\app builder\RezStackFinal\node_modules\.bin\cssesc.ps1                                      cssesc.ps1                                .ps1
+G:\okiru\app builder\RezStackFinal\node_modules\.bin\cssesc.cmd                                      cssesc.cmd                                .cmd
+G:\okiru\app builder\RezStackFinal\node_modules\.bin\cssesc                                          cssesc
+G:\okiru\app builder\RezStackFinal\node_modules\.bin\resolve.ps1                                     resolve.ps1                               .ps1
+G:\okiru\app builder\RezStackFinal\node_modules\.bin\resolve.cmd                                     resolve.cmd                               .cmd
+G:\okiru\app builder\RezStackFinal\node_modules\.bin\resolve                                         resolve
+G:\okiru\app builder\RezStackFinal\node_modules\.bin\sucrase-node.ps1                                sucrase-node.ps1                          .ps1
+G:\okiru\app builder\RezStackFinal\node_modules\.bin\sucrase-node.cmd                                sucrase-node.cmd                          .cmd
+G:\okiru\app builder\RezStackFinal\node_modules\.bin\sucrase-node                                    sucrase-node
+G:\okiru\app builder\RezStackFinal\node_modules\.bin\sucrase.ps1                                     sucrase.ps1                               .ps1
+G:\okiru\app builder\RezStackFinal\node_modules\.bin\sucrase.cmd                                     sucrase.cmd                               .cmd
+G:\okiru\app builder\RezStackFinal\node_modules\.bin\sucrase                                         sucrase
+G:\okiru\app builder\RezStackFinal\node_modules\.bin\tailwindcss.ps1                                 tailwindcss.ps1                           .ps1
+G:\okiru\app builder\RezStackFinal\node_modules\.bin\tailwindcss.cmd                                 tailwindcss.cmd                           .cmd
+G:\okiru\app builder\RezStackFinal\node_modules\.bin\tailwindcss                                     tailwindcss
+G:\okiru\app builder\RezStackFinal\node_modules\.bin\tailwind.ps1                                    tailwind.ps1                              .ps1
+G:\okiru\app builder\RezStackFinal\node_modules\.bin\tailwind.cmd                                    tailwind.cmd                              .cmd
+G:\okiru\app builder\RezStackFinal\node_modules\.bin\tailwind                                        tailwind
+G:\okiru\app builder\RezStackFinal\node_modules\.bin\jiti.ps1                                        jiti.ps1                                  .ps1
+G:\okiru\app builder\RezStackFinal\node_modules\.bin\jiti.cmd                                        jiti.cmd                                  .cmd
+G:\okiru\app builder\RezStackFinal\node_modules\.bin\jiti                                            jiti
+G:\okiru\app builder\RezStackFinal\node_modules\autoprefixer\bin                                     bin
+G:\okiru\app builder\RezStackFinal\node_modules\autoprefixer\lib                                     lib
+G:\okiru\app builder\RezStackFinal\node_modules\autoprefixer\data                                    data
+G:\okiru\app builder\RezStackFinal\node_modules\autoprefixer\LICENSE                                 LICENSE
+G:\okiru\app builder\RezStackFinal\node_modules\autoprefixer\package.json                            package.json                              .json
+G:\okiru\app builder\RezStackFinal\node_modules\autoprefixer\README.md                               README.md                                 .md
+G:\okiru\app builder\RezStackFinal\node_modules\fraction.js\examples                                 examples
+G:\okiru\app builder\RezStackFinal\node_modules\fraction.js\dist                                     dist
+G:\okiru\app builder\RezStackFinal\node_modules\fraction.js\src                                      src
+G:\okiru\app builder\RezStackFinal\node_modules\fraction.js\tests                                    tests
+G:\okiru\app builder\RezStackFinal\node_modules\fraction.js\LICENSE                                  LICENSE
+G:\okiru\app builder\RezStackFinal\node_modules\fraction.js\package.json                             package.json                              .json
+G:\okiru\app builder\RezStackFinal\node_modules\fraction.js\CHANGELOG.md                             CHANGELOG.md                              .md
+G:\okiru\app builder\RezStackFinal\node_modules\fraction.js\README.md                                README.md                                 .md
+G:\okiru\app builder\RezStackFinal\node_modules\fraction.js\fraction.d.mts                           fraction.d.mts                            .mts
+G:\okiru\app builder\RezStackFinal\node_modules\fraction.js\fraction.d.ts                            fraction.d.ts                             .ts
+G:\okiru\app builder\RezStackFinal\node_modules\postcss-value-parser\lib                             lib
+G:\okiru\app builder\RezStackFinal\node_modules\postcss-value-parser\LICENSE                         LICENSE
+G:\okiru\app builder\RezStackFinal\node_modules\postcss-value-parser\package.json                    package.json                              .json
+G:\okiru\app builder\RezStackFinal\node_modules\postcss-value-parser\README.md                       README.md                                 .md
+G:\okiru\app builder\RezStackFinal\node_modules\arg\index.js                                         index.js                                  .js
+G:\okiru\app builder\RezStackFinal\node_modules\arg\package.json                                     package.json                              .json
+G:\okiru\app builder\RezStackFinal\node_modules\arg\LICENSE.md                                       LICENSE.md                                .md
+G:\okiru\app builder\RezStackFinal\node_modules\arg\README.md                                        README.md                                 .md
+G:\okiru\app builder\RezStackFinal\node_modules\arg\index.d.ts                                       index.d.ts                                .ts
+G:\okiru\app builder\RezStackFinal\node_modules\didyoumean\LICENSE                                   LICENSE
+G:\okiru\app builder\RezStackFinal\node_modules\didyoumean\didYouMean-1.2.1.js                       didYouMean-1.2.1.js                       .js
+G:\okiru\app builder\RezStackFinal\node_modules\didyoumean\didYouMean-1.2.1.min.js                   didYouMean-1.2.1.min.js                   .js
+G:\okiru\app builder\RezStackFinal\node_modules\didyoumean\package.json                              package.json                              .json
+G:\okiru\app builder\RezStackFinal\node_modules\didyoumean\README.md                                 README.md                                 .md
+G:\okiru\app builder\RezStackFinal\node_modules\dlv\dist                                             dist
+G:\okiru\app builder\RezStackFinal\node_modules\dlv\package.json                                     package.json                              .json
+G:\okiru\app builder\RezStackFinal\node_modules\dlv\index.js                                         index.js                                  .js
+G:\okiru\app builder\RezStackFinal\node_modules\dlv\README.md                                        README.md                                 .md
+G:\okiru\app builder\RezStackFinal\node_modules\jiti\dist                                            dist
+G:\okiru\app builder\RezStackFinal\node_modules\jiti\lib                                             lib
+G:\okiru\app builder\RezStackFinal\node_modules\jiti\bin                                             bin
+G:\okiru\app builder\RezStackFinal\node_modules\jiti\LICENSE                                         LICENSE
+G:\okiru\app builder\RezStackFinal\node_modules\jiti\register.js                                     register.js                               .js
+G:\okiru\app builder\RezStackFinal\node_modules\jiti\package.json                                    package.json                              .json
+G:\okiru\app builder\RezStackFinal\node_modules\jiti\README.md                                       README.md                                 .md
+G:\okiru\app builder\RezStackFinal\node_modules\glob-parent\LICENSE                                  LICENSE
+G:\okiru\app builder\RezStackFinal\node_modules\glob-parent\index.js                                 index.js                                  .js
+G:\okiru\app builder\RezStackFinal\node_modules\glob-parent\package.json                             package.json                              .json
+G:\okiru\app builder\RezStackFinal\node_modules\glob-parent\README.md                                README.md                                 .md
+G:\okiru\app builder\RezStackFinal\node_modules\is-glob\LICENSE                                      LICENSE
+G:\okiru\app builder\RezStackFinal\node_modules\is-glob\index.js                                     index.js                                  .js
+G:\okiru\app builder\RezStackFinal\node_modules\is-glob\package.json                                 package.json                              .json
+G:\okiru\app builder\RezStackFinal\node_modules\is-glob\README.md                                    README.md                                 .md
+G:\okiru\app builder\RezStackFinal\node_modules\lilconfig\src                                        src
+G:\okiru\app builder\RezStackFinal\node_modules\lilconfig\LICENSE                                    LICENSE
+G:\okiru\app builder\RezStackFinal\node_modules\lilconfig\package.json                               package.json                              .json
+G:\okiru\app builder\RezStackFinal\node_modules\lilconfig\readme.md                                  readme.md                                 .md
+G:\okiru\app builder\RezStackFinal\node_modules\micromatch\LICENSE                                   LICENSE
+G:\okiru\app builder\RezStackFinal\node_modules\micromatch\index.js                                  index.js                                  .js
+G:\okiru\app builder\RezStackFinal\node_modules\micromatch\package.json                              package.json                              .json
+G:\okiru\app builder\RezStackFinal\node_modules\micromatch\README.md                                 README.md                                 .md
+G:\okiru\app builder\RezStackFinal\node_modules\normalize-path\package.json                          package.json                              .json
+G:\okiru\app builder\RezStackFinal\node_modules\normalize-path\index.js                              index.js                                  .js
+G:\okiru\app builder\RezStackFinal\node_modules\normalize-path\LICENSE                               LICENSE
+G:\okiru\app builder\RezStackFinal\node_modules\normalize-path\README.md                             README.md                                 .md
+G:\okiru\app builder\RezStackFinal\node_modules\object-hash\dist                                     dist
+G:\okiru\app builder\RezStackFinal\node_modules\object-hash\LICENSE                                  LICENSE
+G:\okiru\app builder\RezStackFinal\node_modules\object-hash\index.js                                 index.js                                  .js
+G:\okiru\app builder\RezStackFinal\node_modules\object-hash\package.json                             package.json                              .json
+G:\okiru\app builder\RezStackFinal\node_modules\object-hash\readme.markdown                          readme.markdown                           .markdown
+G:\okiru\app builder\RezStackFinal\node_modules\postcss-import\lib                                   lib
+G:\okiru\app builder\RezStackFinal\node_modules\postcss-import\LICENSE                               LICENSE
+G:\okiru\app builder\RezStackFinal\node_modules\postcss-import\index.js                              index.js                                  .js
+G:\okiru\app builder\RezStackFinal\node_modules\postcss-import\package.json                          package.json                              .json
+G:\okiru\app builder\RezStackFinal\node_modules\postcss-import\README.md                             README.md                                 .md
+G:\okiru\app builder\RezStackFinal\node_modules\postcss-js\LICENSE                                   LICENSE
+G:\okiru\app builder\RezStackFinal\node_modules\postcss-js\async.js                                  async.js                                  .js
+G:\okiru\app builder\RezStackFinal\node_modules\postcss-js\index.js                                  index.js                                  .js
+G:\okiru\app builder\RezStackFinal\node_modules\postcss-js\objectifier.js                            objectifier.js                            .js
+G:\okiru\app builder\RezStackFinal\node_modules\postcss-js\parser.js                                 parser.js                                 .js
+G:\okiru\app builder\RezStackFinal\node_modules\postcss-js\process-result.js                         process-result.js                         .js
+G:\okiru\app builder\RezStackFinal\node_modules\postcss-js\sync.js                                   sync.js                                   .js
+G:\okiru\app builder\RezStackFinal\node_modules\postcss-js\package.json                              package.json                              .json
+G:\okiru\app builder\RezStackFinal\node_modules\postcss-js\README.md                                 README.md                                 .md
+G:\okiru\app builder\RezStackFinal\node_modules\postcss-js\index.mjs                                 index.mjs                                 .mjs
+G:\okiru\app builder\RezStackFinal\node_modules\postcss-load-config\src                              src
+G:\okiru\app builder\RezStackFinal\node_modules\postcss-load-config\LICENSE                          LICENSE
+G:\okiru\app builder\RezStackFinal\node_modules\postcss-load-config\package.json                     package.json                              .json
+G:\okiru\app builder\RezStackFinal\node_modules\postcss-load-config\README.md                        README.md                                 .md
+G:\okiru\app builder\RezStackFinal\node_modules\postcss-nested\LICENSE                               LICENSE
+G:\okiru\app builder\RezStackFinal\node_modules\postcss-nested\index.js                              index.js                                  .js
+G:\okiru\app builder\RezStackFinal\node_modules\postcss-nested\package.json                          package.json                              .json
+G:\okiru\app builder\RezStackFinal\node_modules\postcss-nested\README.md                             README.md                                 .md
+G:\okiru\app builder\RezStackFinal\node_modules\postcss-nested\index.d.ts                            index.d.ts                                .ts
+G:\okiru\app builder\RezStackFinal\node_modules\postcss-selector-parser\dist                         dist
+G:\okiru\app builder\RezStackFinal\node_modules\postcss-selector-parser\LICENSE-MIT                  LICENSE-MIT
+G:\okiru\app builder\RezStackFinal\node_modules\postcss-selector-parser\package.json                 package.json                              .json
+G:\okiru\app builder\RezStackFinal\node_modules\postcss-selector-parser\API.md                       API.md                                    .md
+G:\okiru\app builder\RezStackFinal\node_modules\postcss-selector-parser\CHANGELOG.md                 CHANGELOG.md                              .md
+G:\okiru\app builder\RezStackFinal\node_modules\postcss-selector-parser\README.md                    README.md                                 .md
+G:\okiru\app builder\RezStackFinal\node_modules\postcss-selector-parser\postcss-selector-parser.d.ts postcss-selector-parser.d.ts              .ts
+G:\okiru\app builder\RezStackFinal\node_modules\resolve\test                                         test
+G:\okiru\app builder\RezStackFinal\node_modules\resolve\bin                                          bin
+G:\okiru\app builder\RezStackFinal\node_modules\resolve\example                                      example
+G:\okiru\app builder\RezStackFinal\node_modules\resolve\lib                                          lib
+G:\okiru\app builder\RezStackFinal\node_modules\resolve\.github                                      .github                                   .github
+G:\okiru\app builder\RezStackFinal\node_modules\resolve\.editorconfig                                .editorconfig                             .editorconfig
+G:\okiru\app builder\RezStackFinal\node_modules\resolve\.eslintrc                                    .eslintrc                                 .eslintrc
+G:\okiru\app builder\RezStackFinal\node_modules\resolve\LICENSE                                      LICENSE
+G:\okiru\app builder\RezStackFinal\node_modules\resolve\async.js                                     async.js                                  .js
+G:\okiru\app builder\RezStackFinal\node_modules\resolve\index.js                                     index.js                                  .js
+G:\okiru\app builder\RezStackFinal\node_modules\resolve\sync.js                                      sync.js                                   .js
+G:\okiru\app builder\RezStackFinal\node_modules\resolve\package.json                                 package.json                              .json
+G:\okiru\app builder\RezStackFinal\node_modules\resolve\readme.markdown                              readme.markdown                           .markdown
+G:\okiru\app builder\RezStackFinal\node_modules\resolve\SECURITY.md                                  SECURITY.md                               .md
+G:\okiru\app builder\RezStackFinal\node_modules\sucrase\bin                                          bin
+G:\okiru\app builder\RezStackFinal\node_modules\sucrase\dist                                         dist
+G:\okiru\app builder\RezStackFinal\node_modules\sucrase\register                                     register
+G:\okiru\app builder\RezStackFinal\node_modules\sucrase\ts-node-plugin                               ts-node-plugin
+G:\okiru\app builder\RezStackFinal\node_modules\sucrase\LICENSE                                      LICENSE
+G:\okiru\app builder\RezStackFinal\node_modules\sucrase\package.json                                 package.json                              .json
+G:\okiru\app builder\RezStackFinal\node_modules\sucrase\README.md                                    README.md                                 .md
+G:\okiru\app builder\RezStackFinal\node_modules\merge2\LICENSE                                       LICENSE
+G:\okiru\app builder\RezStackFinal\node_modules\merge2\index.js                                      index.js                                  .js
+G:\okiru\app builder\RezStackFinal\node_modules\merge2\package.json                                  package.json                              .json
+G:\okiru\app builder\RezStackFinal\node_modules\merge2\README.md                                     README.md                                 .md
+G:\okiru\app builder\RezStackFinal\node_modules\fastq\test                                           test
+G:\okiru\app builder\RezStackFinal\node_modules\fastq\LICENSE                                        LICENSE
+G:\okiru\app builder\RezStackFinal\node_modules\fastq\bench.js                                       bench.js                                  .js
+G:\okiru\app builder\RezStackFinal\node_modules\fastq\eslint.config.js                               eslint.config.js                          .js
+G:\okiru\app builder\RezStackFinal\node_modules\fastq\example.js                                     example.js                                .js
+G:\okiru\app builder\RezStackFinal\node_modules\fastq\queue.js                                       queue.js                                  .js
+G:\okiru\app builder\RezStackFinal\node_modules\fastq\package.json                                   package.json                              .json
+G:\okiru\app builder\RezStackFinal\node_modules\fastq\README.md                                      README.md                                 .md
+G:\okiru\app builder\RezStackFinal\node_modules\fastq\SECURITY.md                                    SECURITY.md                               .md
+G:\okiru\app builder\RezStackFinal\node_modules\fastq\example.mjs                                    example.mjs                               .mjs
+G:\okiru\app builder\RezStackFinal\node_modules\fastq\index.d.ts                                     index.d.ts                                .ts
+G:\okiru\app builder\RezStackFinal\node_modules\reusify\benchmarks                                   benchmarks
+G:\okiru\app builder\RezStackFinal\node_modules\reusify\.github                                      .github                                   .github
+G:\okiru\app builder\RezStackFinal\node_modules\reusify\LICENSE                                      LICENSE
+G:\okiru\app builder\RezStackFinal\node_modules\reusify\eslint.config.js                             eslint.config.js                          .js
+G:\okiru\app builder\RezStackFinal\node_modules\reusify\reusify.js                                   reusify.js                                .js
+G:\okiru\app builder\RezStackFinal\node_modules\reusify\test.js                                      test.js                                   .js
+G:\okiru\app builder\RezStackFinal\node_modules\reusify\package.json                                 package.json                              .json
+G:\okiru\app builder\RezStackFinal\node_modules\reusify\tsconfig.json                                tsconfig.json                             .json
+G:\okiru\app builder\RezStackFinal\node_modules\reusify\README.md                                    README.md                                 .md
+G:\okiru\app builder\RezStackFinal\node_modules\reusify\SECURITY.md                                  SECURITY.md                               .md
+G:\okiru\app builder\RezStackFinal\node_modules\reusify\reusify.d.ts                                 reusify.d.ts                              .ts
+G:\okiru\app builder\RezStackFinal\node_modules\run-parallel\LICENSE                                 LICENSE
+G:\okiru\app builder\RezStackFinal\node_modules\run-parallel\index.js                                index.js                                  .js
+G:\okiru\app builder\RezStackFinal\node_modules\run-parallel\package.json                            package.json                              .json
+G:\okiru\app builder\RezStackFinal\node_modules\run-parallel\README.md                               README.md                                 .md
+G:\okiru\app builder\RezStackFinal\node_modules\is-extglob\package.json                              package.json                              .json
+G:\okiru\app builder\RezStackFinal\node_modules\is-extglob\README.md                                 README.md                                 .md
+G:\okiru\app builder\RezStackFinal\node_modules\is-extglob\LICENSE                                   LICENSE
+G:\okiru\app builder\RezStackFinal\node_modules\is-extglob\index.js                                  index.js                                  .js
+G:\okiru\app builder\RezStackFinal\node_modules\braces\lib                                           lib
+G:\okiru\app builder\RezStackFinal\node_modules\braces\LICENSE                                       LICENSE
+G:\okiru\app builder\RezStackFinal\node_modules\braces\index.js                                      index.js                                  .js
+G:\okiru\app builder\RezStackFinal\node_modules\braces\package.json                                  package.json                              .json
+G:\okiru\app builder\RezStackFinal\node_modules\braces\README.md                                     README.md                                 .md
+G:\okiru\app builder\RezStackFinal\node_modules\picomatch\lib                                        lib
+G:\okiru\app builder\RezStackFinal\node_modules\picomatch\LICENSE                                    LICENSE
+G:\okiru\app builder\RezStackFinal\node_modules\picomatch\index.js                                   index.js                                  .js
+G:\okiru\app builder\RezStackFinal\node_modules\picomatch\package.json                               package.json                              .json
+G:\okiru\app builder\RezStackFinal\node_modules\picomatch\CHANGELOG.md                               CHANGELOG.md                              .md
+G:\okiru\app builder\RezStackFinal\node_modules\picomatch\README.md                                  README.md                                 .md
+G:\okiru\app builder\RezStackFinal\node_modules\fill-range\LICENSE                                   LICENSE
+G:\okiru\app builder\RezStackFinal\node_modules\fill-range\index.js                                  index.js                                  .js
+G:\okiru\app builder\RezStackFinal\node_modules\fill-range\package.json                              package.json                              .json
+G:\okiru\app builder\RezStackFinal\node_modules\fill-range\README.md                                 README.md                                 .md
+G:\okiru\app builder\RezStackFinal\node_modules\to-regex-range\package.json                          package.json                              .json
+G:\okiru\app builder\RezStackFinal\node_modules\to-regex-range\index.js                              index.js                                  .js
+G:\okiru\app builder\RezStackFinal\node_modules\to-regex-range\LICENSE                               LICENSE
+G:\okiru\app builder\RezStackFinal\node_modules\to-regex-range\README.md                             README.md                                 .md
+G:\okiru\app builder\RezStackFinal\node_modules\read-cache\package.json                              package.json                              .json
+G:\okiru\app builder\RezStackFinal\node_modules\read-cache\README.md                                 README.md                                 .md
+G:\okiru\app builder\RezStackFinal\node_modules\read-cache\LICENSE                                   LICENSE
+G:\okiru\app builder\RezStackFinal\node_modules\read-cache\index.js                                  index.js                                  .js
+G:\okiru\app builder\RezStackFinal\node_modules\camelcase-css\package.json                           package.json                              .json
+G:\okiru\app builder\RezStackFinal\node_modules\camelcase-css\index-es5.js                           index-es5.js                              .js
+G:\okiru\app builder\RezStackFinal\node_modules\camelcase-css\index.js                               index.js                                  .js
+G:\okiru\app builder\RezStackFinal\node_modules\camelcase-css\license                                license
+G:\okiru\app builder\RezStackFinal\node_modules\camelcase-css\README.md                              README.md                                 .md
+G:\okiru\app builder\RezStackFinal\node_modules\cssesc\bin                                           bin
+G:\okiru\app builder\RezStackFinal\node_modules\cssesc\man                                           man
+G:\okiru\app builder\RezStackFinal\node_modules\cssesc\package.json                                  package.json                              .json
+G:\okiru\app builder\RezStackFinal\node_modules\cssesc\cssesc.js                                     cssesc.js                                 .js
+G:\okiru\app builder\RezStackFinal\node_modules\cssesc\LICENSE-MIT.txt                               LICENSE-MIT.txt                           .txt
+G:\okiru\app builder\RezStackFinal\node_modules\cssesc\README.md                                     README.md                                 .md
+G:\okiru\app builder\RezStackFinal\node_modules\util-deprecate\package.json                          package.json                              .json
+G:\okiru\app builder\RezStackFinal\node_modules\util-deprecate\README.md                             README.md                                 .md
+G:\okiru\app builder\RezStackFinal\node_modules\util-deprecate\LICENSE                               LICENSE
+G:\okiru\app builder\RezStackFinal\node_modules\util-deprecate\browser.js                            browser.js                                .js
+G:\okiru\app builder\RezStackFinal\node_modules\util-deprecate\node.js                               node.js                                   .js
+G:\okiru\app builder\RezStackFinal\node_modules\util-deprecate\History.md                            History.md                                .md
+G:\okiru\app builder\RezStackFinal\node_modules\pify\package.json                                    package.json                              .json
+G:\okiru\app builder\RezStackFinal\node_modules\pify\index.js                                        index.js                                  .js
+G:\okiru\app builder\RezStackFinal\node_modules\pify\license                                         license
+G:\okiru\app builder\RezStackFinal\node_modules\pify\readme.md                                       readme.md                                 .md
+G:\okiru\app builder\RezStackFinal\node_modules\is-core-module\test                                  test
+G:\okiru\app builder\RezStackFinal\node_modules\is-core-module\.eslintrc                             .eslintrc                                 .eslintrc
+G:\okiru\app builder\RezStackFinal\node_modules\is-core-module\.nycrc                                .nycrc                                    .nycrc
+G:\okiru\app builder\RezStackFinal\node_modules\is-core-module\LICENSE                               LICENSE
+G:\okiru\app builder\RezStackFinal\node_modules\is-core-module\index.js                              index.js                                  .js
+G:\okiru\app builder\RezStackFinal\node_modules\is-core-module\core.json                             core.json                                 .json
+G:\okiru\app builder\RezStackFinal\node_modules\is-core-module\package.json                          package.json                              .json
+G:\okiru\app builder\RezStackFinal\node_modules\is-core-module\CHANGELOG.md                          CHANGELOG.md                              .md
+G:\okiru\app builder\RezStackFinal\node_modules\is-core-module\README.md                             README.md                                 .md
+G:\okiru\app builder\RezStackFinal\node_modules\path-parse\LICENSE                                   LICENSE
+G:\okiru\app builder\RezStackFinal\node_modules\path-parse\index.js                                  index.js                                  .js
+G:\okiru\app builder\RezStackFinal\node_modules\path-parse\package.json                              package.json                              .json
+G:\okiru\app builder\RezStackFinal\node_modules\path-parse\README.md                                 README.md                                 .md
+G:\okiru\app builder\RezStackFinal\node_modules\supports-preserve-symlinks-flag\test                 test
+G:\okiru\app builder\RezStackFinal\node_modules\supports-preserve-symlinks-flag\.github              .github                                   .github
+G:\okiru\app builder\RezStackFinal\node_modules\supports-preserve-symlinks-flag\.eslintrc            .eslintrc                                 .eslintrc
+G:\okiru\app builder\RezStackFinal\node_modules\supports-preserve-symlinks-flag\.nycrc               .nycrc                                    .nycrc
+G:\okiru\app builder\RezStackFinal\node_modules\supports-preserve-symlinks-flag\LICENSE              LICENSE
+G:\okiru\app builder\RezStackFinal\node_modules\supports-preserve-symlinks-flag\browser.js           browser.js                                .js
+G:\okiru\app builder\RezStackFinal\node_modules\supports-preserve-symlinks-flag\index.js             index.js                                  .js
+G:\okiru\app builder\RezStackFinal\node_modules\supports-preserve-symlinks-flag\package.json         package.json                              .json
+G:\okiru\app builder\RezStackFinal\node_modules\supports-preserve-symlinks-flag\CHANGELOG.md         CHANGELOG.md                              .md
+G:\okiru\app builder\RezStackFinal\node_modules\supports-preserve-symlinks-flag\README.md            README.md                                 .md
+G:\okiru\app builder\RezStackFinal\node_modules\hasown\.github                                       .github                                   .github
+G:\okiru\app builder\RezStackFinal\node_modules\hasown\.eslintrc                                     .eslintrc                                 .eslintrc
+G:\okiru\app builder\RezStackFinal\node_modules\hasown\.nycrc                                        .nycrc                                    .nycrc
+G:\okiru\app builder\RezStackFinal\node_modules\hasown\LICENSE                                       LICENSE
+G:\okiru\app builder\RezStackFinal\node_modules\hasown\index.js                                      index.js                                  .js
+G:\okiru\app builder\RezStackFinal\node_modules\hasown\package.json                                  package.json                              .json
+G:\okiru\app builder\RezStackFinal\node_modules\hasown\tsconfig.json                                 tsconfig.json                             .json
+G:\okiru\app builder\RezStackFinal\node_modules\hasown\CHANGELOG.md                                  CHANGELOG.md                              .md
+G:\okiru\app builder\RezStackFinal\node_modules\hasown\README.md                                     README.md                                 .md
+G:\okiru\app builder\RezStackFinal\node_modules\hasown\index.d.ts                                    index.d.ts                                .ts
+G:\okiru\app builder\RezStackFinal\node_modules\function-bind\test                                   test
+G:\okiru\app builder\RezStackFinal\node_modules\function-bind\.github                                .github                                   .github
+G:\okiru\app builder\RezStackFinal\node_modules\function-bind\.eslintrc                              .eslintrc                                 .eslintrc
+G:\okiru\app builder\RezStackFinal\node_modules\function-bind\.nycrc                                 .nycrc                                    .nycrc
+G:\okiru\app builder\RezStackFinal\node_modules\function-bind\LICENSE                                LICENSE
+G:\okiru\app builder\RezStackFinal\node_modules\function-bind\implementation.js                      implementation.js                         .js
+G:\okiru\app builder\RezStackFinal\node_modules\function-bind\index.js                               index.js                                  .js
+G:\okiru\app builder\RezStackFinal\node_modules\function-bind\package.json                           package.json                              .json
+G:\okiru\app builder\RezStackFinal\node_modules\function-bind\CHANGELOG.md                           CHANGELOG.md                              .md
+G:\okiru\app builder\RezStackFinal\node_modules\function-bind\README.md                              README.md                                 .md
+G:\okiru\app builder\RezStackFinal\node_modules\queue-microtask\LICENSE                              LICENSE
+G:\okiru\app builder\RezStackFinal\node_modules\queue-microtask\index.js                             index.js                                  .js
+G:\okiru\app builder\RezStackFinal\node_modules\queue-microtask\package.json                         package.json                              .json
+G:\okiru\app builder\RezStackFinal\node_modules\queue-microtask\README.md                            README.md                                 .md
+G:\okiru\app builder\RezStackFinal\node_modules\queue-microtask\index.d.ts                           index.d.ts                                .ts
+G:\okiru\app builder\RezStackFinal\node_modules\commander\typings                                    typings
+G:\okiru\app builder\RezStackFinal\node_modules\commander\LICENSE                                    LICENSE
+G:\okiru\app builder\RezStackFinal\node_modules\commander\index.js                                   index.js                                  .js
+G:\okiru\app builder\RezStackFinal\node_modules\commander\package.json                               package.json                              .json
+G:\okiru\app builder\RezStackFinal\node_modules\commander\CHANGELOG.md                               CHANGELOG.md                              .md
+G:\okiru\app builder\RezStackFinal\node_modules\commander\Readme.md                                  Readme.md                                 .md
+G:\okiru\app builder\RezStackFinal\node_modules\lines-and-columns\build                              build
+G:\okiru\app builder\RezStackFinal\node_modules\lines-and-columns\LICENSE                            LICENSE
+G:\okiru\app builder\RezStackFinal\node_modules\lines-and-columns\package.json                       package.json                              .json
+G:\okiru\app builder\RezStackFinal\node_modules\lines-and-columns\README.md                          README.md                                 .md
+G:\okiru\app builder\RezStackFinal\node_modules\mz\package.json                                      package.json                              .json
+G:\okiru\app builder\RezStackFinal\node_modules\mz\README.md                                         README.md                                 .md
+G:\okiru\app builder\RezStackFinal\node_modules\mz\LICENSE                                           LICENSE
+G:\okiru\app builder\RezStackFinal\node_modules\mz\zlib.js                                           zlib.js                                   .js
+G:\okiru\app builder\RezStackFinal\node_modules\mz\child_process.js                                  child_process.js                          .js
+G:\okiru\app builder\RezStackFinal\node_modules\mz\crypto.js                                         crypto.js                                 .js
+G:\okiru\app builder\RezStackFinal\node_modules\mz\fs.js                                             fs.js                                     .js
+G:\okiru\app builder\RezStackFinal\node_modules\mz\index.js                                          index.js                                  .js
+G:\okiru\app builder\RezStackFinal\node_modules\mz\readline.js                                       readline.js                               .js
+G:\okiru\app builder\RezStackFinal\node_modules\mz\dns.js                                            dns.js                                    .js
+G:\okiru\app builder\RezStackFinal\node_modules\mz\HISTORY.md                                        HISTORY.md                                .md
+G:\okiru\app builder\RezStackFinal\node_modules\pirates\lib                                          lib
+G:\okiru\app builder\RezStackFinal\node_modules\pirates\LICENSE                                      LICENSE
+G:\okiru\app builder\RezStackFinal\node_modules\pirates\package.json                                 package.json                              .json
+G:\okiru\app builder\RezStackFinal\node_modules\pirates\README.md                                    README.md                                 .md
+G:\okiru\app builder\RezStackFinal\node_modules\pirates\index.d.ts                                   index.d.ts                                .ts
+G:\okiru\app builder\RezStackFinal\node_modules\ts-interface-checker\dist                            dist
+G:\okiru\app builder\RezStackFinal\node_modules\ts-interface-checker\package.json                    package.json                              .json
+G:\okiru\app builder\RezStackFinal\node_modules\ts-interface-checker\LICENSE                         LICENSE
+G:\okiru\app builder\RezStackFinal\node_modules\ts-interface-checker\README.md                       README.md                                 .md
+G:\okiru\app builder\RezStackFinal\node_modules\any-promise\register                                 register
+G:\okiru\app builder\RezStackFinal\node_modules\any-promise\package.json                             package.json                              .json
+G:\okiru\app builder\RezStackFinal\node_modules\any-promise\.npmignore                               .npmignore                                .npmignore
+G:\okiru\app builder\RezStackFinal\node_modules\any-promise\README.md                                README.md                                 .md
+G:\okiru\app builder\RezStackFinal\node_modules\any-promise\LICENSE                                  LICENSE
+G:\okiru\app builder\RezStackFinal\node_modules\any-promise\index.js                                 index.js                                  .js
+G:\okiru\app builder\RezStackFinal\node_modules\any-promise\implementation.js                        implementation.js                         .js
+G:\okiru\app builder\RezStackFinal\node_modules\any-promise\loader.js                                loader.js                                 .js
+G:\okiru\app builder\RezStackFinal\node_modules\any-promise\optional.js                              optional.js                               .js
+G:\okiru\app builder\RezStackFinal\node_modules\any-promise\register-shim.js                         register-shim.js                          .js
+G:\okiru\app builder\RezStackFinal\node_modules\any-promise\register.js                              register.js                               .js
+G:\okiru\app builder\RezStackFinal\node_modules\any-promise\.jshintrc                                .jshintrc                                 .jshintrc
+G:\okiru\app builder\RezStackFinal\node_modules\any-promise\implementation.d.ts                      implementation.d.ts                       .ts
+G:\okiru\app builder\RezStackFinal\node_modules\any-promise\register.d.ts                            register.d.ts                             .ts
+G:\okiru\app builder\RezStackFinal\node_modules\any-promise\index.d.ts                               index.d.ts                                .ts
+G:\okiru\app builder\RezStackFinal\node_modules\object-assign\package.json                           package.json                              .json
+G:\okiru\app builder\RezStackFinal\node_modules\object-assign\index.js                               index.js                                  .js
+G:\okiru\app builder\RezStackFinal\node_modules\object-assign\license                                license
+G:\okiru\app builder\RezStackFinal\node_modules\object-assign\readme.md                              readme.md                                 .md
+G:\okiru\app builder\RezStackFinal\node_modules\thenify-all\package.json                             package.json                              .json
+G:\okiru\app builder\RezStackFinal\node_modules\thenify-all\README.md                                README.md                                 .md
+G:\okiru\app builder\RezStackFinal\node_modules\thenify-all\LICENSE                                  LICENSE
+G:\okiru\app builder\RezStackFinal\node_modules\thenify-all\index.js                                 index.js                                  .js
+G:\okiru\app builder\RezStackFinal\node_modules\thenify-all\History.md                               History.md                                .md
+G:\okiru\app builder\RezStackFinal\node_modules\thenify\LICENSE                                      LICENSE
+G:\okiru\app builder\RezStackFinal\node_modules\thenify\index.js                                     index.js                                  .js
+G:\okiru\app builder\RezStackFinal\node_modules\thenify\package.json                                 package.json                              .json
+G:\okiru\app builder\RezStackFinal\node_modules\thenify\History.md                                   History.md                                .md
+G:\okiru\app builder\RezStackFinal\node_modules\thenify\README.md                                    README.md                                 .md
+G:\okiru\app builder\RezStackFinal\node_modules\is-number\package.json                               package.json                              .json
+G:\okiru\app builder\RezStackFinal\node_modules\is-number\index.js                                   index.js                                  .js
+G:\okiru\app builder\RezStackFinal\node_modules\is-number\LICENSE                                    LICENSE
+G:\okiru\app builder\RezStackFinal\node_modules\is-number\README.md                                  README.md                                 .md
+G:\okiru\app builder\RezStackFinal\node_modules\anymatch\LICENSE                                     LICENSE
+G:\okiru\app builder\RezStackFinal\node_modules\anymatch\index.js                                    index.js                                  .js
+G:\okiru\app builder\RezStackFinal\node_modules\anymatch\package.json                                package.json                              .json
+G:\okiru\app builder\RezStackFinal\node_modules\anymatch\README.md                                   README.md                                 .md
+G:\okiru\app builder\RezStackFinal\node_modules\anymatch\index.d.ts                                  index.d.ts                                .ts
+G:\okiru\app builder\RezStackFinal\node_modules\is-binary-path\package.json                          package.json                              .json
+G:\okiru\app builder\RezStackFinal\node_modules\is-binary-path\index.d.ts                            index.d.ts                                .ts
+G:\okiru\app builder\RezStackFinal\node_modules\is-binary-path\index.js                              index.js                                  .js
+G:\okiru\app builder\RezStackFinal\node_modules\is-binary-path\license                               license
+G:\okiru\app builder\RezStackFinal\node_modules\is-binary-path\readme.md                             readme.md                                 .md
+G:\okiru\app builder\RezStackFinal\node_modules\binary-extensions\license                            license
+G:\okiru\app builder\RezStackFinal\node_modules\binary-extensions\index.js                           index.js                                  .js
+G:\okiru\app builder\RezStackFinal\node_modules\binary-extensions\binary-extensions.json             binary-extensions.json                    .json
+G:\okiru\app builder\RezStackFinal\node_modules\binary-extensions\package.json                       package.json                              .json
+G:\okiru\app builder\RezStackFinal\node_modules\binary-extensions\readme.md                          readme.md                                 .md
+G:\okiru\app builder\RezStackFinal\node_modules\binary-extensions\binary-extensions.json.d.ts        binary-extensions.json.d.ts               .ts
+G:\okiru\app builder\RezStackFinal\node_modules\binary-extensions\index.d.ts                         index.d.ts                                .ts
+G:\okiru\app builder\RezStackFinal\node_modules\@nodelib\fs.walk                                     fs.walk                                   .walk
+G:\okiru\app builder\RezStackFinal\node_modules\@nodelib\fs.scandir                                  fs.scandir                                .scandir
+G:\okiru\app builder\RezStackFinal\node_modules\@nodelib\fs.stat                                     fs.stat                                   .stat
+G:\okiru\app builder\RezStackFinal\node_modules\@alloc\quick-lru                                     quick-lru
+G:\okiru\app builder\RezStackFinal\node_modules\tinyglobby\node_modules                              node_modules
+G:\okiru\app builder\RezStackFinal\node_modules\tinyglobby\dist                                      dist
+G:\okiru\app builder\RezStackFinal\node_modules\tinyglobby\LICENSE                                   LICENSE
+G:\okiru\app builder\RezStackFinal\node_modules\tinyglobby\package.json                              package.json                              .json
+G:\okiru\app builder\RezStackFinal\node_modules\tinyglobby\README.md                                 README.md                                 .md
+G:\okiru\app builder\RezStackFinal\node_modules\tailwindcss\node_modules                             node_modules
+G:\okiru\app builder\RezStackFinal\node_modules\tailwindcss\stubs                                    stubs
+G:\okiru\app builder\RezStackFinal\node_modules\tailwindcss\types                                    types
+G:\okiru\app builder\RezStackFinal\node_modules\tailwindcss\lib                                      lib
+G:\okiru\app builder\RezStackFinal\node_modules\tailwindcss\src                                      src
+G:\okiru\app builder\RezStackFinal\node_modules\tailwindcss\scripts                                  scripts
+G:\okiru\app builder\RezStackFinal\node_modules\tailwindcss\nesting                                  nesting
+G:\okiru\app builder\RezStackFinal\node_modules\tailwindcss\peers                                    peers
+G:\okiru\app builder\RezStackFinal\node_modules\tailwindcss\LICENSE                                  LICENSE
+G:\okiru\app builder\RezStackFinal\node_modules\tailwindcss\base.css                                 base.css                                  .css
+G:\okiru\app builder\RezStackFinal\node_modules\tailwindcss\components.css                           components.css                            .css
+G:\okiru\app builder\RezStackFinal\node_modules\tailwindcss\screens.css                              screens.css                               .css
+G:\okiru\app builder\RezStackFinal\node_modules\tailwindcss\tailwind.css                             tailwind.css                              .css
+G:\okiru\app builder\RezStackFinal\node_modules\tailwindcss\utilities.css                            utilities.css                             .css
+G:\okiru\app builder\RezStackFinal\node_modules\tailwindcss\variants.css                             variants.css                              .css
+G:\okiru\app builder\RezStackFinal\node_modules\tailwindcss\colors.js                                colors.js                                 .js
+G:\okiru\app builder\RezStackFinal\node_modules\tailwindcss\defaultConfig.js                         defaultConfig.js                          .js
+G:\okiru\app builder\RezStackFinal\node_modules\tailwindcss\defaultTheme.js                          defaultTheme.js                           .js
+G:\okiru\app builder\RezStackFinal\node_modules\tailwindcss\loadConfig.js                            loadConfig.js                             .js
+G:\okiru\app builder\RezStackFinal\node_modules\tailwindcss\plugin.js                                plugin.js                                 .js
+G:\okiru\app builder\RezStackFinal\node_modules\tailwindcss\prettier.config.js                       prettier.config.js                        .js
+G:\okiru\app builder\RezStackFinal\node_modules\tailwindcss\resolveConfig.js                         resolveConfig.js                          .js
+G:\okiru\app builder\RezStackFinal\node_modules\tailwindcss\package.json                             package.json                              .json
+G:\okiru\app builder\RezStackFinal\node_modules\tailwindcss\README.md                                README.md                                 .md
+G:\okiru\app builder\RezStackFinal\node_modules\tailwindcss\colors.d.ts                              colors.d.ts                               .ts
+G:\okiru\app builder\RezStackFinal\node_modules\tailwindcss\defaultConfig.d.ts                       defaultConfig.d.ts                        .ts
+G:\okiru\app builder\RezStackFinal\node_modules\tailwindcss\defaultTheme.d.ts                        defaultTheme.d.ts                         .ts
+G:\okiru\app builder\RezStackFinal\node_modules\tailwindcss\loadConfig.d.ts                          loadConfig.d.ts                           .ts
+G:\okiru\app builder\RezStackFinal\node_modules\tailwindcss\plugin.d.ts                              plugin.d.ts                               .ts
+G:\okiru\app builder\RezStackFinal\node_modules\tailwindcss\resolveConfig.d.ts                       resolveConfig.d.ts                        .ts
+G:\okiru\app builder\RezStackFinal\node_modules\fast-glob\node_modules                               node_modules
+G:\okiru\app builder\RezStackFinal\node_modules\fast-glob\out                                        out
+G:\okiru\app builder\RezStackFinal\node_modules\fast-glob\LICENSE                                    LICENSE
+G:\okiru\app builder\RezStackFinal\node_modules\fast-glob\package.json                               package.json                              .json
+G:\okiru\app builder\RezStackFinal\node_modules\fast-glob\README.md                                  README.md                                 .md
+G:\okiru\app builder\RezStackFinal\node_modules\.vite\deps                                           deps
+
+
+
+FullName                                                                              Name                                                  Extension
+--------                                                                              ----                                                  ---------
+G:\okiru-pure\rezsparse-trainer                                                       rezsparse-trainer
+G:\okiru-pure\constitutional-bridge                                                   constitutional-bridge
+G:\okiru-pure\rezstack-enhanced                                                       rezstack-enhanced
+G:\okiru-pure\.constitutional                                                         .constitutional                                       .constitutional
+G:\okiru-pure\Compositor                                                              Compositor
+G:\okiru-pure\SovereignSkins                                                          SovereignSkins
+G:\okiru-pure\Themes                                                                  Themes
+G:\okiru-pure\Almanac                                                                 Almanac
+G:\okiru-pure\SovereignWidgets                                                        SovereignWidgets
+G:\okiru-pure\agents                                                                  agents
+G:\okiru-pure\.swarm                                                                  .swarm                                                .swarm
+G:\okiru-pure\CONSTITUTIONAL_DECLARATION.md                                           CONSTITUTIONAL_DECLARATION.md                         .md
+G:\okiru-pure\validate-simple.ps1                                                     validate-simple.ps1                                   .ps1
+G:\okiru-pure\setup-constitutional.ps1                                                setup-constitutional.ps1                              .ps1
+G:\okiru-pure\sovereign-orchestrator.ps1                                              sovereign-orchestrator.ps1                            .ps1
+G:\okiru-pure\sovereign-control.bat                                                   sovereign-control.bat                                 .bat
+G:\okiru-pure\launch-sovereign.ps1                                                    launch-sovereign.ps1                                  .ps1
+G:\okiru-pure\sovereign-manifest.json                                                 sovereign-manifest.json                               .json
+G:\okiru-pure\VC_redist.x64 (1).exe                                                   VC_redist.x64 (1).exe                                 .exe
+G:\okiru-pure\Install-ConstitutionalDashboard.ps1                                     Install-ConstitutionalDashboard.ps1                   .ps1
+G:\okiru-pure\.dashboard_version                                                      .dashboard_version                                    .dashboard_version
+G:\okiru-pure\Launch-Dashboard.bat                                                    Launch-Dashboard.bat                                  .bat
+G:\okiru-pure\README-Dashboard.txt                                                    README-Dashboard.txt                                  .txt
+G:\okiru-pure\sovereign_dashboard.py                                                  sovereign_dashboard.py                                .py
+G:\okiru-pure\swarm_activate.ps1                                                      swarm_activate.ps1                                    .ps1
+G:\okiru-pure\quick_launch.ps1                                                        quick_launch.ps1                                      .ps1
+G:\okiru-pure\swarm_integration.ps1                                                   swarm_integration.ps1                                 .ps1
+G:\okiru-pure\quick_integrate.ps1                                                     quick_integrate.ps1                                   .ps1
+G:\okiru-pure\simple_integrate.ps1                                                    simple_integrate.ps1                                  .ps1
+G:\okiru-pure\quick_test.ps1                                                          quick_test.ps1                                        .ps1
+G:\okiru-pure\rez_swarm_dashboard.py                                                  rez_swarm_dashboard.py                                .py
+G:\okiru-pure\rez_swarm_rich.py                                                       rez_swarm_rich.py                                     .py
+G:\okiru-pure\rez_swarm_live.py                                                       rez_swarm_live.py                                     .py
+G:\okiru-pure\artdev_protocol.py                                                      artdev_protocol.py                                    .py
+G:\okiru-pure\fix_scavenger.ps1                                                       fix_scavenger.ps1                                     .ps1
+G:\okiru-pure\rezsparse-trainer\src                                                   src
+G:\okiru-pure\rezsparse-trainer\config                                                config
+G:\okiru-pure\rezsparse-trainer\data                                                  data
+G:\okiru-pure\rezsparse-trainer\models                                                models
+G:\okiru-pure\rezsparse-trainer\tests                                                 tests
+G:\okiru-pure\rezsparse-trainer\integration                                           integration
+G:\okiru-pure\rezsparse-trainer\logs                                                  logs
+G:\okiru-pure\rezsparse-trainer\council                                               council
+G:\okiru-pure\rezsparse-trainer\scripts                                               scripts
+G:\okiru-pure\rezsparse-trainer\.constitutional                                       .constitutional                                       .constitutional
+G:\okiru-pure\rezsparse-trainer\__pycache__                                           __pycache__
+G:\okiru-pure\rezsparse-trainer\README.md                                             README.md                                             .md
+G:\okiru-pure\rezsparse-trainer\constitutional_memory.json                            constitutional_memory.json                            .json
+G:\okiru-pure\rezsparse-trainer\constitutional_memo_1769009577.txt                    constitutional_memo_1769009577.txt                    .txt
+G:\okiru-pure\rezsparse-trainer\constitutional_memo_1769009671.txt                    constitutional_memo_1769009671.txt                    .txt
+G:\okiru-pure\rezsparse-trainer\constitutional_stress_test_1769009802.json            constitutional_stress_test_1769009802.json            .json
+G:\okiru-pure\rezsparse-trainer\constitutional_benchmark_1769009884.json              constitutional_benchmark_1769009884.json              .json
+G:\okiru-pure\rezsparse-trainer\constitutional_training_data.txt                      constitutional_training_data.txt                      .txt
+G:\okiru-pure\rezsparse-trainer\constitutional_trainer.py                             constitutional_trainer.py                             .py
+G:\okiru-pure\rezsparse-trainer\constitutional_model.pt                               constitutional_model.pt                               .pt
+G:\okiru-pure\rezsparse-trainer\check_targets.py                                      check_targets.py                                      .py
+G:\okiru-pure\rezsparse-trainer\check_keys.py                                         check_keys.py                                         .py
+G:\okiru-pure\rezsparse-trainer\optimized_trainer.py                                  optimized_trainer.py                                  .py
+G:\okiru-pure\rezsparse-trainer\clean_optimized_trainer.py                            clean_optimized_trainer.py                            .py
+G:\okiru-pure\rezsparse-trainer\constitutional_model_best.pt                          constitutional_model_best.pt                          .pt
+G:\okiru-pure\rezsparse-trainer\constitutional_model_final.pt                         constitutional_model_final.pt                         .pt
+G:\okiru-pure\rezsparse-trainer\diagnostic.py                                         diagnostic.py                                         .py
+G:\okiru-pure\rezsparse-trainer\real_examples_trainer.py                              real_examples_trainer.py                              .py
+G:\okiru-pure\rezsparse-trainer\fixed_examples_trainer.py                             fixed_examples_trainer.py                             .py
+G:\okiru-pure\rezsparse-trainer\corrected_training_data.pkl                           corrected_training_data.pkl                           .pkl
+G:\okiru-pure\rezsparse-trainer\corrected_constitutional_model.pt                     corrected_constitutional_model.pt                     .pt
+G:\okiru-pure\rezsparse-trainer\text_based_trainer.py                                 text_based_trainer.py                                 .py
+G:\okiru-pure\rezsparse-trainer\text_best_model.pt                                    text_best_model.pt                                    .pt
+G:\okiru-pure\rezsparse-trainer\text_constitutional_model_final.pt                    text_constitutional_model_final.pt                    .pt
+G:\okiru-pure\rezsparse-trainer\text_vectorizer.joblib                                text_vectorizer.joblib                                .joblib
+G:\okiru-pure\rezsparse-trainer\feature_scaler.joblib                                 feature_scaler.joblib                                 .joblib
+G:\okiru-pure\rezsparse-trainer\examine_all_data.py                                   examine_all_data.py                                   .py
+G:\okiru-pure\rezsparse-trainer\reconstructed_data.pkl                                reconstructed_data.pkl                                .pkl
+G:\okiru-pure\rezsparse-trainer\final_trainer.py                                      final_trainer.py                                      .py
+G:\okiru-pure\rezsparse-trainer\constitutional_best_model.pt                          constitutional_best_model.pt                          .pt
+G:\okiru-pure\rezsparse-trainer\constitutional_final_model.pt                         constitutional_final_model.pt                         .pt
+G:\okiru-pure\rezsparse-trainer\visual_comparison.py                                  visual_comparison.py                                  .py
+G:\okiru-pure\rezsparse-trainer\generate_constitutional_features.py                   generate_constitutional_features.py                   .py
+G:\okiru-pure\rezsparse-trainer\sovereign_features.pkl                                sovereign_features.pkl                                .pkl
+G:\okiru-pure\rezsparse-trainer\sovereign_model_trainer.py                            sovereign_model_trainer.py                            .py
+G:\okiru-pure\rezsparse-trainer\sovereign_best_model.pt                               sovereign_best_model.pt                               .pt
+G:\okiru-pure\rezsparse-trainer\sovereign_constitutional_model.pt                     sovereign_constitutional_model.pt                     .pt
+G:\okiru-pure\rezsparse-trainer\constitutional_predictor.py                           constitutional_predictor.py                           .py
+G:\okiru-pure\rezsparse-trainer\sovereign_constitutional_predictor.pkl                sovereign_constitutional_predictor.pkl                .pkl
+G:\okiru-pure\rezsparse-trainer\augment_constitutional_data.py                        augment_constitutional_data.py                        .py
+G:\okiru-pure\rezsparse-trainer\augmented_constitutional_data.pkl                     augmented_constitutional_data.pkl                     .pkl
+G:\okiru-pure\rezsparse-trainer\complete_constitutional_predictor.pkl                 complete_constitutional_predictor.pkl                 .pkl
+G:\okiru-pure\rezsparse-trainer\final_deploy_constitutional.py                        final_deploy_constitutional.py                        .py
+G:\okiru-pure\rezsparse-trainer\deployed_sovereign_ai.pkl                             deployed_sovereign_ai.pkl                             .pkl
+G:\okiru-pure\rezsparse-trainer\fix_constitutional_bias.py                            fix_constitutional_bias.py                            .py
+G:\okiru-pure\rezsparse-trainer\balanced_constitutional_predictor.pkl                 balanced_constitutional_predictor.pkl                 .pkl
+G:\okiru-pure\rezsparse-trainer\context_aware_fix.py                                  context_aware_fix.py                                  .py
+G:\okiru-pure\rezsparse-trainer\enhanced_constitutional_predictor.pkl                 enhanced_constitutional_predictor.pkl                 .pkl
+G:\okiru-pure\rezsparse-trainer\semantic_features.py                                  semantic_features.py                                  .py
+G:\okiru-pure\rezsparse-trainer\semantic_constitutional_predictor.pkl                 semantic_constitutional_predictor.pkl                 .pkl
+G:\okiru-pure\rezsparse-trainer\final_balanced_predictor.py                           final_balanced_predictor.py                           .py
+G:\okiru-pure\rezsparse-trainer\final_constitutional_predictor.pkl                    final_constitutional_predictor.pkl                    .pkl
+G:\okiru-pure\rezsparse-trainer\constitutional_validation.py                          constitutional_validation.py                          .py
+G:\okiru-pure\rezsparse-trainer\constitutional_validation_report.json                 constitutional_validation_report.json                 .json
+G:\okiru-pure\rezsparse-trainer\constitutional_calibration.py                         constitutional_calibration.py                         .py
+G:\okiru-pure\rezsparse-trainer\calibrated_constitutional_predictor.pkl               calibrated_constitutional_predictor.pkl               .pkl
+G:\okiru-pure\rezsparse-trainer\deploy_constitutional_ai.py                           deploy_constitutional_ai.py                           .py
+G:\okiru-pure\rezsparse-trainer\examine_calibrated_model.py                           examine_calibrated_model.py                           .py
+G:\okiru-pure\rezsparse-trainer\check_base_predictor.py                               check_base_predictor.py                               .py
+G:\okiru-pure\rezsparse-trainer\final_sovereign_deployment.py                         final_sovereign_deployment.py                         .py
+G:\okiru-pure\rezsparse-trainer\sovereign_constitutional_governor_final.pkl           sovereign_constitutional_governor_final.pkl           .pkl
+G:\okiru-pure\rezsparse-trainer\clean_sovereign_governor.py                           clean_sovereign_governor.py                           .py
+G:\okiru-pure\rezsparse-trainer\clean_sovereign_governor.pkl                          clean_sovereign_governor.pkl                          .pkl
+G:\okiru-pure\rezsparse-trainer\final_test.py                                         final_test.py                                         .py
+G:\okiru-pure\rezsparse-trainer\sovereign_final_test.py                               sovereign_final_test.py                               .py
+G:\okiru-pure\rezsparse-trainer\nuanced_training.py                                   nuanced_training.py                                   .py
+G:\okiru-pure\rezsparse-trainer\nuanced_constitutional_predictor.pkl                  nuanced_constitutional_predictor.pkl                  .pkl
+G:\okiru-pure\rezsparse-trainer\test_nuanced_model.py                                 test_nuanced_model.py                                 .py
+G:\okiru-pure\rezsparse-trainer\production_constitutional_predictor.pkl               production_constitutional_predictor.pkl               .pkl
+G:\okiru-pure\rezsparse-trainer\constitutional_council.py                             constitutional_council.py                             .py
+G:\okiru-pure\rezsparse-trainer\frankenstein_council_v1.py                            frankenstein_council_v1.py                            .py
+G:\okiru-pure\rezsparse-trainer\constitutional_governor.py                            constitutional_governor.py                            .py
+G:\okiru-pure\rezsparse-trainer\integrated_council.py                                 integrated_council.py                                 .py
+G:\okiru-pure\rezsparse-trainer\oracle-final.ps1                                      oracle-final.ps1                                      .ps1
+G:\okiru-pure\rezsparse-trainer\brb.txt                                               brb.txt                                               .txt
+G:\okiru-pure\rezsparse-trainer\.gitignore                                            .gitignore                                            .gitignore
+G:\okiru-pure\rezsparse-trainer\requirements.txt                                      requirements.txt                                      .txt
+G:\okiru-pure\rezsparse-trainer\Complete-CWSE-Mapping.ps1                             Complete-CWSE-Mapping.ps1                             .ps1
+G:\okiru-pure\rezsparse-trainer\cwse-deploy.ps1                                       cwse-deploy.ps1                                       .ps1
+G:\okiru-pure\rezsparse-trainer\cwse_mapping.json                                     cwse_mapping.json                                     .json
+G:\okiru-pure\rezsparse-trainer\cwse_loader.py                                        cwse_loader.py                                        .py
+G:\okiru-pure\rezsparse-trainer\constitutional_salience.json                          constitutional_salience.json                          .json
+G:\okiru-pure\rezsparse-trainer\TurboSparseLoader.py                                  TurboSparseLoader.py                                  .py
+G:\okiru-pure\rezsparse-trainer\AdaptiveKVCache.py                                    AdaptiveKVCache.py                                    .py
+G:\okiru-pure\rezsparse-trainer\ConstitutionalExecutor.py                             ConstitutionalExecutor.py                             .py
+G:\okiru-pure\rezsparse-trainer\cwse_integrate.py                                     cwse_integrate.py                                     .py
+G:\okiru-pure\rezsparse-trainer\test_cwse_simple.py                                   test_cwse_simple.py                                   .py
+G:\okiru-pure\rezsparse-trainer\CWSE-PowerShell.ps1                                   CWSE-PowerShell.ps1                                   .ps1
+G:\okiru-pure\rezsparse-trainer\Invoke-CWSE-RealLoader.ps1                            Invoke-CWSE-RealLoader.ps1                            .ps1
+G:\okiru-pure\rezsparse-trainer\Verify-CWSE-System.ps1                                Verify-CWSE-System.ps1                                .ps1
+G:\okiru-pure\rezsparse-trainer\WORKING-CWSE-Loader.ps1                               WORKING-CWSE-Loader.ps1                               .ps1
+G:\okiru-pure\rezsparse-trainer\kv_cache_manager.py                                   kv_cache_manager.py                                   .py
+G:\okiru-pure\rezsparse-trainer\Launch-Turbo-CWSE.ps1                                 Launch-Turbo-CWSE.ps1                                 .ps1
+G:\okiru-pure\rezsparse-trainer\turbo_sparse_executor.py                              turbo_sparse_executor.py                              .py
+G:\okiru-pure\rezsparse-trainer\turbo_sparse_executor.py.bak                          turbo_sparse_executor.py.bak                          .bak
+G:\okiru-pure\rezsparse-trainer\Launch-Turbo-CWSE-Fixed.ps1                           Launch-Turbo-CWSE-Fixed.ps1                           .ps1
+G:\okiru-pure\rezsparse-trainer\ultra_simple_executor.py                              ultra_simple_executor.py                              .py
+G:\okiru-pure\rezsparse-trainer\turbo_sparse_executor_fixed.py                        turbo_sparse_executor_fixed.py                        .py
+G:\okiru-pure\rezsparse-trainer\Launch-CWSE-Final.ps1                                 Launch-CWSE-Final.ps1                                 .ps1
+G:\okiru-pure\rezsparse-trainer\README-CWSE.md                                        README-CWSE.md                                        .md
+G:\okiru-pure\rezsparse-trainer\619143543_18034817654757673_8712133692660315771_n.jpg 619143543_18034817654757673_8712133692660315771_n.jpg .jpg
+G:\okiru-pure\rezsparse-trainer\constitutional_comfyui_loader.py                      constitutional_comfyui_loader.py                      .py
+G:\okiru-pure\rezsparse-trainer\Launch-Constitutional-ComfyUI.ps1                     Launch-Constitutional-ComfyUI.ps1                     .ps1
+G:\okiru-pure\rezsparse-trainer\cwse_comfyui_integration.py                           cwse_comfyui_integration.py                           .py
+G:\okiru-pure\rezsparse-trainer\comfyui_constitutional_mapping.json                   comfyui_constitutional_mapping.json                   .json
+G:\okiru-pure\rezsparse-trainer\.dashboard_version                                    .dashboard_version                                    .dashboard_version
+G:\okiru-pure\rezsparse-trainer\Launch-Dashboard.bat                                  Launch-Dashboard.bat                                  .bat
+G:\okiru-pure\rezsparse-trainer\README-Dashboard.txt                                  README-Dashboard.txt                                  .txt
+G:\okiru-pure\rezsparse-trainer\src\constitutional-ml                                 constitutional-ml
+G:\okiru-pure\rezsparse-trainer\src\3060-optimization                                 3060-optimization
+G:\okiru-pure\rezsparse-trainer\src\vibe-predictor                                    vibe-predictor
+G:\okiru-pure\rezsparse-trainer\src\pattern-miner                                     pattern-miner
+G:\okiru-pure\rezsparse-trainer\src\pattern_harvester.py                              pattern_harvester.py                                  .py
+G:\okiru-pure\rezsparse-trainer\src\constitutional_distillery.py                      constitutional_distillery.py                          .py
+G:\okiru-pure\rezsparse-trainer\src\query_distilled.py                                query_distilled.py                                    .py
+G:\okiru-pure\rezsparse-trainer\src\enhanced_distillery.py                            enhanced_distillery.py                                .py
+G:\okiru-pure\rezsparse-trainer\src\train_on_enhanced_data.py                         train_on_enhanced_data.py                             .py
+G:\okiru-pure\rezsparse-trainer\src\ollama_distiller.py                               ollama_distiller.py                                   .py
+G:\okiru-pure\rezsparse-trainer\src\ollama_constitutional_query.py                    ollama_constitutional_query.py                        .py
+G:\okiru-pure\rezsparse-trainer\src\fixed_ollama_distiller.py                         fixed_ollama_distiller.py                             .py
+G:\okiru-pure\rezsparse-trainer\src\quick_ollama_query.py                             quick_ollama_query.py                                 .py
+G:\okiru-pure\rezsparse-trainer\src\clean_ollama_trainer.py                           clean_ollama_trainer.py                               .py
+G:\okiru-pure\rezsparse-trainer\src\constitutional_agent.py                           constitutional_agent.py                               .py
+G:\okiru-pure\rezsparse-trainer\src\test_constitutional.py                            test_constitutional.py                                .py
+G:\okiru-pure\rezsparse-trainer\src\fixed_constitutional_agent.py                     fixed_constitutional_agent.py                         .py
+G:\okiru-pure\rezsparse-trainer\src\constitutional_tester_fixed.py                    constitutional_tester_fixed.py                        .py
+G:\okiru-pure\rezsparse-trainer\src\enhanced_constitutional_analyzer.py               enhanced_constitutional_analyzer.py                   .py
+G:\okiru-pure\rezsparse-trainer\src\constitutional_interactive.py                     constitutional_interactive.py                         .py
+G:\okiru-pure\rezsparse-trainer\src\constitutional_loop.py                            constitutional_loop.py                                .py
+G:\okiru-pure\rezsparse-trainer\src\constitutional_stress_test.py                     constitutional_stress_test.py                         .py
+G:\okiru-pure\rezsparse-trainer\src\constitutional_benchmark.py                       constitutional_benchmark.py                           .py
+G:\okiru-pure\rezsparse-trainer\src\constitutional_evaluator.py                       constitutional_evaluator.py                           .py
+G:\okiru-pure\rezsparse-trainer\src\constitutional_governor.py                        constitutional_governor.py                            .py
+G:\okiru-pure\rezsparse-trainer\src\constitutional_evaluator_fixed.py                 constitutional_evaluator_fixed.py                     .py
+G:\okiru-pure\rezsparse-trainer\src\constitutional_core.py                            constitutional_core.py                                .py
+G:\okiru-pure\rezsparse-trainer\src\cwse_loader.py                                    cwse_loader.py                                        .py
+G:\okiru-pure\rezsparse-trainer\src\turbo_sparse_executor.py                          turbo_sparse_executor.py                              .py
+G:\okiru-pure\rezsparse-trainer\config\hardware                                       hardware
+G:\okiru-pure\rezsparse-trainer\config\laws                                           laws
+G:\okiru-pure\rezsparse-trainer\data\training                                         training
+G:\okiru-pure\rezsparse-trainer\models\quantized                                      quantized
+G:\okiru-pure\rezsparse-trainer\models\checkpoints                                    checkpoints
+G:\okiru-pure\rezsparse-trainer\models\enhanced                                       enhanced
+G:\okiru-pure\rezsparse-trainer\models\clean_ollama                                   clean_ollama
+G:\okiru-pure\rezsparse-trainer\tests\constitutional-integrity                        constitutional-integrity
+G:\okiru-pure\rezsparse-trainer\integration\legacy-bridge                             legacy-bridge
+G:\okiru-pure\rezsparse-trainer\logs\constitutional_council                           constitutional_council
+G:\okiru-pure\rezsparse-trainer\council\ruling_template.md                            ruling_template.md                                    .md
+G:\okiru-pure\rezsparse-trainer\scripts\Start-ConstitutionalServices.ps1              Start-ConstitutionalServices.ps1                      .ps1
+G:\okiru-pure\rezsparse-trainer\.constitutional\cache                                 cache
+G:\okiru-pure\rezsparse-trainer\.constitutional\test_reports                          test_reports
+G:\okiru-pure\rezsparse-trainer\.constitutional\turbo_reports                         turbo_reports
+G:\okiru-pure\rezsparse-trainer\.constitutional\cwse_execution_log.json               cwse_execution_log.json                               .json
+G:\okiru-pure\rezsparse-trainer\.constitutional\constitutional_execution_report.json  constitutional_execution_report.json                  .json
+G:\okiru-pure\rezsparse-trainer\__pycache__\kv_cache_manager.cpython-310.pyc          kv_cache_manager.cpython-310.pyc                      .pyc
+G:\okiru-pure\constitutional-bridge\src                                               src
+G:\okiru-pure\constitutional-bridge\harvested_patterns                                harvested_patterns
+G:\okiru-pure\constitutional-bridge\training_sets                                     training_sets
+G:\okiru-pure\constitutional-bridge\constitutional_filters                            constitutional_filters
+G:\okiru-pure\constitutional-bridge\README.md                                         README.md                                             .md
+G:\okiru-pure\constitutional-bridge\src\pattern-harvester                             pattern-harvester
+G:\okiru-pure\constitutional-bridge\src\constitutional-filter                         constitutional-filter
+G:\okiru-pure\constitutional-bridge\src\3060-optimizer                                3060-optimizer
+G:\okiru-pure\constitutional-bridge\harvested_patterns\raw                            raw
+G:\okiru-pure\constitutional-bridge\harvested_patterns\processed                      processed
+G:\okiru-pure\constitutional-bridge\training_sets\rezstack_training.pkl               rezstack_training.pkl                                 .pkl
+G:\okiru-pure\rezstack-enhanced\src                                                   src
+G:\okiru-pure\rezstack-enhanced\README.md                                             README.md                                             .md
+G:\okiru-pure\rezstack-enhanced\src\ml-layer                                          ml-layer
+G:\okiru-pure\.constitutional\constitutional-laws                                     constitutional-laws
+G:\okiru-pure\.constitutional\validation-tools                                        validation-tools
+G:\okiru-pure\.constitutional\hardware-profiles                                       hardware-profiles
+G:\okiru-pure\.constitutional\migration-protocols                                     migration-protocols
+G:\okiru-pure\.constitutional\README.md                                               README.md                                             .md
+G:\okiru-pure\.constitutional\manifest.json                                           manifest.json                                         .json
+G:\okiru-pure\.constitutional\constitutional-laws\MASTER_CONSTITUTION.md              MASTER_CONSTITUTION.md                                .md
+G:\okiru-pure\.constitutional\validation-tools\validate.py                            validate.py                                           .py
+G:\okiru-pure\agents\alpha                                                            alpha
+G:\okiru-pure\agents\beta                                                             beta
+G:\okiru-pure\agents\gamma                                                            gamma
+G:\okiru-pure\agents\delta                                                            delta
+G:\okiru-pure\agents\epsilon                                                          epsilon
+G:\okiru-pure\agents\alpha\alpha_agent.ps1                                            alpha_agent.ps1                                       .ps1
+G:\okiru-pure\agents\delta\delta_agent.ps1                                            delta_agent.ps1                                       .ps1
+G:\okiru-pure\.swarm\status                                                           status
+G:\okiru-pure\.swarm\logs                                                             logs
+G:\okiru-pure\.swarm\integration_manifest.json                                        integration_manifest.json                             .json
+G:\okiru-pure\.swarm\activation.json                                                  activation.json                                       .json
+G:\okiru-pure\.swarm\status\alpha.json                                                alpha.json                                            .json
+G:\okiru-pure\.swarm\status\delta.json                                                delta.json                                            .json
+G:\okiru-pure\.swarm\logs\delta.log                                                   delta.log                                             .log
+
+
+
+FullName                                                                 Name                               Extension 
+--------                                                                 ----                               ---------
+G:\okiru\rezstack-comfy-bridge\docs                                      docs
+G:\okiru\rezstack-comfy-bridge\schemas                                   schemas
+G:\okiru\rezstack-comfy-bridge\bridge.js                                 bridge.js                          .js
+G:\okiru\rezstack-comfy-bridge\package.json                              package.json                       .json
+G:\okiru\rezstack-comfy-bridge\start.bat                                 start.bat                          .bat
+G:\okiru\rezstack-comfy-bridge\install.bat                               install.bat                        .bat
+G:\okiru\rezstack-comfy-bridge\start-comfyui.bat                         start-comfyui.bat                  .bat
+G:\okiru\rezstack-comfy-bridge\New Text Document.txt                     New Text Document.txt              .txt
+G:\okiru\rezstack-comfy-bridge\README.md                                 README.md                          .md
+G:\okiru\rezstack-comfy-bridge\bridge.py                                 bridge.py                          .py
+G:\okiru\rezstack-comfy-bridge\setup_rezflow_stack.py                    setup_rezflow_stack.py             .py
+G:\okiru\rezstack-comfy-bridge\check_installation.ps1                    check_installation.ps1             .ps1
+G:\okiru\rezstack-comfy-bridge\minimal_setup.py                          minimal_setup.py                   .py
+G:\okiru\rezstack-comfy-bridge\rezflow_artifact.py                       rezflow_artifact.py                .py
+G:\okiru\rezstack-comfy-bridge\quick_test.py                             quick_test.py                      .py
+G:\okiru\rezstack-comfy-bridge\ESTABLISH_SOVEREIGNTY.ps1                 ESTABLISH_SOVEREIGNTY.ps1          .ps1
+G:\okiru\rezstack-comfy-bridge\sovereign_server.py                       sovereign_server.py                .py
+G:\okiru\rezstack-comfy-bridge\test_integration.py                       test_integration.py                .py
+G:\okiru\rezstack-comfy-bridge\sovereign_orchestrator.py                 sovereign_orchestrator.py          .py
+G:\okiru\rezstack-comfy-bridge\test_client.py                            test_client.py                     .py
+G:\okiru\rezstack-comfy-bridge\ide_integration.py                        ide_integration.py                 .py
+G:\okiru\rezstack-comfy-bridge\LAUNCH_SOVEREIGN_TRIFECTA.ps1             LAUNCH_SOVEREIGN_TRIFECTA.ps1      .ps1
+G:\okiru\rezstack-comfy-bridge\ARCHITECTURE.txt                          ARCHITECTURE.txt                   .txt
+G:\okiru\rezstack-comfy-bridge\deepseek_json_20260122_899a30.json        deepseek_json_20260122_899a30.json .json
+G:\okiru\rezstack-comfy-bridge\LICENSE                                   LICENSE
+G:\okiru\rezstack-comfy-bridge\.gitignore                                .gitignore                         .gitignore
+G:\okiru\rezstack-comfy-bridge\docs\ARCHITECTURE.md                      ARCHITECTURE.md                    .md
+G:\okiru\rezstack-comfy-bridge\schemas\constitutional-schema.graphql.txt constitutional-schema.graphql.txt  .txt
+G:\okiru\rezstack-comfy-bridge\schemas\protocol-manifest.schema.json     protocol-manifest.schema.json      .json
+
+
+
+FullName                                                                                                      Name
+--------                                                                                                      ----
+D:\ComfyUI_windows_portable_nvidia\ComfyUI_windows_portable\alchemycomfyui.bat                                alchemycomfyui.bat
+D:\ComfyUI_windows_portable_nvidia\ComfyUI_windows_portable\OVEREIGN_LAUNCH.ps1                               OVEREIGN_LAUNCH.ps1
+D:\ComfyUI_windows_portable_nvidia\ComfyUI_windows_portable\run_cpu.bat                                       run_cpu.bat
+D:\ComfyUI_windows_portable_nvidia\ComfyUI_windows_portable\run_nvidia_gpu.bat                                run_nvidia_gpu.bat
+D:\ComfyUI_windows_portable_nvidia\ComfyUI_windows_portable\run_nvidia_gpu_backup.bat                         run_nvidia_gpu_backup.bat
+D:\ComfyUI_windows_portable_nvidia\ComfyUI_windows_portable\run_nvidia_gpu_fast_fp16_accumulation.bat         run_nvidia_gpu_fast_fp16_accumulation.bat
+D:\ComfyUI_windows_portable_nvidia\ComfyUI_windows_portable\SOVEREIGN_LAUNCH.ps1                              SOVEREIGN_LAUNCH.ps1
+D:\ComfyUI_windows_portable_nvidia\ComfyUI_windows_portable\advanced\run_nvidia_gpu_disable_api_nodes.bat     run_nvidia_gpu_disable_api_nodes.bat
+D:\ComfyUI_windows_portable_nvidia\ComfyUI_windows_portable\ComfyUI\comfyui_version.py                        comfyui_version.py
+D:\ComfyUI_windows_portable_nvidia\ComfyUI_windows_portable\ComfyUI\cuda_malloc.py                            cuda_malloc.py
+D:\ComfyUI_windows_portable_nvidia\ComfyUI_windows_portable\ComfyUI\execution.py                              execution.py
+D:\ComfyUI_windows_portable_nvidia\ComfyUI_windows_portable\ComfyUI\folder_paths.py                           folder_paths.py
+D:\ComfyUI_windows_portable_nvidia\ComfyUI_windows_portable\ComfyUI\hook_breaker_ac10a0.py                    hook_breaker_ac10a0.py
+D:\ComfyUI_windows_portable_nvidia\ComfyUI_windows_portable\ComfyUI\latent_preview.py                         latent_preview.py
+D:\ComfyUI_windows_portable_nvidia\ComfyUI_windows_portable\ComfyUI\main.py                                   main.py
+D:\ComfyUI_windows_portable_nvidia\ComfyUI_windows_portable\ComfyUI\new_updater.py                            new_updater.py
+D:\ComfyUI_windows_portable_nvidia\ComfyUI_windows_portable\ComfyUI\nodes.py                                  nodes.py
+D:\ComfyUI_windows_portable_nvidia\ComfyUI_windows_portable\ComfyUI\node_helpers.py                           node_helpers.py
+D:\ComfyUI_windows_portable_nvidia\ComfyUI_windows_portable\ComfyUI\okiru-os.ps1                              okiru-os.ps1
+D:\ComfyUI_windows_portable_nvidia\ComfyUI_windows_portable\ComfyUI\protocol.py                               protocol.py
+D:\ComfyUI_windows_portable_nvidia\ComfyUI_windows_portable\ComfyUI\server.py                                 server.py
+D:\ComfyUI_windows_portable_nvidia\ComfyUI_windows_portable\python_embeded\get-pip.py                         get-pip.py
+D:\ComfyUI_windows_portable_nvidia\ComfyUI_windows_portable\update\update.py                                  update.py
+D:\ComfyUI_windows_portable_nvidia\ComfyUI_windows_portable\update\update_comfyui.bat                         update_comfyui.bat
+D:\ComfyUI_windows_portable_nvidia\ComfyUI_windows_portable\update\update_comfyui_and_python_dependencies.bat update_comfyui_and_python_dependencies.bat
+D:\ComfyUI_windows_portable_nvidia\ComfyUI_windows_portable\update\update_comfyui_stable.bat                  update_comfyui_stable.bat
+
+
+
+FullName                                                                                          Name                                                                    Extension 
+--------                                                                                          ----                                                                    ---------
+D:\AI\Ollama_Models\.polis                                                                        .polis                                                                  .polis
+D:\AI\Ollama_Models\agents                                                                        agents
+D:\AI\Ollama_Models\blobs                                                                         blobs
+D:\AI\Ollama_Models\constitution                                                                  constitution
+D:\AI\Ollama_Models\lib                                                                           lib
+D:\AI\Ollama_Models\logs                                                                          logs
+D:\AI\Ollama_Models\manifests                                                                     manifests
+D:\AI\Ollama_Models\templates                                                                     templates
+D:\AI\Ollama_Models\trainer                                                                       trainer
+D:\AI\Ollama_Models\.gitignore                                                                    .gitignore                                                              .gitignore
+D:\AI\Ollama_Models\app.ico                                                                       app.ico                                                                 .ico
+D:\AI\Ollama_Models\CERTIFICATION.txt                                                             CERTIFICATION.txt                                                       .txt
+D:\AI\Ollama_Models\clean-modelfile.txt                                                           clean-modelfile.txt                                                     .txt
+D:\AI\Ollama_Models\constitutional-governor.ps1                                                   constitutional-governor.ps1                                             .ps1
+D:\AI\Ollama_Models\constitutional_benchmark_1769008284.json                                      constitutional_benchmark_1769008284.json                                .json
+D:\AI\Ollama_Models\constitutional_court.modelfile.txt                                            constitutional_court.modelfile.txt                                      .txt
+D:\AI\Ollama_Models\constitutional_manifest.json                                                  constitutional_manifest.json                                            .json
+D:\AI\Ollama_Models\constitutional_memory.json                                                    constitutional_memory.json                                              .json
+D:\AI\Ollama_Models\constitutional_memo_1769008024.txt                                            constitutional_memo_1769008024.txt                                      .txt
+D:\AI\Ollama_Models\constitutional_memo_1769008038.txt                                            constitutional_memo_1769008038.txt                                      .txt
+D:\AI\Ollama_Models\constitutional_memo_1769008106.txt                                            constitutional_memo_1769008106.txt                                      .txt
+D:\AI\Ollama_Models\constitutional_memo_1769008115.txt                                            constitutional_memo_1769008115.txt                                      .txt
+D:\AI\Ollama_Models\constitutional_rulings.log                                                    constitutional_rulings.log                                              .log
+D:\AI\Ollama_Models\constitutional_rulings_v2.log                                                 constitutional_rulings_v2.log                                           .log
+D:\AI\Ollama_Models\constitutional_stress_test_1769008865.json                                    constitutional_stress_test_1769008865.json                              .json
+D:\AI\Ollama_Models\constitutional_training_data.json                                             constitutional_training_data.json                                       .json
+D:\AI\Ollama_Models\counsel.png                                                                   counsel.png                                                             .png
+D:\AI\Ollama_Models\fixed-scorer.ps1                                                              fixed-scorer.ps1                                                        .ps1
+D:\AI\Ollama_Models\HOW_TO_USE.txt                                                                HOW_TO_USE.txt                                                          .txt
+D:\AI\Ollama_Models\ollama.exe                                                                    ollama.exe                                                              .exe
+D:\AI\Ollama_Models\OllamaSetup.exe                                                               OllamaSetup.exe                                                         .exe
+D:\AI\Ollama_Models\ollama_welcome.ps1                                                            ollama_welcome.ps1                                                      .ps1
+D:\AI\Ollama_Models\oracle-final-backup-20260122_090033.ps1                                       oracle-final-backup-20260122_090033.ps1                                 .ps1
+D:\AI\Ollama_Models\oracle-final.ps1                                                              oracle-final.ps1                                                        .ps1
+D:\AI\Ollama_Models\oracle-v2.ps1                                                                 oracle-v2.ps1                                                           .ps1
+D:\AI\Ollama_Models\oracle_rulings.log                                                            oracle_rulings.log                                                      .log
+D:\AI\Ollama_Models\production_constitutional_predictor.pkl                                       production_constitutional_predictor.pkl                                 .pkl
+D:\AI\Ollama_Models\production_constitutional_predictor.pkl.sha256                                production_constitutional_predictor.pkl.sha256                          .sha256
+D:\AI\Ollama_Models\python.ps1                                                                    python.ps1                                                              .ps1
+D:\AI\Ollama_Models\pythonpath.ps1                                                                pythonpath.ps1                                                          .ps1
+D:\AI\Ollama_Models\README.md                                                                     README.md                                                               .md
+D:\AI\Ollama_Models\resolve_crisis.ps1                                                            resolve_crisis.ps1                                                      .ps1
+D:\AI\Ollama_Models\Save-CouncilConfig.ps1                                                        Save-CouncilConfig.ps1                                                  .ps1
+D:\AI\Ollama_Models\sovereign-architect.txt                                                       sovereign-architect.txt                                                 .txt
+D:\AI\Ollama_Models\sovereign-oracle-backup.ps1                                                   sovereign-oracle-backup.ps1                                             .ps1
+D:\AI\Ollama_Models\sovereign-oracle-fixed.ps1                                                    sovereign-oracle-fixed.ps1                                              .ps1
+D:\AI\Ollama_Models\sovereign-oracle.ps1                                                          sovereign-oracle.ps1                                                    .ps1
+D:\AI\Ollama_Models\sovereign-scorer.ps1                                                          sovereign-scorer.ps1                                                    .ps1
+D:\AI\Ollama_Models\SovereignCouncil.ps1                                                          SovereignCouncil.ps1                                                    .ps1
+D:\AI\Ollama_Models\sovereign_pulse.ps1                                                           sovereign_pulse.ps1                                                     .ps1
+D:\AI\Ollama_Models\sovereign_transactions.log                                                    sovereign_transactions.log                                              .log
+D:\AI\Ollama_Models\sync-principles.ps1                                                           sync-principles.ps1                                                     .ps1
+D:\AI\Ollama_Models\Test-ConstitutionalCompliance.ps1                                             Test-ConstitutionalCompliance.ps1                                       .ps1
+D:\AI\Ollama_Models\test-modelfile.txt                                                            test-modelfile.txt                                                      .txt
+D:\AI\Ollama_Models\unins000.dat                                                                  unins000.dat                                                            .dat
+D:\AI\Ollama_Models\unins000.msg                                                                  unins000.msg                                                            .msg
+D:\AI\Ollama_Models\validate_governance_oracle.ps1                                                validate_governance_oracle.ps1                                          .ps1
+D:\AI\Ollama_Models\.polis\audit                                                                  audit
+D:\AI\Ollama_Models\.polis\config                                                                 config
+D:\AI\Ollama_Models\.polis\locks                                                                  locks
+D:\AI\Ollama_Models\.polis\vetoes                                                                 vetoes
+D:\AI\Ollama_Models\.polis\constitutional_anchor.sha256                                           constitutional_anchor.sha256                                            .sha256
+D:\AI\Ollama_Models\.polis\audit\pulse_20260122.log                                               pulse_20260122.log                                                      .log
+D:\AI\Ollama_Models\.polis\config\local_council.json                                              local_council.json                                                      .json
+D:\AI\Ollama_Models\.polis\config\production_council.json                                         production_council.json                                                 .json
+D:\AI\Ollama_Models\.polis\locks\oracle.ratified.sha256                                           oracle.ratified.sha256                                                  .sha256
+D:\AI\Ollama_Models\agents\council_config.json                                                    council_config.json                                                     .json
+D:\AI\Ollama_Models\blobs\sha256-024a4a525aa30cb40a8dd7a86a325084e5259ebfe7a92d82d74e87623664c7c2 sha256-024a4a525aa30cb40a8dd7a86a325084e5259ebfe7a92d82d74e87623664c7c2
+D:\AI\Ollama_Models\blobs\sha256-05a61d37b08453e59290add468e3bb2f688e23a01e967fecb0e2fa41218cea76 sha256-05a61d37b08453e59290add468e3bb2f688e23a01e967fecb0e2fa41218cea76
+D:\AI\Ollama_Models\blobs\sha256-0b4284c1f87029e67654c7953afa16279961632cf73dcfe33374c4c2f298fa35 sha256-0b4284c1f87029e67654c7953afa16279961632cf73dcfe33374c4c2f298fa35
+D:\AI\Ollama_Models\blobs\sha256-1064e17101bdd2460dd5c4e03e4f5cc1b38a4dee66084dc91faba294ccb64a92 sha256-1064e17101bdd2460dd5c4e03e4f5cc1b38a4dee66084dc91faba294ccb64a92
+D:\AI\Ollama_Models\blobs\sha256-11f274007f093fefeec994a5dbbb33d0733a4feb87f7ab66dcd7c1069fef0068 sha256-11f274007f093fefeec994a5dbbb33d0733a4feb87f7ab66dcd7c1069fef0068
+D:\AI\Ollama_Models\blobs\sha256-17e666fbe4f4c95d19936e9e4089c50c980df275d2937734edbe2a8e7f02eb40 sha256-17e666fbe4f4c95d19936e9e4089c50c980df275d2937734edbe2a8e7f02eb40
+D:\AI\Ollama_Models\blobs\sha256-1e65450c30670713aa47fe23e8b9662bdf4065e81cc8e3cbfaa98924fcc0d320 sha256-1e65450c30670713aa47fe23e8b9662bdf4065e81cc8e3cbfaa98924fcc0d320
+D:\AI\Ollama_Models\blobs\sha256-1ff5b64b61b9a63146475a24f70d3ca2fd6fdeec44247987163479968896fc0b sha256-1ff5b64b61b9a63146475a24f70d3ca2fd6fdeec44247987163479968896fc0b
+D:\AI\Ollama_Models\blobs\sha256-294e9d92f3d580c07382cca644d4396229e386fb9b1a6c3963d4adf0e7969028 sha256-294e9d92f3d580c07382cca644d4396229e386fb9b1a6c3963d4adf0e7969028
+D:\AI\Ollama_Models\blobs\sha256-2e0493f67d0c8c9c68a8aeacdf6a38a2151cb3c4c1d42accf296e19810527988 sha256-2e0493f67d0c8c9c68a8aeacdf6a38a2151cb3c4c1d42accf296e19810527988
+D:\AI\Ollama_Models\blobs\sha256-316526ac7323d6f42305c5bbf1939e1197487c1e6ea1f01292ceb5e3040b707a sha256-316526ac7323d6f42305c5bbf1939e1197487c1e6ea1f01292ceb5e3040b707a
+D:\AI\Ollama_Models\blobs\sha256-32695b892af87ef8fca6e13a1a31c67c1441d7398be037e366e2fc763857c06a sha256-32695b892af87ef8fca6e13a1a31c67c1441d7398be037e366e2fc763857c06a
+D:\AI\Ollama_Models\blobs\sha256-34bb5ab01051a11372a91f95f3fbbc51173eed8e7f13ec395b9ae9b8bd0e242b sha256-34bb5ab01051a11372a91f95f3fbbc51173eed8e7f13ec395b9ae9b8bd0e242b
+D:\AI\Ollama_Models\blobs\sha256-3a43f93b78ec50f7c4e4dc8bd1cb3fff5a900e7d574c51a6f7495e48486e0dac sha256-3a43f93b78ec50f7c4e4dc8bd1cb3fff5a900e7d574c51a6f7495e48486e0dac
+D:\AI\Ollama_Models\blobs\sha256-3f8eb4da87fa7a3c9da615036b0dc418d31fef2a30b115ff33562588b32c691d sha256-3f8eb4da87fa7a3c9da615036b0dc418d31fef2a30b115ff33562588b32c691d
+D:\AI\Ollama_Models\blobs\sha256-4134f3eb051643ebac23e36a5927028f43889bb1f59a23a71212feaaa0aac3f3 sha256-4134f3eb051643ebac23e36a5927028f43889bb1f59a23a71212feaaa0aac3f3
+D:\AI\Ollama_Models\blobs\sha256-42ba7f8a01ddb4fa59908edd37d981d3baa8d8efea0e222b027f29f7bcae21f9 sha256-42ba7f8a01ddb4fa59908edd37d981d3baa8d8efea0e222b027f29f7bcae21f9
+D:\AI\Ollama_Models\blobs\sha256-43070e2d4e532684de521b885f385d0841030efa2b1a20bafb76133a5e1379c1 sha256-43070e2d4e532684de521b885f385d0841030efa2b1a20bafb76133a5e1379c1
+D:\AI\Ollama_Models\blobs\sha256-45a1c652dddc9efdcefa977ab81cfbe26b6e52bc8e78f2f4c698538783e0ac80 sha256-45a1c652dddc9efdcefa977ab81cfbe26b6e52bc8e78f2f4c698538783e0ac80
+D:\AI\Ollama_Models\blobs\sha256-4fa551d4f938f68b8c1e6afa9d28befb70e3f33f75d0753248d530364aeea40f sha256-4fa551d4f938f68b8c1e6afa9d28befb70e3f33f75d0753248d530364aeea40f
+D:\AI\Ollama_Models\blobs\sha256-55c108d8e93662a22dcbed5acaa0374c7d740c6aa4e8b7eee7ae77ed7dc72a25 sha256-55c108d8e93662a22dcbed5acaa0374c7d740c6aa4e8b7eee7ae77ed7dc72a25
+D:\AI\Ollama_Models\blobs\sha256-56bb8bd477a519ffa694fc449c2413c6f0e1d3b1c88fa7e3c9d88d3ae49d4dcb sha256-56bb8bd477a519ffa694fc449c2413c6f0e1d3b1c88fa7e3c9d88d3ae49d4dcb
+D:\AI\Ollama_Models\blobs\sha256-577073ffcc6ce95b9981eacc77d1039568639e5638e83044994560d9ef82ce1b sha256-577073ffcc6ce95b9981eacc77d1039568639e5638e83044994560d9ef82ce1b
+D:\AI\Ollama_Models\blobs\sha256-590d74a5569b8a20eb2a8b0aa869d1d1d3faf6a7fdda1955ae827073c7f502fc sha256-590d74a5569b8a20eb2a8b0aa869d1d1d3faf6a7fdda1955ae827073c7f502fc
+D:\AI\Ollama_Models\blobs\sha256-60e05f2100071479f596b964f89f510f057ce397ea22f2833a0cfe029bfc2463 sha256-60e05f2100071479f596b964f89f510f057ce397ea22f2833a0cfe029bfc2463
+D:\AI\Ollama_Models\blobs\sha256-66b9ea09bd5b7099cbb4fc820f31b575c0366fa439b08245566692c6784e281e sha256-66b9ea09bd5b7099cbb4fc820f31b575c0366fa439b08245566692c6784e281e
+D:\AI\Ollama_Models\blobs\sha256-697920373dbbcf1462ea08d054b89d7f6752818b1cebd586c1dbcab34375c3cb sha256-697920373dbbcf1462ea08d054b89d7f6752818b1cebd586c1dbcab34375c3cb
+D:\AI\Ollama_Models\blobs\sha256-6a0746a1ec1aef3e7ec53868f220ff6e389f6f8ef87a01d77c96807de94ca2aa sha256-6a0746a1ec1aef3e7ec53868f220ff6e389f6f8ef87a01d77c96807de94ca2aa
+D:\AI\Ollama_Models\blobs\sha256-715415638c9c4c0cb2b78783da041b97bd1205f8b9f9494bd7e5a850cb443602 sha256-715415638c9c4c0cb2b78783da041b97bd1205f8b9f9494bd7e5a850cb443602
+D:\AI\Ollama_Models\blobs\sha256-7339fa418c9ad3e8e12e74ad0fd26a9cc4be8703f9c110728a992b193be85cb2 sha256-7339fa418c9ad3e8e12e74ad0fd26a9cc4be8703f9c110728a992b193be85cb2
+D:\AI\Ollama_Models\blobs\sha256-7c23fb36d80141c4ab8cdbb61ee4790102ebd2bf7aeff414453177d4f2110e5d sha256-7c23fb36d80141c4ab8cdbb61ee4790102ebd2bf7aeff414453177d4f2110e5d
+D:\AI\Ollama_Models\blobs\sha256-7f6a57943a88ef021326428676fe749d38e82448a858433f41dae5e05ac39963 sha256-7f6a57943a88ef021326428676fe749d38e82448a858433f41dae5e05ac39963
+D:\AI\Ollama_Models\blobs\sha256-832dd9e00a68dd83b3c3fb9f5588dad7dcf337a0db50f7d9483f310cd292e92e sha256-832dd9e00a68dd83b3c3fb9f5588dad7dcf337a0db50f7d9483f310cd292e92e
+D:\AI\Ollama_Models\blobs\sha256-84fffd9ce0ecc7e0a36ec7a3c3aa21bb888213f8bf3db9408d5520a26412f06e sha256-84fffd9ce0ecc7e0a36ec7a3c3aa21bb888213f8bf3db9408d5520a26412f06e
+D:\AI\Ollama_Models\blobs\sha256-8893e08fa9f91f7dc39e24d27bdfaece4e9c86bb3269293ff8cea6cba98c872d sha256-8893e08fa9f91f7dc39e24d27bdfaece4e9c86bb3269293ff8cea6cba98c872d
+D:\AI\Ollama_Models\blobs\sha256-8934d96d3f08982e95922b2b7a2c626a1fe873d7c3b06e8e56d7bc0a1fef9246 sha256-8934d96d3f08982e95922b2b7a2c626a1fe873d7c3b06e8e56d7bc0a1fef9246
+D:\AI\Ollama_Models\blobs\sha256-8972a96b8ff1957ca24ff839aeb54411e6849de68609857a3fa17a4e78114247 sha256-8972a96b8ff1957ca24ff839aeb54411e6849de68609857a3fa17a4e78114247
+D:\AI\Ollama_Models\blobs\sha256-8ab4849b038cf0abc5b1c9b8ee1443dca6b93a045c2272180d985126eb40bf6f sha256-8ab4849b038cf0abc5b1c9b8ee1443dca6b93a045c2272180d985126eb40bf6f
+D:\AI\Ollama_Models\blobs\sha256-8c17c2ebb0ea011be9981cc3922db8ca8fa61e828c5d3f44cb6ae342bf80460b sha256-8c17c2ebb0ea011be9981cc3922db8ca8fa61e828c5d3f44cb6ae342bf80460b
+D:\AI\Ollama_Models\blobs\sha256-937db1460e71b8afc5bc3607bb4a8bcaf1659605b544ba6082ad40e37d8e3a8b sha256-937db1460e71b8afc5bc3607bb4a8bcaf1659605b544ba6082ad40e37d8e3a8b
+D:\AI\Ollama_Models\blobs\sha256-966de95ca8a62200913e3f8bfbf84c8494536f1b94b49166851e76644e966396 sha256-966de95ca8a62200913e3f8bfbf84c8494536f1b94b49166851e76644e966396
+D:\AI\Ollama_Models\blobs\sha256-a066d55ab120a264bc724a6e5c1993f85aa6c51b5b79a8d91dfacbde053d4364 sha256-a066d55ab120a264bc724a6e5c1993f85aa6c51b5b79a8d91dfacbde053d4364
+D:\AI\Ollama_Models\blobs\sha256-a3a0e9449cb691a12f4de1d03725fd41326614fdeaf5d80b28c51187da0bed0e sha256-a3a0e9449cb691a12f4de1d03725fd41326614fdeaf5d80b28c51187da0bed0e
+D:\AI\Ollama_Models\blobs\sha256-a3de86cd1c132c822487ededd47a324c50491393e6565cd14bafa40d0b8e686f sha256-a3de86cd1c132c822487ededd47a324c50491393e6565cd14bafa40d0b8e686f
+D:\AI\Ollama_Models\blobs\sha256-a70ff7e570d97baaf4e62ac6e6ad9975e04caa6d900d3742d37698494479e0cd sha256-a70ff7e570d97baaf4e62ac6e6ad9975e04caa6d900d3742d37698494479e0cd
+D:\AI\Ollama_Models\blobs\sha256-ae370d884f108d16e7cc8fd5259ebc5773a0afa6e078b11f4ed7e39a27e0dfc4 sha256-ae370d884f108d16e7cc8fd5259ebc5773a0afa6e078b11f4ed7e39a27e0dfc4
+D:\AI\Ollama_Models\blobs\sha256-b506a070d1152798d435ec4e7687336567ae653b3106f73b7b4ac7be1cbc4449 sha256-b506a070d1152798d435ec4e7687336567ae653b3106f73b7b4ac7be1cbc4449
+D:\AI\Ollama_Models\blobs\sha256-bbb3b1633f7e058144147ef85ac5ab828280d5dbb970a3d852d3805e8d8b558a sha256-bbb3b1633f7e058144147ef85ac5ab828280d5dbb970a3d852d3805e8d8b558a
+D:\AI\Ollama_Models\blobs\sha256-ca0dd08dd2823c9a1b04b6213bf3e95f1b2a7a46234c1871de23ad790a020d04 sha256-ca0dd08dd2823c9a1b04b6213bf3e95f1b2a7a46234c1871de23ad790a020d04
+D:\AI\Ollama_Models\blobs\sha256-cff3f395ef3756ab63e58b0ad1b32bb6f802905cae1472e6a12034e4246fbbdb sha256-cff3f395ef3756ab63e58b0ad1b32bb6f802905cae1472e6a12034e4246fbbdb
+D:\AI\Ollama_Models\blobs\sha256-d040cc18521592f70c199396aeaa44cdc40224079156dc09d4283d745d9dc5fd sha256-d040cc18521592f70c199396aeaa44cdc40224079156dc09d4283d745d9dc5fd
+D:\AI\Ollama_Models\blobs\sha256-d18a5cc71b84bc4af394a31116bd3932b42241de70c77d2b76d69a314ec8aa12 sha256-d18a5cc71b84bc4af394a31116bd3932b42241de70c77d2b76d69a314ec8aa12
+D:\AI\Ollama_Models\blobs\sha256-d55c9eb1669a22f75956872166c676634c77cd8dfb94900640bd09a474dfcd0c sha256-d55c9eb1669a22f75956872166c676634c77cd8dfb94900640bd09a474dfcd0c
+D:\AI\Ollama_Models\blobs\sha256-d8ba2f9a17b3bbdeb5690efaa409b3fcb0b56296a777c7a69c78aa33bbddf182 sha256-d8ba2f9a17b3bbdeb5690efaa409b3fcb0b56296a777c7a69c78aa33bbddf182
+D:\AI\Ollama_Models\blobs\sha256-d9bb33f2786931fea42f50936a2424818aa2f14500638af2f01861eb2c8fb446 sha256-d9bb33f2786931fea42f50936a2424818aa2f14500638af2f01861eb2c8fb446
+D:\AI\Ollama_Models\blobs\sha256-dde5aa3fc5ffc17176b5e8bdc82f587b24b2678c6c66101bf7da77af9f7ccdff sha256-dde5aa3fc5ffc17176b5e8bdc82f587b24b2678c6c66101bf7da77af9f7ccdff
+D:\AI\Ollama_Models\blobs\sha256-e4f0dc83900aa17dfeb365c6e161e9d58d30f6f7a0ae9732abc800bd6837f51e sha256-e4f0dc83900aa17dfeb365c6e161e9d58d30f6f7a0ae9732abc800bd6837f51e
+D:\AI\Ollama_Models\blobs\sha256-e7e7aebd710c83c20887f950ec646738c71723ccd813f564efc586fd34a32e14 sha256-e7e7aebd710c83c20887f950ec646738c71723ccd813f564efc586fd34a32e14
+D:\AI\Ollama_Models\blobs\sha256-ece5e659647a20a5c28ab9eea1c12a1ad430bc0f2a27021d00ad103b3bf5206f sha256-ece5e659647a20a5c28ab9eea1c12a1ad430bc0f2a27021d00ad103b3bf5206f
+D:\AI\Ollama_Models\blobs\sha256-ed11eda7790d05b49395598a42b155812b17e263214292f7b87d15e14003d337 sha256-ed11eda7790d05b49395598a42b155812b17e263214292f7b87d15e14003d337
+D:\AI\Ollama_Models\blobs\sha256-ed12a4674d727a74ac4816c906094ea9d3119fbea46ca93288c3ce4ffbe38c55 sha256-ed12a4674d727a74ac4816c906094ea9d3119fbea46ca93288c3ce4ffbe38c55
+D:\AI\Ollama_Models\blobs\sha256-f5074b1221da0f5a2910d33b642efa5b9eb58cfdddca1c79e16d7ad28aa2b31f sha256-f5074b1221da0f5a2910d33b642efa5b9eb58cfdddca1c79e16d7ad28aa2b31f
+D:\AI\Ollama_Models\blobs\sha256-f5d6f49c64775df1536e9d747c6b6b4c101f6a8658108fbd18a15d046575c68b sha256-f5d6f49c64775df1536e9d747c6b6b4c101f6a8658108fbd18a15d046575c68b
+D:\AI\Ollama_Models\blobs\sha256-f60356777647e927149cbd4c0ec1314a90caba9400ad205ddc4ce47ed001c2d6 sha256-f60356777647e927149cbd4c0ec1314a90caba9400ad205ddc4ce47ed001c2d6
+D:\AI\Ollama_Models\blobs\sha256-f6417cb1e26962991f8e875a93f3cb0f92bc9b4955e004881251ccbf934a19d2 sha256-f6417cb1e26962991f8e875a93f3cb0f92bc9b4955e004881251ccbf934a19d2
+D:\AI\Ollama_Models\blobs\sha256-fa304d6750612c207b8705aca35391761f29492534e90b30575e4980d6ca82f6 sha256-fa304d6750612c207b8705aca35391761f29492534e90b30575e4980d6ca82f6
+D:\AI\Ollama_Models\blobs\sha256-fa6710a93d78da62641e192361344be7a8c0a1c3737f139cf89f20ce1626b99c sha256-fa6710a93d78da62641e192361344be7a8c0a1c3737f139cf89f20ce1626b99c
+D:\AI\Ollama_Models\blobs\sha256-fa8235e5b48faca34e3ca98cf4f694ef08bd216d28b58071a1f85b1d50cb814d sha256-fa8235e5b48faca34e3ca98cf4f694ef08bd216d28b58071a1f85b1d50cb814d
+D:\AI\Ollama_Models\blobs\sha256-fbd313562bb706ac00f1a18c0aad8398b3c22d5cd78c47ff6f7246c4c3438576 sha256-fbd313562bb706ac00f1a18c0aad8398b3c22d5cd78c47ff6f7246c4c3438576
+D:\AI\Ollama_Models\blobs\sha256-fcc5a6bec9daf9b561a68827b67ab6088e1dba9d1fa2a50d7bbcc8384e0a265d sha256-fcc5a6bec9daf9b561a68827b67ab6088e1dba9d1fa2a50d7bbcc8384e0a265d
+D:\AI\Ollama_Models\blobs\sha256-fd7b6731c33c57f61767612f56517460ec2d1e2e5a3f0163e0eb3d8d8cb5df20 sha256-fd7b6731c33c57f61767612f56517460ec2d1e2e5a3f0163e0eb3d8d8cb5df20
+D:\AI\Ollama_Models\blobs\sha256-fefc914e46e6024467471837a48a24251db2c6f3f58395943da7bf9dc6f70fb6 sha256-fefc914e46e6024467471837a48a24251db2c6f3f58395943da7bf9dc6f70fb6
+D:\AI\Ollama_Models\constitution\principles.md                                                    principles.md                                                           .md
+D:\AI\Ollama_Models\lib\ollama                                                                    ollama
+D:\AI\Ollama_Models\lib\ollama\cuda_v11                                                           cuda_v11
+D:\AI\Ollama_Models\lib\ollama\cuda_v12                                                           cuda_v12
+D:\AI\Ollama_Models\lib\ollama\rocblas                                                            rocblas
+D:\AI\Ollama_Models\lib\ollama\rocm                                                               rocm
+D:\AI\Ollama_Models\lib\ollama\runners                                                            runners
+D:\AI\Ollama_Models\lib\ollama\api-ms-win-crt-convert-l1-1-0.dll                                  api-ms-win-crt-convert-l1-1-0.dll                                       .dll
+D:\AI\Ollama_Models\lib\ollama\api-ms-win-crt-environment-l1-1-0.dll                              api-ms-win-crt-environment-l1-1-0.dll                                   .dll
+D:\AI\Ollama_Models\lib\ollama\api-ms-win-crt-filesystem-l1-1-0.dll                               api-ms-win-crt-filesystem-l1-1-0.dll                                    .dll
+D:\AI\Ollama_Models\lib\ollama\api-ms-win-crt-heap-l1-1-0.dll                                     api-ms-win-crt-heap-l1-1-0.dll                                          .dll
+D:\AI\Ollama_Models\lib\ollama\api-ms-win-crt-locale-l1-1-0.dll                                   api-ms-win-crt-locale-l1-1-0.dll                                        .dll
+D:\AI\Ollama_Models\lib\ollama\api-ms-win-crt-math-l1-1-0.dll                                     api-ms-win-crt-math-l1-1-0.dll                                          .dll
+D:\AI\Ollama_Models\lib\ollama\api-ms-win-crt-runtime-l1-1-0.dll                                  api-ms-win-crt-runtime-l1-1-0.dll                                       .dll
+D:\AI\Ollama_Models\lib\ollama\api-ms-win-crt-stdio-l1-1-0.dll                                    api-ms-win-crt-stdio-l1-1-0.dll                                         .dll
+D:\AI\Ollama_Models\lib\ollama\api-ms-win-crt-string-l1-1-0.dll                                   api-ms-win-crt-string-l1-1-0.dll                                        .dll
+D:\AI\Ollama_Models\lib\ollama\api-ms-win-crt-time-l1-1-0.dll                                     api-ms-win-crt-time-l1-1-0.dll                                          .dll
+D:\AI\Ollama_Models\lib\ollama\cublas64_11.dll                                                    cublas64_11.dll                                                         .dll
+D:\AI\Ollama_Models\lib\ollama\cublas64_12.dll                                                    cublas64_12.dll                                                         .dll
+D:\AI\Ollama_Models\lib\ollama\cublasLt64_11.dll                                                  cublasLt64_11.dll                                                       .dll
+D:\AI\Ollama_Models\lib\ollama\cublasLt64_12.dll                                                  cublasLt64_12.dll                                                       .dll
+D:\AI\Ollama_Models\lib\ollama\cudart32_110.dll                                                   cudart32_110.dll                                                        .dll
+D:\AI\Ollama_Models\lib\ollama\cudart64_110.dll                                                   cudart64_110.dll                                                        .dll
+D:\AI\Ollama_Models\lib\ollama\cudart64_12.dll                                                    cudart64_12.dll                                                         .dll
+D:\AI\Ollama_Models\lib\ollama\ggml-base.dll                                                      ggml-base.dll                                                           .dll
+D:\AI\Ollama_Models\lib\ollama\ggml-cpu-alderlake.dll                                             ggml-cpu-alderlake.dll                                                  .dll
+D:\AI\Ollama_Models\lib\ollama\ggml-cpu-haswell.dll                                               ggml-cpu-haswell.dll                                                    .dll
+D:\AI\Ollama_Models\lib\ollama\ggml-cpu-icelake.dll                                               ggml-cpu-icelake.dll                                                    .dll
+D:\AI\Ollama_Models\lib\ollama\ggml-cpu-sandybridge.dll                                           ggml-cpu-sandybridge.dll                                                .dll
+D:\AI\Ollama_Models\lib\ollama\ggml-cpu-skylakex.dll                                              ggml-cpu-skylakex.dll                                                   .dll
+D:\AI\Ollama_Models\lib\ollama\ggml-cpu-sse42.dll                                                 ggml-cpu-sse42.dll                                                      .dll
+D:\AI\Ollama_Models\lib\ollama\hipblas.dll                                                        hipblas.dll                                                             .dll
+D:\AI\Ollama_Models\lib\ollama\msvcp140_1.dll                                                     msvcp140_1.dll                                                          .dll
+D:\AI\Ollama_Models\lib\ollama\msvcp140_2.dll                                                     msvcp140_2.dll                                                          .dll
+D:\AI\Ollama_Models\lib\ollama\msvcp140_atomic_wait.dll                                           msvcp140_atomic_wait.dll                                                .dll
+D:\AI\Ollama_Models\lib\ollama\msvcp140_codecvt_ids.dll                                           msvcp140_codecvt_ids.dll                                                .dll
+D:\AI\Ollama_Models\lib\ollama\rocblas.dll                                                        rocblas.dll                                                             .dll
+D:\AI\Ollama_Models\lib\ollama\vcruntime140.dll                                                   vcruntime140.dll                                                        .dll
+D:\AI\Ollama_Models\lib\ollama\vcruntime140_1.dll                                                 vcruntime140_1.dll                                                      .dll
+D:\AI\Ollama_Models\logs\compliance_report_20260122_092153.md                                     compliance_report_20260122_092153.md                                    .md
+D:\AI\Ollama_Models\logs\oracle_archive_20260122.json                                             oracle_archive_20260122.json                                            .json
+D:\AI\Ollama_Models\logs\sovereignty_report_20260122.md                                           sovereignty_report_20260122.md                                          .md
+D:\AI\Ollama_Models\manifests\registry.ollama.ai                                                  registry.ollama.ai                                                      .ai
+D:\AI\Ollama_Models\manifests\registry.ollama.ai\library                                          library
+D:\AI\Ollama_Models\trainer\config                                                                config
+D:\AI\Ollama_Models\trainer\council                                                               council
+D:\AI\Ollama_Models\trainer\integration                                                           integration
+D:\AI\Ollama_Models\trainer\src                                                                   src
+D:\AI\Ollama_Models\trainer\tests                                                                 tests
+D:\AI\Ollama_Models\trainer\check_keys.py                                                         check_keys.py                                                           .py
+D:\AI\Ollama_Models\trainer\check_targets.py                                                      check_targets.py                                                        .py
+D:\AI\Ollama_Models\trainer\clean_optimized_trainer.py                                            clean_optimized_trainer.py                                              .py
+D:\AI\Ollama_Models\trainer\constitutional_trainer.py                                             constitutional_trainer.py                                               .py
+D:\AI\Ollama_Models\trainer\diagnostic.py                                                         diagnostic.py                                                           .py
+D:\AI\Ollama_Models\trainer\fixed_examples_trainer.py                                             fixed_examples_trainer.py                                               .py
+D:\AI\Ollama_Models\trainer\optimized_trainer.py                                                  optimized_trainer.py                                                    .py
+D:\AI\Ollama_Models\trainer\README.md                                                             README.md                                                               .md
+D:\AI\Ollama_Models\trainer\real_examples_trainer.py                                              real_examples_trainer.py                                                .py
+D:\AI\Ollama_Models\trainer\text_based_trainer.py                                                 text_based_trainer.py                                                   .py
+D:\AI\Ollama_Models\trainer\config\hardware                                                       hardware
+D:\AI\Ollama_Models\trainer\config\laws                                                           laws
+D:\AI\Ollama_Models\trainer\config\constitutional_sample.json                                     constitutional_sample.json                                              .json
+D:\AI\Ollama_Models\trainer\council\ruling_template.md                                            ruling_template.md                                                      .md
+D:\AI\Ollama_Models\trainer\integration\legacy-bridge                                             legacy-bridge
+D:\AI\Ollama_Models\trainer\src\3060-optimization                                                 3060-optimization
+D:\AI\Ollama_Models\trainer\src\constitutional-ml                                                 constitutional-ml
+D:\AI\Ollama_Models\trainer\src\pattern-miner                                                     pattern-miner
+D:\AI\Ollama_Models\trainer\src\vibe-predictor                                                    vibe-predictor
+D:\AI\Ollama_Models\trainer\src\__pycache__                                                       __pycache__
+D:\AI\Ollama_Models\trainer\src\clean_ollama_trainer.py                                           clean_ollama_trainer.py                                                 .py
+D:\AI\Ollama_Models\trainer\src\constitutional_agent.py                                           constitutional_agent.py                                                 .py
+D:\AI\Ollama_Models\trainer\src\constitutional_benchmark.py                                       constitutional_benchmark.py                                             .py
+D:\AI\Ollama_Models\trainer\src\constitutional_core.py                                            constitutional_core.py                                                  .py
+D:\AI\Ollama_Models\trainer\src\constitutional_distillery.py                                      constitutional_distillery.py                                            .py
+D:\AI\Ollama_Models\trainer\src\constitutional_evaluator.py                                       constitutional_evaluator.py                                             .py
+D:\AI\Ollama_Models\trainer\src\constitutional_evaluator_fixed.py                                 constitutional_evaluator_fixed.py                                       .py
+D:\AI\Ollama_Models\trainer\src\constitutional_governor.py                                        constitutional_governor.py                                              .py
+D:\AI\Ollama_Models\trainer\src\constitutional_interactive.py                                     constitutional_interactive.py                                           .py
+D:\AI\Ollama_Models\trainer\src\constitutional_loop.py                                            constitutional_loop.py                                                  .py
+D:\AI\Ollama_Models\trainer\src\constitutional_stress_test.py                                     constitutional_stress_test.py                                           .py
+D:\AI\Ollama_Models\trainer\src\constitutional_tester_fixed.py                                    constitutional_tester_fixed.py                                          .py
+D:\AI\Ollama_Models\trainer\src\enhanced_constitutional_analyzer.py                               enhanced_constitutional_analyzer.py                                     .py
+D:\AI\Ollama_Models\trainer\src\enhanced_distillery.py                                            enhanced_distillery.py                                                  .py
+D:\AI\Ollama_Models\trainer\src\fixed_constitutional_agent.py                                     fixed_constitutional_agent.py                                           .py
+D:\AI\Ollama_Models\trainer\src\fixed_ollama_distiller.py                                         fixed_ollama_distiller.py                                               .py
+D:\AI\Ollama_Models\trainer\src\ollama_constitutional_query.py                                    ollama_constitutional_query.py                                          .py
+D:\AI\Ollama_Models\trainer\src\ollama_distiller.py                                               ollama_distiller.py                                                     .py
+D:\AI\Ollama_Models\trainer\src\pattern_harvester.py                                              pattern_harvester.py                                                    .py
+D:\AI\Ollama_Models\trainer\src\query_distilled.py                                                query_distilled.py                                                      .py
+D:\AI\Ollama_Models\trainer\src\quick_ollama_query.py                                             quick_ollama_query.py                                                   .py
+D:\AI\Ollama_Models\trainer\src\test_constitutional.py                                            test_constitutional.py                                                  .py
+D:\AI\Ollama_Models\trainer\src\train_on_enhanced_data.py                                         train_on_enhanced_data.py                                               .py
+D:\AI\Ollama_Models\trainer\tests\constitutional-integrity                                        constitutional-integrity
