@@ -1,110 +1,104 @@
-﻿"""Sovereign JARVIS - Constitutional AI Co-Pilot (Windows-compatible)"""
+﻿"""Sovereign JARVIS - Constitutional AI Co-Pilot with RezTrainer Integration"""
 import sys
 import argparse
 import subprocess
 import json
+import io
 from pathlib import Path
 
+# Original JARVIS paths
 SOVEREIGN_ROOT = r"G:\okiru\app builder\Kimi_Agent_Reimagining JARVIS as Sovereign AI\sovereign-jarvis"
 if SOVEREIGN_ROOT not in sys.path:
     sys.path.insert(0, SOVEREIGN_ROOT)
 
-from constitution import enforce_constitution, ConstitutionalViolation, RULES
+try:
+    from constitution import enforce_constitution, ConstitutionalViolation, RULES
+    CONSTITUTION_LOADED = True
+except ImportError:
+    CONSTITUTION_LOADED = False
+    print("[WARN] Constitution module not found", file=sys.stderr)
 
-def main():
-    parser = argparse.ArgumentParser()
-    parser.add_argument("command", choices=["init", "execute", "status", "constitution", "audit", "scan"])
-    parser.add_argument("--task-id", default="manual")
-    parser.add_argument("--action")
-    parser.add_argument("--target")
-    parser.add_argument("--content")
-    parser.add_argument("--path", default=".")
-    
-    args = parser.parse_args()
-    workspace = Path.cwd()
-    
-    if args.command == "init":
-        _init(workspace)
-    elif args.command == "execute":
-        _execute(workspace, args)
-    elif args.command == "scan":
-        _scan(workspace, args.path)
-    elif args.command == "status":
-        _status(workspace)
-    elif args.command == "constitution":
-        _constitution()
-    elif args.command == "audit":
-        _audit(workspace)
+# ============================================================================
+# FIXED: RezTrainer integration with correct model path detection
+# ============================================================================
+REZTRAINER_PATH = Path(__file__).parent / "rezsparse-trainer"
+REZTRAINER_LOADED = False
+constitutional_scorer = None
+CONSTITUTIONAL_MODEL = None
 
-def _init(workspace):
-    (workspace / ".jarvis").mkdir(exist_ok=True)
-    (workspace / ".jarvis" / "audit.log").touch(exist_ok=True)
-    if not (workspace / ".git").exists():
-        print("[ERROR] Not a Git repository")
-        sys.exit(1)
-    print("[OK] Sovereign JARVIS initialized")
-    print("     Constitutional rules:", len(RULES))
-    print("     Audit log: .jarvis/audit.log")
-
-def _execute(workspace, args):
-    if not all([args.action, args.target, args.content]):
-        print("[ERROR] Missing required arguments")
-        print("        Required: --action, --target, --content")
-        sys.exit(1)
+if REZTRAINER_PATH.exists():
+    sys.path.insert(0, str(REZTRAINER_PATH))
+    sys.path.insert(0, str(REZTRAINER_PATH / "src"))
     
-    target_path = (workspace / args.target).resolve()
+    # Try multiple possible model locations
+    possible_paths = [
+        REZTRAINER_PATH / "production_constitutional_predictor.pkl",
+        REZTRAINER_PATH / "models" / "production_constitutional_predictor.pkl",
+        REZTRAINER_PATH / "src" / "constitutional" / "production_constitutional_predictor.pkl",
+        Path(__file__).parent / "production_constitutional_predictor.pkl"
+    ]
+    
+    for model_path in possible_paths:
+        if model_path.exists():
+            CONSTITUTIONAL_MODEL = model_path
+            try:
+                import pickle
+                with open(CONSTITUTIONAL_MODEL, 'rb') as f:
+                    constitutional_scorer = pickle.load(f)
+                REZTRAINER_LOADED = True
+                print("[OK] RezTrainer Constitutional AI loaded", file=sys.stderr)
+                print(f"     Model: {CONSTITUTIONAL_MODEL.name}", file=sys.stderr)
+                break
+            except Exception as e:
+                print(f"[WARN] Failed to load model from {model_path.name}: {e}", file=sys.stderr)
+    
+    if not REZTRAINER_LOADED:
+        print("[WARN] RezTrainer found but no constitutional model loaded", file=sys.stderr)
+
+def score_constitutionality(text):
+    """Score text against constitutional principles"""
+    if not REZTRAINER_LOADED or constitutional_scorer is None:
+        return {"score": 0, "status": "NO_MODEL", "confidence": 0}
     
     try:
-        enforce_constitution(args.action, target_path)
-    except ConstitutionalViolation as e:
-        print("[CONSTITUTIONAL VIOLATION]", str(e))
-        sys.exit(1)
-    
-    # Write content
-    with open(target_path, 'w', encoding='utf-8') as f:
-        f.write(args.content)
-    
-    # Git add
-    subprocess.run(["git", "add", args.target], cwd=workspace, capture_output=True, text=True)
-    
-    # Git commit
-    result = subprocess.run(
-        ["git", "commit", "-m", f"sovereign: {args.action} {args.target} [task:{args.task_id}]"],
-        cwd=workspace, capture_output=True, text=True
-    )
-    
-    # Extract commit hash
-    for line in result.stdout.splitlines():
-        if line.startswith("[") and "]" in line:
-            commit_hash = line.split()[1].rstrip(']')
-            print(f"[OK] Task {args.task_id} complete")
-            print(f"     Commit: {commit_hash}")
-            print(f"     File: {args.target}")
-            
-            # Log to audit trail
-            with open(workspace / ".jarvis" / "audit.log", 'a', encoding='utf-8') as f:
-                f.write(f"TASK_COMPLETE|{args.task_id}|{commit_hash}\n")
-            return
-    
-    print("[OK] Task complete (no new commit - content unchanged)")
+        vec = constitutional_scorer['vectorizer'].transform([text])
+        score = float(constitutional_scorer['model'].predict_proba(vec)[0][1])
+        
+        if score >= 0.7:
+            status = "SOVEREIGN"
+        elif score >= 0.5:
+            status = "VIGILANT"
+        elif score >= 0.3:
+            status = "ROGUE"
+        else:
+            status = "CRITICAL"
+        
+        return {
+            "score": round(score, 4),
+            "status": status,
+            "confidence": round(score * 100, 1)
+        }
+    except Exception as e:
+        return {"score": 0, "status": "ERROR", "confidence": 0, "error": str(e)}
 
-def _scan(workspace, scan_path):
+def constitutional_scan(workspace, scan_path):
+    """Enhanced scan with constitutional scoring"""
     try:
         from agents.scanner import SovereignScanner
-    except Exception as e:
-        print(f"[ERROR] Scanner import failed: {e}")
-        sys.exit(1)
+    except ImportError:
+        print("[ERROR] Scanner module not found")
+        return
     
-    print("=" * 60)
-    print("SOVEREIGN APP SCAN")
-    print("=" * 60)
+    print("=" * 80)
+    print("🏛️  SOVEREIGN CONSTITUTIONAL SCAN")
+    print("=" * 80)
     
     scanner = SovereignScanner(workspace)
     result = scanner.scan(scan_path)
     
     if result["status"] == "rejected":
         print(f"\n[REJECTED] {result['error']}")
-        sys.exit(1)
+        return
     
     issues = result["results"]["issues"]
     files = result["results"]["files_scanned"]
@@ -118,61 +112,91 @@ def _scan(workspace, scan_path):
     print(f"  Files scanned: {files}")
     print(f"  Critical: {len(crit)} | High: {len(high)} | Medium: {len(medium)} | Low: {len(low)}")
     print(f"  Total issues: {len(issues)}")
-    print()
+    
+    if REZTRAINER_LOADED and issues:
+        scores = []
+        for i in issues:
+            score_data = score_constitutionality(i.get("match", ""))
+            if score_data["score"] > 0:
+                scores.append(score_data["score"])
+                i["constitutional_score"] = score_data
+        
+        if scores:
+            avg_score = sum(scores) / len(scores)
+            print(f"  Constitutional Score: {avg_score*100:.1f}%")
     
     if crit:
-        print("[CRITICAL ISSUES] (require immediate attention)")
-        print("=" * 60)
-        for i in crit:
+        print("\n[🔴 CRITICAL ISSUES]")
+        for i in crit[:3]:
             print(f"\n  [{i['type']}] {i['file']}:{i['line']}")
             print(f"     {i['message']}")
-            if 'match' in i:
-                print(f"     Found: {i['match']}")
-    
-    if high:
-        print("\n[HIGH SEVERITY ISSUES]")
-        print("=" * 60)
-        for i in high[:5]:  # Show first 5
-            print(f"\n  [{i['type']}] {i['file']}:{i['line']}")
-            print(f"     {i['message']}")
-            if 'match' in i:
-                print(f"     Found: {i['match']}")
-        if len(high) > 5:
-            print(f"\n  ... and {len(high) - 5} more high severity issues")
+            if REZTRAINER_LOADED and "constitutional_score" in i:
+                cs = i["constitutional_score"]
+                print(f"     Constitutional: {cs['confidence']}% - {cs['status']}")
     
     if not issues:
-        print("[OK] No security or quality issues detected")
+        print("\n[✅] No security issues detected")
+        if REZTRAINER_LOADED:
+            print("      Your code is CONSTITUTIONAL!")
     
     print(f"\n[SCAN COMPLETE] {result['results']['timestamp']}")
-    print("=" * 60)
+    print("=" * 80)
 
-def _status(workspace):
+def cmd_scan(args):
+    """Scan command handler"""
+    workspace = Path.cwd()
+    constitutional_scan(workspace, args.path)
+
+def cmd_status(args):
+    """Status command handler"""
+    workspace = Path.cwd()
     print(f"[STATUS] Workspace: {workspace}")
-    print(f"         Constitution: {len(RULES)} rules")
+    print(f"         Constitution: {len(RULES) if CONSTITUTION_LOADED else 0} rules")
     print(f"         Audit log: {(workspace / '.jarvis' / 'audit.log').exists()}")
-
-def _constitution():
-    print("[CONSTITUTIONAL RULES]")
-    print("=" * 60)
-    for r in RULES:
-        print(f"  [{r.id}] {r.domain}")
-        print(f"      {r.description}")
-    print("=" * 60)
-
-def _audit(workspace):
-    log = workspace / ".jarvis" / "audit.log"
-    if log.exists():
-        print("[AUDIT TRAIL]")
-        print("=" * 60)
-        print(log.read_text(encoding='utf-8'))
-        print("=" * 60)
+    if REZTRAINER_LOADED:
+        print(f"         RezTrainer: Constitutional AI Factory")
+        print(f"         Constitutional Model: {CONSTITUTIONAL_MODEL.name if CONSTITUTIONAL_MODEL and CONSTITUTIONAL_MODEL.exists() else 'Not found'}")
+        if constitutional_scorer:
+            print(f"         Scoring Engine: READY")
     else:
-        print("[INFO] No audit log found")
+        print(f"         RezTrainer: Not loaded")
+
+def cmd_init(args):
+    """Initialize workspace"""
+    workspace = Path.cwd()
+    (workspace / ".jarvis").mkdir(exist_ok=True)
+    (workspace / ".jarvis" / "audit.log").touch(exist_ok=True)
+    print("[OK] Sovereign JARVIS initialized")
+    print("     Audit log: .jarvis/audit.log")
+
+def main():
+    parser = argparse.ArgumentParser(description="Sovereign JARVIS - Constitutional AI Co-Pilot")
+    subparsers = parser.add_subparsers(dest="command", help="Commands")
+    
+    # Initialize parser
+    subparsers.add_parser("init", help="Initialize workspace")
+    
+    # Status parser
+    subparsers.add_parser("status", help="Show workspace status")
+    
+    # Scan parser
+    scan_parser = subparsers.add_parser("scan", help="Constitutional security scan")
+    scan_parser.add_argument("--path", default=".", help="Path to scan")
+    
+    args = parser.parse_args()
+    
+    if args.command == "init":
+        cmd_init(args)
+    elif args.command == "status":
+        cmd_status(args)
+    elif args.command == "scan":
+        cmd_scan(args)
+    else:
+        parser.print_help()
 
 if __name__ == "__main__":
     # Set UTF-8 encoding for Windows
     if sys.platform == "win32":
-        import io
         sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8', errors='replace')
     
     main()
