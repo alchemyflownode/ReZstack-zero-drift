@@ -1,0 +1,403 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sovereign JARVIS Dashboard</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: #f1f5f9;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background: rgba(30, 41, 59, 0.5);
+            border-radius: 1rem;
+            border: 1px solid #334155;
+        }
+        
+        h1 {
+            font-size: 3rem;
+            background: linear-gradient(90deg, #60a5fa, #a78bfa);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 0.5rem;
+        }
+        
+        .subtitle {
+            color: #94a3b8;
+            font-size: 1.2rem;
+        }
+        
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .card {
+            background: rgba(30, 41, 59, 0.7);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            border: 1px solid #334155;
+            transition: transform 0.3s, border-color 0.3s;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: #60a5fa;
+        }
+        
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 1px solid #334155;
+        }
+        
+        .card-icon {
+            font-size: 1.5rem;
+        }
+        
+        .card-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+        }
+        
+        .stat {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin: 0.5rem 0;
+        }
+        
+        .stat-critical { color: #ef4444; }
+        .stat-high { color: #f59e0b; }
+        .stat-ok { color: #10b981; }
+        
+        .issues-list {
+            margin-top: 1rem;
+        }
+        
+        .issue {
+            background: rgba(71, 85, 105, 0.5);
+            padding: 0.75rem;
+            margin-bottom: 0.5rem;
+            border-radius: 0.5rem;
+            border-left: 4px solid;
+        }
+        
+        .critical { border-left-color: #ef4444; }
+        .high { border-left-color: #f59e0b; }
+        .low { border-left-color: #60a5fa; }
+        
+        .controls {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            padding: 0.75rem 1.5rem;
+            background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+            color: white;
+            border: none;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: opacity 0.3s;
+        }
+        
+        .btn:hover { opacity: 0.9; }
+        .btn-scan { background: linear-gradient(90deg, #10b981, #059669); }
+        .btn-const { background: linear-gradient(90deg, #f59e0b, #d97706); }
+        .btn-audit { background: linear-gradient(90deg, #8b5cf6, #7c3aed); }
+        
+        .constitution-rules {
+            margin-top: 1rem;
+        }
+        
+        .rule {
+            background: rgba(71, 85, 105, 0.5);
+            padding: 1rem;
+            margin-bottom: 0.75rem;
+            border-radius: 0.5rem;
+            border: 1px solid #475569;
+        }
+        
+        .rule-id {
+            font-family: monospace;
+            background: #1e293b;
+            padding: 0.25rem 0.5rem;
+            border-radius: 0.25rem;
+            color: #60a5fa;
+        }
+        
+        .timestamp {
+            color: #94a3b8;
+            font-size: 0.875rem;
+            margin-top: 1rem;
+            text-align: center;
+        }
+        
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.7; }
+            100% { opacity: 1; }
+        }
+        
+        .scanning {
+            animation: pulse 1.5s infinite;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🛡️ Sovereign JARVIS</h1>
+            <p class="subtitle">Constitutional AI Co-Worker - Local Security Dashboard</p>
+        </header>
+        
+        <div class="dashboard-grid">
+            <!-- Security Status Card -->
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-icon">🔒</span>
+                    <h2 class="card-title">Security Status</h2>
+                </div>
+                <div class="stat stat-ok" id="criticalCount">0</div>
+                <p>Critical Issues</p>
+                <div class="stat stat-ok" id="highCount">0</div>
+                <p>High Severity Issues</p>
+                <div class="stat" id="totalFiles">0</div>
+                <p>Files Protected</p>
+            </div>
+            
+            <!-- Constitution Card -->
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-icon">⚖️</span>
+                    <h2 class="card-title">Constitution</h2>
+                </div>
+                <div class="constitution-rules" id="constitutionRules">
+                    <!-- Rules loaded dynamically -->
+                </div>
+                <p>3 Active Rules Enforced</p>
+            </div>
+            
+            <!-- Recent Issues Card -->
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-icon">🚨</span>
+                    <h2 class="card-title">Recent Issues</h2>
+                </div>
+                <div class="issues-list" id="issuesList">
+                    <p class="no-issues">No issues detected</p>
+                </div>
+            </div>
+            
+            <!-- Audit Trail Card -->
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-icon">📊</span>
+                    <h2 class="card-title">Audit Trail</h2>
+                </div>
+                <div id="auditEntries">
+                    <p>Loading audit log...</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="controls">
+            <button class="btn btn-scan" onclick="runScan()" id="scanBtn">
+                🔍 Run Security Scan
+            </button>
+            <button class="btn btn-const" onclick="viewConstitution()">
+                ⚖️ View Constitution
+            </button>
+            <button class="btn btn-audit" onclick="viewAudit()">
+                📊 View Audit Trail
+            </button>
+            <button class="btn" onclick="executeTask()">
+                ⚡ Execute Task
+            </button>
+        </div>
+        
+        <div class="timestamp" id="lastUpdated">
+            Last updated: Never
+        </div>
+    </div>
+    
+    <script>
+        // Mock data - in real implementation, this would come from API
+        const mockData = {
+            scan: {
+                files: 12,
+                critical: 0,
+                high: 0,
+                total: 1,
+                issues: [
+                    {
+                        type: "TODO_COMMENT",
+                        file: "risky_code.py:1",
+                        severity: "LOW",
+                        message: "TODO comment found"
+                    }
+                ]
+            },
+            constitution: [
+                {
+                    id: "git-001",
+                    domain: "code_implementation",
+                    description: "Only operate on Git-tracked content"
+                },
+                {
+                    id: "domain-001", 
+                    domain: "code_implementation",
+                    description: "Never touch credential storage"
+                },
+                {
+                    id: "scan-001",
+                    domain: "diagnostics",
+                    description: "Scan only within workspace boundaries"
+                }
+            ],
+            audit: [
+                "TASK_COMPLETE|demo_001|36a4339",
+                "TASK_REJECTED|evil_attempt|[git-001] violation",
+                "TASK_COMPLETE|sovereign_demo|68bf91f"
+            ]
+        };
+        
+        function updateDashboard() {
+            // Update stats
+            document.getElementById('criticalCount').textContent = mockData.scan.critical;
+            document.getElementById('highCount').textContent = mockData.scan.high;
+            document.getElementById('totalFiles').textContent = mockData.scan.files;
+            
+            // Update critical count color
+            const criticalEl = document.getElementById('criticalCount');
+            criticalEl.className = mockData.scan.critical > 0 ? 'stat stat-critical' : 'stat stat-ok';
+            
+            // Update constitution
+            const constitutionEl = document.getElementById('constitutionRules');
+            constitutionEl.innerHTML = mockData.constitution.map(rule => `
+                <div class="rule">
+                    <div class="rule-id">${rule.id}</div>
+                    <p>${rule.description}</p>
+                    <small>Domain: ${rule.domain}</small>
+                </div>
+            `).join('');
+            
+            // Update issues
+            const issuesEl = document.getElementById('issuesList');
+            if (mockData.scan.issues.length > 0) {
+                issuesEl.innerHTML = mockData.scan.issues.map(issue => `
+                    <div class="issue ${issue.severity.toLowerCase()}">
+                        <strong>${issue.type}</strong><br>
+                        ${issue.file}<br>
+                        <small>${issue.message}</small>
+                    </div>
+                `).join('');
+            } else {
+                issuesEl.innerHTML = '<p class="no-issues">✅ No issues detected</p>';
+            }
+            
+            // Update audit
+            const auditEl = document.getElementById('auditEntries');
+            auditEl.innerHTML = mockData.audit.map(entry => {
+                const icon = entry.includes('TASK_COMPLETE') ? '✅' : '❌';
+                return `<p>${icon} ${entry}</p>`;
+            }).join('');
+            
+            // Update timestamp
+            document.getElementById('lastUpdated').textContent = 
+                `Last updated: ${new Date().toLocaleTimeString()}`;
+        }
+        
+        function runScan() {
+            const btn = document.getElementById('scanBtn');
+            const originalText = btn.textContent;
+            
+            // Show scanning state
+            btn.textContent = '🔍 Scanning...';
+            btn.classList.add('scanning');
+            btn.disabled = true;
+            
+            // Simulate API call
+            setTimeout(() => {
+                // In real implementation, call your Python backend
+                // fetch('/api/scan').then(response => response.json()).then(data => {
+                //     mockData.scan = data;
+                //     updateDashboard();
+                // });
+                
+                // For demo, use mock data
+                mockData.scan.files = Math.floor(Math.random() * 20) + 5;
+                mockData.scan.critical = Math.random() > 0.8 ? 1 : 0;
+                mockData.scan.high = Math.random() > 0.6 ? Math.floor(Math.random() * 3) : 0;
+                mockData.scan.total = mockData.scan.critical + mockData.scan.high;
+                
+                updateDashboard();
+                
+                // Reset button
+                btn.textContent = originalText;
+                btn.classList.remove('scanning');
+                btn.disabled = false;
+                
+                // Show notification
+                if (mockData.scan.critical > 0) {
+                    alert(`🚨 ${mockData.scan.critical} CRITICAL issue(s) found!`);
+                } else if (mockData.scan.high > 0) {
+                    alert(`⚠️ ${mockData.scan.high} high severity issue(s) found`);
+                } else {
+                    alert('✅ Security scan passed!');
+                }
+            }, 1500);
+        }
+        
+        function viewConstitution() {
+            alert('Viewing Constitution - 3 active rules enforced');
+        }
+        
+        function viewAudit() {
+            alert('Viewing Audit Trail - All actions logged');
+        }
+        
+        function executeTask() {
+            const target = prompt('Enter target file:');
+            if (target) {
+                const action = prompt('Enter action (modify/create):', 'modify');
+                const content = prompt('Enter content:');
+                
+                if (action && content) {
+                    alert(`Task submitted: ${action} ${target}`);
+                    // In real implementation: call execute API
+                }
+            }
+        }
+        
+        // Initialize dashboard
+        updateDashboard();
+        
+        // Auto-refresh every 30 seconds
+        setInterval(updateDashboard, 30000);
+    </script>
+</body>
+</html>

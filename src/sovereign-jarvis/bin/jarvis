@@ -1,0 +1,9 @@
+#!/bin/bash
+# Sovereign JARVIS CLI Wrapper
+
+# Get the directory where this script is located
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+JARVIS_HOME="$(dirname "$SCRIPT_DIR")"
+
+# Run the Python CLI
+python3 "$JARVIS_HOME/jarvis.py" "$@"

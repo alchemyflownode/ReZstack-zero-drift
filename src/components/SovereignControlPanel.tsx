@@ -38,7 +38,7 @@ export const SovereignControlPanel: React.FC = () => {
   
   const handleSovereignLog = (event: CustomEvent) => {
     // Update chat or show notification
-    console.log('Sovereign Log:', event.detail);
+    // AUTO-HUSH: console.log('Sovereign Log:', event.detail);
   };
   
   const handleExecutionUpdate = (event: CustomEvent) => {

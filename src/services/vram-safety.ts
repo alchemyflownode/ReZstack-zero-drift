@@ -18,7 +18,7 @@ export class VRAMSafetyEnforcer {
 
   setSystemProfile(profile: SystemProfile): void {
     this.systemProfile = profile;
-    console.log('??? VRAM Safety enabled:', profile.gpu.vramGB, 'GB available');
+    // AUTO-HUSH: console.log('??? VRAM Safety enabled:', profile.gpu.vramGB, 'GB available');
   }
 
   /**
@@ -149,8 +149,8 @@ export class VRAMSafetyEnforcer {
     const model = REZSTACK_MODEL_ROSTER[modelId];
     if (model) {
       this.activeModels.set(modelId, model.recommendedVramGB);
-      console.log(`?? Model loaded: ${modelId} (${model.recommendedVramGB}GB VRAM)`);
-      console.log(`?? Total VRAM usage: ${this.getTotalVRAMUsage().toFixed(1)}GB`);
+      // AUTO-HUSH: console.log(`?? Model loaded: ${modelId} (${model.recommendedVramGB}GB VRAM);`);
+      // AUTO-HUSH: console.log(`?? Total VRAM usage: ${this.getTotalVRAMUsage();.toFixed(1)}GB`);
     }
   }
 
@@ -159,8 +159,8 @@ export class VRAMSafetyEnforcer {
    */
   unregisterModelLoad(modelId: string): void {
     if (this.activeModels.delete(modelId)) {
-      console.log(`?? Model unloaded: ${modelId}`);
-      console.log(`?? Total VRAM usage: ${this.getTotalVRAMUsage().toFixed(1)}GB`);
+      // AUTO-HUSH: console.log(`?? Model unloaded: ${modelId}`);
+      // AUTO-HUSH: console.log(`?? Total VRAM usage: ${this.getTotalVRAMUsage();.toFixed(1)}GB`);
     }
   }
 
@@ -233,3 +233,4 @@ export class VRAMSafetyEnforcer {
 }
 
 export const vramSafety = new VRAMSafetyEnforcer();
+

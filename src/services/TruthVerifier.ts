@@ -1,4 +1,4 @@
-﻿// src/services/TruthVerifier.ts
+// src/services/TruthVerifier.ts
 import { execSync } from 'child_process';
 import { writeFileSync, unlinkSync, existsSync } from 'fs';
 import { join } from 'path';
@@ -45,7 +45,7 @@ export class TruthVerifier {
           astValid: this.verifyAST(code)
         };
         
-      } catch (execError: any) {
+      } catch (execError: unknown) {
         // tsc exited with errors
         const output = execError.stdout?.toString() || execError.message;
         const errorLines = output.split('\n').filter((line: string) => line.includes('error TS'));
@@ -58,7 +58,7 @@ export class TruthVerifier {
         };
       }
       
-    } catch (error: any) {
+    } catch (error: unknown) {
       return {
         isValid: false,
         errors: [`Verification failed: ${error.message}`],
@@ -99,3 +99,4 @@ export class TruthVerifier {
     }
   }
 }
+

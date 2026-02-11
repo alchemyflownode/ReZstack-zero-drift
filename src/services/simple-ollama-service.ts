@@ -4,11 +4,11 @@
 export class SimpleOllamaService {
   
   constructor() {
-    console.log('? SimpleOllamaService initialized');
+    // AUTO-HUSH: console.log('? SimpleOllamaService initialized');
   }
 
   async* generateStream(prompt: string, model: string = 'llama3.2') {
-    console.log(`Generating stream for: "${prompt.substring(0, 50)}..." with model: ${model}`);
+    // AUTO-HUSH: console.log(`Generating stream for: "${prompt.substring(0, 50);}..." with model: ${model}`);
     
     // Return a simple stream
     const responses = [
@@ -38,3 +38,4 @@ export class SimpleOllamaService {
 }
 
 export default SimpleOllamaService;
+

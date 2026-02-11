@@ -1,4 +1,4 @@
-# File: G:\okiru\app builder\RezStackFinal\src\constitutional_bridge\constitutional_router.py
+﻿# File: G:\okiru\app builder\RezStackFinal\src\constitutional_bridge\constitutional_router.py
 """
 Constitutional Router Bridge
 Uses Constitutional Judge to guide Ollama Smart Router decisions
@@ -59,7 +59,11 @@ class ConstitutionalRouterBridge:
             
             # Create embedding (simplified - in reality use proper embedding)
             import numpy as np
-            embedding = np.random.randn(512).astype(np.float32)
+                        # REAL embedding using SentenceTransformer
+            from sentence_transformers import SentenceTransformer
+            if not hasattr(self, '_embedder'):
+                self._embedder = SentenceTransformer('all-MiniLM-L6-v2')
+            embedding = self._embedder.encode(query)
             
             # Score
             score = judge.score(embedding)
@@ -209,3 +213,4 @@ def test_bridge():
 
 if __name__ == "__main__":
     test_bridge()
+

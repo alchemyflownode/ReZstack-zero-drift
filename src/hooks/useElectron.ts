@@ -45,9 +45,9 @@ export function useElectron() {
     setElectron(electronAPI);
     
     if (electronAPI) {
-      console.log('✅ Electron API detected');
+      // AUTO-HUSH: console.log('✅ Electron API detected');
     } else {
-      console.log('🌐 Running in browser mode');
+      // AUTO-HUSH: console.log('🌐 Running in browser mode');
     }
   }, []);
 
@@ -57,3 +57,4 @@ export function useElectron() {
 export function isRunningInElectron(): boolean {
   return typeof window !== 'undefined' && !!window.electron;
 }
+

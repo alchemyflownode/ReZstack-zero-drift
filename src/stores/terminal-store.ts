@@ -83,11 +83,11 @@ export const useTerminalStore = create<TerminalState>((set, get) => ({
       // Check if running in Electron
       if (typeof window !== 'undefined' && (window as any).electron) {
         // Use Electron bridge
-        console.log('??? Executing via Electron bridge:', command);
+        // AUTO-HUSH: console.log('??? Executing via Electron bridge:', command);
         data = await (window as any).electron.execute(command);
       } else {
         // Use HTTP for web version (FIXED PORT: 3001)
-        console.log('?? Executing via HTTP:', command);
+        // AUTO-HUSH: console.log('?? Executing via HTTP:', command);
         const response = await fetch("http://localhost:3001/api/rezonic", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -153,7 +153,7 @@ export const useTerminalStore = create<TerminalState>((set, get) => ({
           ].slice(0, 100),
         });
       }
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error('Terminal execution error:', error);
       
       addMessage({
@@ -208,7 +208,7 @@ export const useTerminalStore = create<TerminalState>((set, get) => ({
           text: `? Failed to stop: ${data.error || 'Unknown error'}`,
         });
       }
-    } catch (error: any) {
+    } catch (error: unknown) {
       addMessage({
         type: "error",
         text: `? Error stopping command: ${error.message}`,
@@ -275,3 +275,5 @@ export const useTerminalStore = create<TerminalState>((set, get) => ({
     );
   },
 }));
+
+

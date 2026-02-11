@@ -16,7 +16,7 @@ export class RezStackStressTest {
   private baseUrl = 'http://localhost:11434';
 
   async runAll(): Promise<TestResult[]> {
-    console.log('?? Starting RezStack Stress Tests\n');
+    // AUTO-HUSH: console.log('?? Starting RezStack Stress Tests\n');
     
     await this.testOllamaConnection();
     await this.testSimpleGeneration();
@@ -37,7 +37,7 @@ export class RezStackStressTest {
         duration: Date.now() - start,
         details: `? ${data.models?.length || 0} models available`
       });
-    } catch (error: any) {
+    } catch (error: unknown) {
       this.results.push({
         name: 'Ollama Connection',
         passed: false,
@@ -68,7 +68,7 @@ export class RezStackStressTest {
         duration: Date.now() - start,
         details: `? ${data.response?.length || 0} chars generated`
       });
-    } catch (error: any) {
+    } catch (error: unknown) {
       this.results.push({
         name: 'Simple Generation',
         passed: false,
@@ -100,7 +100,7 @@ export class RezStackStressTest {
         duration: Date.now() - start,
         details: hasCode ? '? Code generated' : '? No code detected'
       });
-    } catch (error: any) {
+    } catch (error: unknown) {
       this.results.push({
         name: 'Code Generation',
         passed: false,
@@ -112,16 +112,18 @@ export class RezStackStressTest {
   }
 
   private printResults(): void {
-    console.log('\n?? RESULTS\n');
+    // AUTO-HUSH: console.log('\n?? RESULTS\n');
     const passed = this.results.filter(r => r.passed).length;
     
     this.results.forEach(r => {
-      console.log(`${r.passed ? '?' : '?'} ${r.name} (${r.duration}ms) - ${r.details}`);
-      if (r.error) console.log(`   Error: ${r.error}`);
+      // AUTO-HUSH: console.log(`${r.passed ? '?' : '?'} ${r.name} (${r.duration}ms); - ${r.details}`);
+      if (r.error) // AUTO-HUSH: console.log(`   Error: ${r.error}`);
     });
     
-    console.log(`\n${passed}/${this.results.length} passed\n`);
+    // AUTO-HUSH: console.log(`\n${passed}/${this.results.length} passed\n`);
   }
 }
 
 export const stressTest = new RezStackStressTest();
+
+

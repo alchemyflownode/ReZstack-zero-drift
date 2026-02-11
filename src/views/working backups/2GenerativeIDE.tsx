@@ -42,7 +42,7 @@ export const GenerativeIDE: React.FC<GenerativeIDEProps> = ({ availableModels = 
         if (names.includes('llama3.2:latest')) setSelectedModel('llama3.2:latest');
         else if (names.length > 0) setSelectedModel(names[0]);
       } catch (err) {
-        console.log("Using fallback models...");
+        // AUTO-HUSH: console.log("Using fallback models...");
         setModels(['llama3.2:latest', 'codellama', 'mistral']);
       }
     };
@@ -322,3 +322,4 @@ function helloRez() {
 };
 
 export default GenerativeIDE;
+

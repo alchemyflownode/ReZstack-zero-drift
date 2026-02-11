@@ -1,0 +1,18 @@
+﻿# SOVEREIGN AI QUICK COMMANDS
+# ============================
+
+# Restart everything
+.\SOVEREIGN-AI-MASTER.ps1
+
+# Start without ComfyUI
+.\SOVEREIGN-AI-MASTER.ps1 -NoComfyUI
+
+# Start without JARVIS
+.\SOVEREIGN-AI-MASTER.ps1 -NoJARVIS
+
+# Start with quick security scan
+.\SOVEREIGN-AI-MASTER.ps1 -QuickScan
+
+# Check logs
+Get-Content "G:\okiru\app builder\RezStackFinal2\RezStackFinal\logs\swarm-*.log" -Tail 50
+Get-Content "G:\okiru\app builder\RezStackFinal2\RezStackFinal\logs\bridge-*.log" -Tail 50

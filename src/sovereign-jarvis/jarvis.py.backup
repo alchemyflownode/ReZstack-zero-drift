@@ -1,0 +1,338 @@
+#!/usr/bin/env python3
+"""
+Sovereign JARVIS CLI
+
+Your constitutional co-pilot. Local, deterministic, sovereign.
+"""
+
+import os
+import sys
+import json
+import argparse
+from pathlib import Path
+from datetime import datetime
+from typing import Optional
+
+# Add parent directory to path for imports
+sys.path.insert(0, str(Path(__file__).parent))
+
+from constitution.rules import get_constitution, Constitution
+from memory.context import MemoryManager
+from agents.researcher import Researcher
+from agents.executor import Executor
+from agents.auditor import Auditor
+
+
+VERSION = "1.0.0"
+
+
+class JarvisCLI:
+    """Main JARVIS CLI interface"""
+    
+    def __init__(self, repo_path: str = "."):
+        self.repo_path = Path(repo_path).resolve()
+        self.constitution = get_constitution()
+        self.memory = MemoryManager(repo_path)
+        
+        # Ensure we're in a git repo
+        if not (self.repo_path / ".git").exists():
+            print("❌ Not a Git repository. Run 'jarvis init' to initialize.")
+            sys.exit(1)
+    
+    def status(self):
+        """Show JARVIS status"""
+        print(f"\n🤖 SOVEREIGN JARVIS v{VERSION}")
+        print(f"   constitution: {self.constitution.hash}")
+        print("─" * 50)
+        
+        # System health
+        print("✅ System health: nominal")
+        
+        # Context
+        self.memory.sync("7.days.ago")
+        activity = self.memory.db.get_recent_activity(7)
+        print(f"🧠 Context: {activity['commits']} commits analyzed (last 7d)")
+        
+        # Open TODOs
+        open_todos = self.memory.db.get_open_todos(older_than_days=0)
+        print(f"⏳ Pending tasks: {len(open_todos)}")
+        
+        # Auto-executions
+        print(f"\n✅ Pre-authorized automations:")
+        for auto in self.constitution.AUTO_EXECUTE[:5]:
+            print(f"   • {auto}")
+        
+        print()
+    
+    def scan(self):
+        """Scan for opportunities"""
+        print("\n🔍 Scanning for opportunities...\n")
+        
+        researcher = Researcher(self.repo_path, self.constitution)
+        proposals = researcher.scan()
+        
+        if not proposals:
+            print("No opportunities found. Your codebase is clean! ✨")
+            return
+        
+        print(f"Found {len(proposals)} opportunities:\n")
+        print("─" * 60)
+        
+        for i, p in enumerate(proposals, 1):
+            status = "🟡" if p.requires_approval else "🟢"
+            print(f"\n[{i}] {p.id}")
+            print(f"    {status} {p.description}")
+            print(f"    Confidence: {p.confidence.value} | Effort: {p.estimated_effort}")
+            print(f"    Files: {', '.join(p.affected_files)}")
+        
+        print(f"\n\nRun 'jarvis execute <task-id>' to execute a task")
+    
+    def execute(self, task_id: str, dry_run: bool = False):
+        """Execute a task"""
+        # First scan to get proposals
+        researcher = Researcher(self.repo_path, self.constitution)
+        proposals = researcher.scan()
+        
+        # Find the task
+        proposal = None
+        for p in proposals:
+            if p.id == task_id or p.id.endswith(task_id):
+                proposal = p
+                break
+        
+        if not proposal:
+            print(f"❌ Task '{task_id}' not found")
+            print("\nAvailable tasks:")
+            for p in proposals:
+                print(f"  - {p.id}")
+            return
+        
+        # Confirm if required
+        if proposal.requires_approval and not dry_run:
+            print(f"\n🟡 This task requires approval:")
+            print(f"   {proposal.description}")
+            confirm = input("\nExecute? [y/N]: ")
+            if confirm.lower() != 'y':
+                print("Cancelled.")
+                return
+        
+        # Execute
+        print(f"\n[sovereign] Executing {proposal.id}...\n")
+        
+        executor = Executor(self.repo_path, self.constitution)
+        result = executor.execute(proposal, dry_run=dry_run)
+        
+        print(f"\n{'='*60}")
+        if result.success:
+            print(f"✅ Task completed successfully")
+            if result.commit_hash:
+                print(f"   Commit: {result.commit_hash[:7]}")
+        else:
+            print(f"❌ Task failed: {result.message}")
+    
+    def audit(self, commit: str = "HEAD"):
+        """Run constitutional audit"""
+        print(f"\n🔍 Running constitutional audit on {commit}...\n")
+        
+        auditor = Auditor(self.repo_path, self.constitution)
+        report = auditor.audit_commit(commit)
+        
+        print(f"Constitution: {report.summary.get('constitutional_hash', 'N/A')}")
+        print(f"Result: {'✅ PASSED' if report.passed else '❌ VIOLATIONS DETECTED'}")
+        
+        if report.findings:
+            print(f"\nFindings ({len(report.findings)}):")
+            for f in report.findings:
+                icon = "❌" if f.level.value == "violation" else "⚠️"
+                print(f"\n  {icon} {f.rule_id}: {f.message}")
+                if f.file:
+                    loc = f"{f.file}:{f.line}" if f.line else f.file
+                    print(f"     Location: {loc}")
+    
+    def init_repo(self):
+        """Initialize JARVIS in current repository"""
+        print(f"\n🚀 Initializing Sovereign JARVIS...\n")
+        
+        # Check if already initialized
+        config_path = self.repo_path / ".jarvis-config"
+        if config_path.exists():
+            print("JARVIS already initialized in this repository.")
+            return
+        
+        # Create config
+        config = {
+            "version": VERSION,
+            "initialized_at": datetime.now().isoformat(),
+            "constitution_hash": self.constitution.hash,
+            "settings": {
+                "auto_lint": True,
+                "auto_format": True,
+                "require_approval": True
+            }
+        }
+        
+        config_path.write_text(json.dumps(config, indent=2))
+        
+        # Create constitution directory
+        constitution_dir = self.repo_path / "constitution"
+        constitution_dir.mkdir(exist_ok=True)
+        
+        # Install pre-commit hook
+        auditor = Auditor(self.repo_path, self.constitution)
+        auditor.install_hook()
+        
+        print("✅ Repository initialized")
+        print(f"   Config: {config_path}")
+        print(f"   Constitution: {constitution_dir}")
+        print(f"   Pre-commit hook: installed")
+        print(f"\n🤖 Your co-pilot awaits.")
+        print(f"   Run 'jarvis status' to check system status")
+        print(f"   Run 'jarvis scan' to find opportunities")
+    
+    def config(self, key: str = None, value: str = None):
+        """Show or update configuration"""
+        config_path = self.repo_path / ".jarvis-config"
+        
+        if not config_path.exists():
+            print("❌ Repository not initialized. Run 'jarvis init' first.")
+            return
+        
+        config = json.loads(config_path.read_text())
+        
+        if key is None:
+            # Show all config
+            print(f"\n⚙️  JARVIS Configuration:\n")
+            print(json.dumps(config, indent=2))
+        elif value is None:
+            # Show specific key
+            keys = key.split('.')
+            val = config
+            for k in keys:
+                val = val.get(k, {})
+            print(f"{key}: {val}")
+        else:
+            # Update key
+            keys = key.split('.')
+            target = config
+            for k in keys[:-1]:
+                if k not in target:
+                    target[k] = {}
+                target = target[k]
+            
+            # Parse value
+            if value.lower() in ('true', 'false'):
+                parsed_value = value.lower() == 'true'
+            elif value.isdigit():
+                parsed_value = int(value)
+            else:
+                parsed_value = value
+            
+            target[keys[-1]] = parsed_value
+            config_path.write_text(json.dumps(config, indent=2))
+            print(f"✅ Updated {key} = {parsed_value}")
+    
+    def constitution_show(self):
+        """Display the constitution"""
+        print(f"\n📜 Sovereign Constitution v{self.constitution.VERSION}")
+        print(f"   Hash: {self.constitution.hash}")
+        print("─" * 60)
+        
+        print(f"\n🌐 Allowed Domains:")
+        for domain in self.constitution.ALLOWED_DOMAINS:
+            print(f"   ✅ {domain.value}")
+        
+        print(f"\n🚫 Hard Refusals:")
+        for action, reason in self.constitution.REFUSALS.items():
+            print(f"   ❌ {action}: {reason}")
+        
+        print(f"\n⚡ Pre-authorized Automations:")
+        for auto in self.constitution.AUTO_EXECUTE:
+            print(f"   🟢 {auto}")
+        
+        print(f"\n📏 Execution Limits:")
+        for limit, value in self.constitution.LIMITS.items():
+            print(f"   • {limit}: {value}")
+        
+        print()
+
+
+def main():
+    parser = argparse.ArgumentParser(
+        description="Sovereign JARVIS - Your constitutional co-pilot",
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+        epilog="""
+Examples:
+  jarvis init              Initialize JARVIS in current repo
+  jarvis status            Show system status
+  jarvis scan              Find improvement opportunities
+  jarvis execute task#1    Execute a specific task
+  jarvis audit             Run constitutional audit
+  jarvis constitution      Show constitutional rules
+        """
+    )
+    
+    parser.add_argument("--repo", default=".", help="Repository path")
+    parser.add_argument("--version", action="version", version=f"%(prog)s {VERSION}")
+    
+    subparsers = parser.add_subparsers(dest="command", help="Commands")
+    
+    # init
+    init_parser = subparsers.add_parser("init", help="Initialize JARVIS in repository")
+    
+    # status
+    status_parser = subparsers.add_parser("status", help="Show system status")
+    
+    # scan
+    scan_parser = subparsers.add_parser("scan", help="Scan for opportunities")
+    
+    # execute
+    execute_parser = subparsers.add_parser("execute", help="Execute a task")
+    execute_parser.add_argument("task_id", help="Task ID to execute")
+    execute_parser.add_argument("--dry-run", action="store_true", help="Simulate without changes")
+    
+    # audit
+    audit_parser = subparsers.add_parser("audit", help="Run constitutional audit")
+    audit_parser.add_argument("--commit", default="HEAD", help="Commit to audit")
+    
+    # config
+    config_parser = subparsers.add_parser("config", help="Manage configuration")
+    config_parser.add_argument("key", nargs="?", help="Config key")
+    config_parser.add_argument("value", nargs="?", help="Config value")
+    
+    # constitution
+    const_parser = subparsers.add_parser("constitution", help="Show constitutional rules")
+    
+    args = parser.parse_args()
+    
+    if not args.command:
+        parser.print_help()
+        return
+    
+    try:
+        jarvis = JarvisCLI(args.repo)
+        
+        if args.command == "init":
+            jarvis.init_repo()
+        elif args.command == "status":
+            jarvis.status()
+        elif args.command == "scan":
+            jarvis.scan()
+        elif args.command == "execute":
+            jarvis.execute(args.task_id, dry_run=args.dry_run)
+        elif args.command == "audit":
+            jarvis.audit(args.commit)
+        elif args.command == "config":
+            jarvis.config(args.key, args.value)
+        elif args.command == "constitution":
+            jarvis.constitution_show()
+    
+    except KeyboardInterrupt:
+        print("\n\nInterrupted.")
+        sys.exit(1)
+    except Exception as e:
+        print(f"\n❌ Error: {e}")
+        sys.exit(1)
+
+
+if __name__ == "__main__":
+    main()

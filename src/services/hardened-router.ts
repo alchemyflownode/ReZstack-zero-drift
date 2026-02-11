@@ -21,7 +21,7 @@ export class HardenedRezStackRouter {
     
     // 1. Vision tasks ? Only vision model
     if (requirements.needsVision) {
-      console.log('??? Vision task detected ? Vision model');
+      // AUTO-HUSH: console.log('??? Vision task detected ? Vision model');
       return {
         model: 'llama3.2-vision:11b',
         reason: 'Vision task requires multimodal capabilities',
@@ -35,7 +35,7 @@ export class HardenedRezStackRouter {
     if (requirements.complexity === 'complex' && this.hasEnoughVRAM(12)) {
       const heavyModel = this.selectHeavyModel(requirements);
       if (heavyModel) {
-        console.log('?? Complex task ? Heavy model:', heavyModel);
+        // AUTO-HUSH: console.log('?? Complex task ? Heavy model:', heavyModel);
         return {
           model: heavyModel,
           reason: 'Complex task requires high reasoning capabilities',
@@ -49,7 +49,7 @@ export class HardenedRezStackRouter {
     // 3. Code tasks ? Code models
     if (requirements.needsCode) {
       const codeModel = this.selectCodeModel(requirements);
-      console.log('?? Code task ? Code model:', codeModel);
+      // AUTO-HUSH: console.log('?? Code task ? Code model:', codeModel);
       return {
         model: codeModel,
         reason: 'Code task requires programming expertise',
@@ -61,7 +61,7 @@ export class HardenedRezStackRouter {
     
     // 4. General tasks ? Balance of speed and quality
     const generalModel = this.selectGeneralModel(requirements);
-    console.log('?? General task ? General model:', generalModel);
+    // AUTO-HUSH: console.log('?? General task ? General model:', generalModel);
     return {
       model: generalModel,
       reason: 'General purpose task',
@@ -265,8 +265,9 @@ export class HardenedRezStackRouter {
   releaseModel(modelId: string): void {
     const current = this.activeRequests.get(modelId) || 0;
     this.activeRequests.set(modelId, Math.max(0, current - 1));
-    console.log(`?? Released ${modelId}, active: ${this.activeRequests.get(modelId)}`);
+    // AUTO-HUSH: console.log(`?? Released ${modelId}, active: ${this.activeRequests.get(modelId);}`);
   }
 }
 
 export default HardenedRezStackRouter;
+

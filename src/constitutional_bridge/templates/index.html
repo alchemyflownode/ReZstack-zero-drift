@@ -1,0 +1,366 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Constitutional AI Router</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .glass {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .pulse-safe { animation: pulse-green 2s infinite; }
+        .pulse-warning { animation: pulse-yellow 2s infinite; }
+        .pulse-danger { animation: pulse-red 2s infinite; }
+        
+        @keyframes pulse-green {
+            0%, 100% { box-shadow: 0 0 20px rgba(16, 185, 129, 0.5); }
+            50% { box-shadow: 0 0 40px rgba(16, 185, 129, 0.8); }
+        }
+        
+        @keyframes pulse-yellow {
+            0%, 100% { box-shadow: 0 0 20px rgba(245, 158, 11, 0.5); }
+            50% { box-shadow: 0 0 40px rgba(245, 158, 11, 0.8); }
+        }
+        
+        @keyframes pulse-red {
+            0%, 100% { box-shadow: 0 0 20px rgba(239, 68, 68, 0.5); }
+            50% { box-shadow: 0 0 40px rgba(239, 68, 68, 0.8); }
+        }
+        
+        .score-meter {
+            transition: all 0.5s ease;
+        }
+        
+        .destination-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .destination-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .example-chip {
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+        
+        .example-chip:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+    <div class="container mx-auto px-4 py-8">
+        <!-- Header -->
+        <div class="text-center mb-12">
+            <h1 class="text-5xl font-bold text-white mb-4">
+                <i class="fas fa-shield-alt mr-4"></i>
+                Constitutional AI Router
+            </h1>
+            <p class="text-xl text-white/80 max-w-2xl mx-auto">
+                Safely route AI queries based on constitutional principles.
+                Protects against harmful content while enabling productive AI use.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <!-- Left Column: Input -->
+            <div class="lg:col-span-2">
+                <div class="glass rounded-2xl p-8">
+                    <h2 class="text-2xl font-bold text-white mb-6">
+                        <i class="fas fa-search mr-3"></i>Analyze Query
+                    </h2>
+                    
+                    <div class="mb-6">
+                        <textarea 
+                            id="queryInput" 
+                            class="w-full h-40 p-4 rounded-xl bg-white/10 border border-white/20 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-white/30 focus:border-transparent resize-none"
+                            placeholder="Enter a query to analyze its constitutional safety...&#10;Examples:&#10;• 'Explain constitutional AI'&#10;• 'How to hack a website'&#10;• 'Teach me programming safely'"
+                        ></textarea>
+                    </div>
+                    
+                    <div class="flex flex-wrap gap-4 mb-6">
+                        <button 
+                            onclick="analyzeQuery()"
+                            class="flex-1 bg-white text-purple-700 py-4 px-6 rounded-xl font-bold text-lg hover:bg-white/90 transition duration-300 flex items-center justify-center"
+                        >
+                            <i class="fas fa-play-circle mr-3"></i> Analyze Query
+                        </button>
+                        <button 
+                            onclick="clearQuery()"
+                            class="px-6 py-4 rounded-xl font-bold text-lg border-2 border-white/30 text-white hover:bg-white/10 transition duration-300"
+                        >
+                            <i class="fas fa-eraser mr-2"></i> Clear
+                        </button>
+                    </div>
+                    
+                    <!-- Examples -->
+                    <div class="mb-6">
+                        <h3 class="text-lg font-semibold text-white mb-3">
+                            <i class="fas fa-lightbulb mr-2"></i>Try Examples:
+                        </h3>
+                        <div id="examples" class="flex flex-wrap gap-2">
+                            <!-- Examples will be loaded here -->
+                        </div>
+                    </div>
+                    
+                    <!-- System Status -->
+                    <div class="glass rounded-xl p-4">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <h4 class="font-bold text-white">
+                                    <i class="fas fa-server mr-2"></i>System Status
+                                </h4>
+                                <p class="text-white/70 text-sm">Constitutional AI Router v1.0.0</p>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-3 h-3 bg-green-500 rounded-full mr-2"></div>
+                                <span class="text-white font-medium">Operational</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column: Results -->
+            <div>
+                <div class="glass rounded-2xl p-8 h-full">
+                    <h2 class="text-2xl font-bold text-white mb-6">
+                        <i class="fas fa-chart-bar mr-3"></i>Analysis Results
+                    </h2>
+                    
+                    <!-- Score Display -->
+                    <div id="scoreSection" class="hidden">
+                        <div class="text-center mb-8">
+                            <div class="text-6xl font-bold text-white mb-2" id="scoreValue">0.0</div>
+                            <div class="text-white/80">Constitutional Score</div>
+                            <div class="mt-2">
+                                <span id="gradeBadge" class="inline-block px-4 py-1 rounded-full text-white font-bold"></span>
+                            </div>
+                        </div>
+                        
+                        <!-- Score Meter -->
+                        <div class="mb-8">
+                            <div class="flex justify-between text-white/70 text-sm mb-2">
+                                <span>Dangerous</span>
+                                <span>Neutral</span>
+                                <span>Safe</span>
+                            </div>
+                            <div class="h-4 bg-white/10 rounded-full overflow-hidden">
+                                <div id="scoreMeter" class="h-full rounded-full transition-all duration-1000"></div>
+                            </div>
+                            <div class="flex justify-between mt-2">
+                                <span class="text-white/70 text-sm">0</span>
+                                <span class="text-white/70 text-sm">50</span>
+                                <span class="text-white/70 text-sm">100</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Destination Card -->
+                        <div id="destinationCard" class="destination-card rounded-xl p-6 mb-6">
+                            <div class="flex items-center mb-4">
+                                <div id="destinationIcon" class="text-3xl mr-4"></div>
+                                <div>
+                                    <h3 id="destinationName" class="text-xl font-bold"></h3>
+                                    <p id="destinationDesc" class="text-white/70"></p>
+                                </div>
+                            </div>
+                            <p id="destinationReason" class="text-white/80 mb-4"></p>
+                            <div class="flex items-center">
+                                <i class="fas fa-bolt mr-2 text-yellow-400"></i>
+                                <span id="destinationAction" class="font-medium"></span>
+                            </div>
+                        </div>
+                        
+                        <!-- Query Info -->
+                        <div class="glass rounded-xl p-4 mb-4">
+                            <h4 class="font-bold text-white mb-2">
+                                <i class="fas fa-question-circle mr-2"></i>Original Query
+                            </h4>
+                            <p id="originalQuery" class="text-white/80 italic"></p>
+                        </div>
+                        
+                        <!-- Analysis Details -->
+                        <div class="glass rounded-xl p-4">
+                            <h4 class="font-bold text-white mb-2">
+                                <i class="fas fa-info-circle mr-2"></i>Analysis Details
+                            </h4>
+                            <div class="space-y-2">
+                                <div class="flex justify-between">
+                                    <span class="text-white/70">Method:</span>
+                                    <span class="text-white font-medium">Heuristic Rules</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-white/70">Confidence:</span>
+                                    <span class="text-white font-medium">High</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-white/70">Processing:</span>
+                                    <span class="text-white font-medium">Instant</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Empty State -->
+                    <div id="emptyState" class="text-center py-12">
+                        <i class="fas fa-search text-5xl text-white/30 mb-4"></i>
+                        <h3 class="text-xl font-bold text-white/50 mb-2">No Query Analyzed</h3>
+                        <p class="text-white/40">Enter a query to see constitutional analysis results</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <div class="mt-12 text-center text-white/60 text-sm">
+            <p>
+                <i class="fas fa-shield-alt mr-2"></i>
+                Constitutional AI Router • Protecting AI interactions through constitutional principles
+            </p>
+            <p class="mt-2">
+                <i class="fas fa-cpu mr-2"></i>
+                Heuristic-based • 100% Reliable • No Neural Network Dependencies
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // Load examples
+        async function loadExamples() {
+            try {
+                const response = await fetch('/api/examples');
+                const examples = await response.json();
+                const container = document.getElementById('examples');
+                
+                examples.forEach(example => {
+                    const chip = document.createElement('div');
+                    chip.className = `example-chip px-4 py-2 rounded-full text-sm font-medium cursor-pointer ${
+                        example.type === 'safe' ? 'bg-green-500/20 text-green-300 border border-green-500/30' :
+                        example.type === 'dangerous' ? 'bg-red-500/20 text-red-300 border border-red-500/30' :
+                        'bg-yellow-500/20 text-yellow-300 border border-yellow-500/30'
+                    }`;
+                    chip.textContent = example.text;
+                    chip.onclick = () => {
+                        document.getElementById('queryInput').value = example.text;
+                    };
+                    container.appendChild(chip);
+                });
+            } catch (error) {
+                console.error('Failed to load examples:', error);
+            }
+        }
+        
+        // Analyze query
+        async function analyzeQuery() {
+            const query = document.getElementById('queryInput').value.trim();
+            if (!query) {
+                alert('Please enter a query to analyze.');
+                return;
+            }
+            
+            try {
+                const response = await fetch('/api/analyze', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ query })
+                });
+                
+                const result = await response.json();
+                displayResults(result);
+            } catch (error) {
+                console.error('Analysis failed:', error);
+                alert('Failed to analyze query. Please try again.');
+            }
+        }
+        
+        // Display results
+        function displayResults(data) {
+            // Show results section, hide empty state
+            document.getElementById('scoreSection').classList.remove('hidden');
+            document.getElementById('emptyState').classList.add('hidden');
+            
+            // Update score
+            document.getElementById('scoreValue').textContent = data.score;
+            
+            // Update grade
+            const gradeBadge = document.getElementById('gradeBadge');
+            gradeBadge.textContent = `${data.grade.letter} Grade (${data.grade.label})`;
+            gradeBadge.style.backgroundColor = data.grade.color;
+            
+            // Update score meter
+            const scoreMeter = document.getElementById('scoreMeter');
+            const width = Math.min(100, Math.max(0, data.score));
+            scoreMeter.style.width = `${width}%`;
+            
+            // Set meter color based on destination
+            if (data.score >= 75) {
+                scoreMeter.style.backgroundColor = '#10B981';
+                scoreMeter.className = 'h-full rounded-full transition-all duration-1000 pulse-safe';
+            } else if (data.score >= 55) {
+                scoreMeter.style.backgroundColor = '#F59E0B';
+                scoreMeter.className = 'h-full rounded-full transition-all duration-1000 pulse-warning';
+            } else {
+                scoreMeter.style.backgroundColor = '#EF4444';
+                scoreMeter.className = 'h-full rounded-full transition-all duration-1000 pulse-danger';
+            }
+            
+            // Update destination card
+            const dest = data.destination;
+            const card = document.getElementById('destinationCard');
+            card.style.backgroundColor = dest.color + '20';
+            card.style.border = `2px solid ${dest.color}40`;
+            
+            document.getElementById('destinationIcon').textContent = dest.icon;
+            document.getElementById('destinationName').textContent = dest.name;
+            document.getElementById('destinationName').style.color = dest.color;
+            document.getElementById('destinationDesc').textContent = dest.description;
+            document.getElementById('destinationReason').textContent = dest.reason;
+            document.getElementById('destinationAction').textContent = dest.action;
+            document.getElementById('destinationAction').style.color = dest.color;
+            
+            // Update query
+            document.getElementById('originalQuery').textContent = data.query;
+        }
+        
+        // Clear query
+        function clearQuery() {
+            document.getElementById('queryInput').value = '';
+            document.getElementById('scoreSection').classList.add('hidden');
+            document.getElementById('emptyState').classList.remove('hidden');
+        }
+        
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            loadExamples();
+            
+            // Enter key to analyze
+            document.getElementById('queryInput').addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' && (e.ctrlKey || e.metaKey)) {
+                    analyzeQuery();
+                }
+            });
+            
+            // Load a default example
+            setTimeout(() => {
+                document.getElementById('queryInput').value = "Explain constitutional AI principles";
+            }, 500);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,1162 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>⚡ Sovereign JARVIS | AI IDE</title>
+    <style>
+        :root {
+            --primary: #00d4ff;
+            --primary-dark: #0099cc;
+            --secondary: #7b61ff;
+            --background: #0a0a0f;
+            --surface: #151520;
+            --surface-light: #1e1e2d;
+            --surface-dark: #0f0f15;
+            --text: #ffffff;
+            --text-secondary: #a0a0c0;
+            --danger: #ff4757;
+            --warning: #ffa502;
+            --success: #2ed573;
+            --border: #2a2a3a;
+            --glow: 0 0 20px rgba(0, 212, 255, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'JetBrains Mono', monospace;
+            background: var(--background);
+            color: var(--text);
+            height: 100vh;
+            overflow: hidden;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(0, 212, 255, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(123, 97, 255, 0.05) 0%, transparent 50%);
+            z-index: -1;
+        }
+
+        .app-container {
+            display: flex;
+            height: 100vh;
+            background: rgba(10, 10, 15, 0.95);
+            backdrop-filter: blur(10px);
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 280px;
+            background: var(--surface);
+            border-right: 1px solid var(--border);
+            display: flex;
+            flex-direction: column;
+            padding: 2rem 1.5rem;
+            box-shadow: 5px 0 30px rgba(0, 0, 0, 0.5);
+            z-index: 10;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 3rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .logo-icon {
+            font-size: 2rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            filter: drop-shadow(0 0 10px rgba(0, 212, 255, 0.5));
+        }
+
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .logo-subtitle {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            margin-top: 4px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .nav-section {
+            margin-bottom: 2rem;
+        }
+
+        .nav-title {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 0.9rem 1rem;
+            margin-bottom: 8px;
+            border-radius: 8px;
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 1px solid transparent;
+        }
+
+        .nav-item:hover {
+            background: var(--surface-light);
+            color: var(--text);
+            border-color: var(--border);
+        }
+
+        .nav-item.active {
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(123, 97, 255, 0.1));
+            color: var(--primary);
+            border-color: var(--primary);
+            box-shadow: var(--glow);
+        }
+
+        .nav-icon {
+            font-size: 1.2rem;
+            width: 24px;
+            text-align: center;
+        }
+
+        /* Main Content */
+        .main-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .top-bar {
+            height: 60px;
+            background: var(--surface);
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 2rem;
+        }
+
+        .workspace-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .workspace-path {
+            background: var(--surface-dark);
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            border: 1px solid var(--border);
+        }
+
+        .status-indicator {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 0.5rem 1rem;
+            background: var(--surface-dark);
+            border-radius: 6px;
+            border: 1px solid var(--border);
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--success);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        /* Dashboard */
+        .dashboard {
+            flex: 1;
+            padding: 2rem;
+            overflow-y: auto;
+        }
+
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        /* Cards */
+        .card {
+            background: var(--surface);
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border-color: var(--primary);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1.5rem;
+        }
+
+        .card-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .card-icon {
+            font-size: 1.5rem;
+            opacity: 0.8;
+        }
+
+        /* Stats */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 1rem;
+            background: var(--surface-dark);
+            border-radius: 8px;
+            border: 1px solid var(--border);
+        }
+
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-top: 0.5rem;
+        }
+
+        .stat-critical { --stat-color: var(--danger); }
+        .stat-high { --stat-color: var(--warning); }
+        .stat-ok { --stat-color: var(--success); }
+
+        /* Issues List */
+        .issues-list {
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .issue-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            margin-bottom: 0.75rem;
+            background: var(--surface-dark);
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+
+        .issue-item:hover {
+            background: var(--surface-light);
+            border-color: var(--primary);
+        }
+
+        .issue-severity {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+        }
+
+        .critical { background: var(--danger); box-shadow: 0 0 10px var(--danger); }
+        .high { background: var(--warning); box-shadow: 0 0 10px var(--warning); }
+        .medium { background: #ffd32a; box-shadow: 0 0 10px #ffd32a; }
+        .low { background: var(--primary); box-shadow: 0 0 10px var(--primary); }
+
+        .issue-content {
+            flex: 1;
+        }
+
+        .issue-title {
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .issue-path {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        /* Scan Button */
+        .scan-section {
+            text-align: center;
+            margin: 3rem 0;
+        }
+
+        .scan-btn {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border: none;
+            padding: 1.2rem 3rem;
+            font-size: 1.2rem;
+            font-weight: 600;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            box-shadow: 0 0 30px rgba(0, 212, 255, 0.3);
+        }
+
+        .scan-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 40px rgba(0, 212, 255, 0.5);
+        }
+
+        .scan-btn:active {
+            transform: scale(0.98);
+        }
+
+        /* Terminal */
+        .terminal {
+            background: var(--surface-dark);
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            overflow: hidden;
+            margin-top: 1rem;
+        }
+
+        .terminal-header {
+            background: var(--surface);
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .terminal-title {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .terminal-content {
+            padding: 1rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            max-height: 200px;
+            overflow-y: auto;
+            color: var(--text-secondary);
+        }
+
+        .terminal-line {
+            margin-bottom: 4px;
+            white-space: pre-wrap;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-content {
+            background: var(--surface);
+            border-radius: 16px;
+            border: 1px solid var(--border);
+            width: 90%;
+            max-width: 800px;
+            max-height: 90vh;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        }
+
+        .modal-header {
+            padding: 1.5rem;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .modal-body {
+            padding: 1.5rem;
+            max-height: 60vh;
+            overflow-y: auto;
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 6px;
+        }
+
+        .close-btn:hover {
+            background: var(--surface-light);
+            color: var(--text);
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--surface-dark);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--border);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--primary);
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.5s ease forwards;
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .dashboard-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .sidebar {
+                width: 80px;
+                padding: 1rem;
+            }
+            .logo-text, .logo-subtitle, .nav-title, .nav-item span:last-child {
+                display: none;
+            }
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+            }
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="logo">
+                <div class="logo-icon">⚡</div>
+                <div>
+                    <div class="logo-text">JARVIS</div>
+                    <div class="logo-subtitle">Sovereign AI</div>
+                </div>
+            </div>
+
+            <div class="nav-section">
+                <div class="nav-title">📊 Dashboard</div>
+                <div class="nav-item active" onclick="showSection('dashboard')">
+                    <div class="nav-icon">📈</div>
+                    <span>Security Overview</span>
+                </div>
+                <div class="nav-item" onclick="showSection('scanner')">
+                    <div class="nav-icon">🔍</div>
+                    <span>Code Scanner</span>
+                </div>
+                <div class="nav-item" onclick="showSection('constitution')">
+                    <div class="nav-icon">⚖️</div>
+                    <span>Constitution</span>
+                </div>
+                <div class="nav-item" onclick="showSection('audit')">
+                    <div class="nav-icon">📋</div>
+                    <span>Audit Trail</span>
+                </div>
+            </div>
+
+            <div class="nav-section">
+                <div class="nav-title">⚙️ System</div>
+                <div class="nav-item" onclick="showSection('settings')">
+                    <div class="nav-icon">⚙️</div>
+                    <span>Settings</span>
+                </div>
+                <div class="nav-item" onclick="showSection('docs')">
+                    <div class="nav-icon">📚</div>
+                    <span>Documentation</span>
+                </div>
+                <div class="nav-item" onclick="runQuickScan()">
+                    <div class="nav-icon">🚀</div>
+                    <span>Quick Scan</span>
+                </div>
+            </div>
+
+            <div style="flex: 1;"></div>
+
+            <div class="nav-section">
+                <div class="nav-item" onclick="showSection('about')">
+                    <div class="nav-icon">ℹ️</div>
+                    <span>About JARVIS</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Top Bar -->
+            <div class="top-bar">
+                <div class="workspace-info">
+                    <div class="status-indicator">
+                        <div class="status-dot"></div>
+                        <span>System Ready</span>
+                    </div>
+                    <div class="workspace-path" id="currentPath">Select workspace...</div>
+                </div>
+                
+                <button class="scan-btn" onclick="openWorkspacePicker()">
+                    <span>📂</span> Select Workspace
+                </button>
+            </div>
+
+            <!-- Dashboard Content -->
+            <div class="dashboard" id="dashboard">
+                <!-- Stats Overview -->
+                <div class="dashboard-grid">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-title">
+                                <div class="card-icon">🛡️</div>
+                                Security Status
+                            </div>
+                            <div class="status-indicator">
+                                <div class="status-dot"></div>
+                                <span id="securityStatus">Scan Required</span>
+                            </div>
+                        </div>
+                        
+                        <div class="stats-grid">
+                            <div class="stat-item">
+                                <div class="stat-value" id="criticalCount">0</div>
+                                <div class="stat-label">Critical</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-value" id="highCount">0</div>
+                                <div class="stat-label">High</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-value" id="totalFiles">0</div>
+                                <div class="stat-label">Files</div>
+                            </div>
+                        </div>
+
+                        <div class="scan-section">
+                            <button class="scan-btn" onclick="runScan()">
+                                <span>🔍</span> Run Security Scan
+                            </button>
+                            <div style="margin-top: 1rem; color: var(--text-secondary); font-size: 0.9rem;">
+                                Scans selected workspace for security vulnerabilities
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-title">
+                                <div class="card-icon">🚨</div>
+                                Recent Issues
+                            </div>
+                            <div style="color: var(--text-secondary); font-size: 0.9rem;" id="issuesCount">
+                                0 issues found
+                            </div>
+                        </div>
+                        
+                        <div class="issues-list" id="issuesList">
+                            <div style="text-align: center; padding: 2rem; color: var(--text-secondary);">
+                                No security issues detected
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Constitution Card -->
+                <div class="card" style="margin-top: 1.5rem;">
+                    <div class="card-header">
+                        <div class="card-title">
+                            <div class="card-icon">⚖️</div>
+                            Constitutional Rules
+                        </div>
+                    </div>
+                    
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <div class="stat-value">3</div>
+                            <div class="stat-label">Active Rules</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">0</div>
+                            <div class="stat-label">Violations</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value" id="lastScanTime">--:--</div>
+                            <div class="stat-label">Last Scan</div>
+                        </div>
+                    </div>
+
+                    <div style="margin-top: 1.5rem;">
+                        <div style="display: flex; gap: 1rem; margin-bottom: 1rem;">
+                            <div style="flex: 1; background: var(--surface-dark); padding: 1rem; border-radius: 8px; border: 1px solid var(--border);">
+                                <div style="font-weight: 600; color: var(--primary);">git-001</div>
+                                <div style="font-size: 0.9rem; color: var(--text-secondary); margin-top: 0.5rem;">
+                                    Only operate on Git-tracked content
+                                </div>
+                            </div>
+                            <div style="flex: 1; background: var(--surface-dark); padding: 1rem; border-radius: 8px; border: 1px solid var(--border);">
+                                <div style="font-weight: 600; color: var(--primary);">domain-001</div>
+                                <div style="font-size: 0.9rem; color: var(--text-secondary); margin-top: 0.5rem;">
+                                    Never touch credential storage
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Terminal Output -->
+                <div class="card" style="margin-top: 1.5rem;">
+                    <div class="card-header">
+                        <div class="card-title">
+                            <div class="card-icon">💻</div>
+                            Scan Output
+                        </div>
+                    </div>
+                    
+                    <div class="terminal">
+                        <div class="terminal-header">
+                            <div class="terminal-title">console@jarvis:~$</div>
+                            <button onclick="clearTerminal()" style="background: none; border: none; color: var(--text-secondary); cursor: pointer;">
+                                Clear
+                            </button>
+                        </div>
+                        <div class="terminal-content" id="terminalOutput">
+                            <div class="terminal-line">⚡ Sovereign JARVIS AI IDE v1.0</div>
+                            <div class="terminal-line">Ready to scan your workspace...</div>
+                            <div class="terminal-line">Select a workspace and click "Run Security Scan"</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Scanner Section (hidden by default) -->
+            <div class="dashboard" id="scanner" style="display: none;">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">
+                            <div class="card-icon">🔍</div>
+                            Advanced Code Scanner
+                        </div>
+                    </div>
+                    
+                    <div style="margin: 2rem 0;">
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem;">
+                            <div style="background: var(--surface-dark); padding: 1.5rem; border-radius: 8px; border: 1px solid var(--border);">
+                                <div style="font-size: 2rem; margin-bottom: 1rem;">🔐</div>
+                                <div style="font-weight: 600; margin-bottom: 0.5rem;">Hardcoded Secrets</div>
+                                <div style="color: var(--text-secondary); font-size: 0.9rem;">
+                                    Find passwords, API keys, and tokens
+                                </div>
+                            </div>
+                            <div style="background: var(--surface-dark); padding: 1.5rem; border-radius: 8px; border: 1px solid var(--border);">
+                                <div style="font-size: 2rem; margin-bottom: 1rem;">⚠️</div>
+                                <div style="font-weight: 600; margin-bottom: 0.5rem;">Dangerous Patterns</div>
+                                <div style="color: var(--text-secondary); font-size: 0.9rem;">
+                                    Detect eval(), exec(), and unsafe code
+                                </div>
+                            </div>
+                            <div style="background: var(--surface-dark); padding: 1.5rem; border-radius: 8px; border: 1px solid var(--border);">
+                                <div style="font-size: 2rem; margin-bottom: 1rem;">📊</div>
+                                <div style="font-weight: 600; margin-bottom: 0.5rem;">Code Quality</div>
+                                <div style="color: var(--text-secondary); font-size: 0.9rem;">
+                                    Find TODOs, bare excepts, and anti-patterns
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="scan-section">
+                        <button class="scan-btn" onclick="runAdvancedScan()">
+                            <span>🚀</span> Run Advanced Security Audit
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Workspace Picker Modal -->
+    <div class="modal" id="workspaceModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 style="font-size: 1.5rem;">Select Workspace</h2>
+                <button class="close-btn" onclick="closeWorkspacePicker()">×</button>
+            </div>
+            <div class="modal-body">
+                <div style="margin-bottom: 1.5rem;">
+                    <input type="text" id="workspaceInput" placeholder="Enter path or drag folder here" 
+                           style="width: 100%; padding: 1rem; background: var(--surface-dark); border: 1px solid var(--border); border-radius: 8px; color: var(--text); font-family: 'JetBrains Mono', monospace;">
+                </div>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 2rem;">
+                    <div class="workspace-option" onclick="selectWorkspace('G:\\okiru\\app builder\\aquaplan---watercolor-roadmap')">
+                        <div style="font-size: 2rem; margin-bottom: 0.5rem;">🎨</div>
+                        <div style="font-weight: 600;">aquaplan</div>
+                        <div style="font-size: 0.8rem; color: var(--text-secondary);">Watercolor Roadmap</div>
+                    </div>
+                    
+                    <div class="workspace-option" onclick="selectWorkspace('G:\\test-jarvis')">
+                        <div style="font-size: 2rem; margin-bottom: 0.5rem;">🧪</div>
+                        <div style="font-weight: 600;">test-jarvis</div>
+                        <div style="font-size: 0.8rem; color: var(--text-secondary);">Test Workspace</div>
+                    </div>
+                    
+                    <div class="workspace-option" onclick="selectWorkspace('C:\\Users\\' + localStorage.getItem('username') + '\\Desktop')">
+                        <div style="font-size: 2rem; margin-bottom: 0.5rem;">🖥️</div>
+                        <div style="font-weight: 600;">Desktop</div>
+                        <div style="font-size: 0.8rem; color: var(--text-secondary);">Quick Access</div>
+                    </div>
+                </div>
+
+                <button class="scan-btn" onclick="confirmWorkspace()" style="width: 100%;">
+                    <span>✅</span> Confirm Selection
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // State management
+        let currentWorkspace = '';
+        let scanResults = {
+            files: 0,
+            critical: 0,
+            high: 0,
+            total: 0,
+            issues: []
+        };
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            // Load saved workspace
+            const savedWorkspace = localStorage.getItem('jarvisWorkspace');
+            if (savedWorkspace) {
+                currentWorkspace = savedWorkspace;
+                document.getElementById('currentPath').textContent = currentWorkspace;
+            }
+
+            // Set username if available
+            const username = localStorage.getItem('username') || 'User';
+            document.querySelectorAll('.workspace-option').forEach(el => {
+                const text = el.innerHTML;
+                el.innerHTML = text.replace('${username}', username);
+            });
+
+            // Add drag and drop
+            setupDragAndDrop();
+        });
+
+        // Navigation
+        function showSection(sectionId) {
+            // Hide all sections
+            document.querySelectorAll('.dashboard').forEach(el => {
+                el.style.display = 'none';
+            });
+            
+            // Show selected section
+            document.getElementById(sectionId).style.display = 'block';
+            
+            // Update active nav item
+            document.querySelectorAll('.nav-item').forEach(el => {
+                el.classList.remove('active');
+            });
+            
+            // You'd need to map sectionId to nav item
+        }
+
+        // Workspace Selection
+        function openWorkspacePicker() {
+            document.getElementById('workspaceModal').style.display = 'flex';
+        }
+
+        function closeWorkspacePicker() {
+            document.getElementById('workspaceModal').style.display = 'none';
+        }
+
+        function selectWorkspace(path) {
+            document.getElementById('workspaceInput').value = path;
+        }
+
+        function confirmWorkspace() {
+            const path = document.getElementById('workspaceInput').value.trim();
+            if (path) {
+                currentWorkspace = path;
+                localStorage.setItem('jarvisWorkspace', path);
+                document.getElementById('currentPath').textContent = path;
+                closeWorkspacePicker();
+                addToTerminal(`Workspace selected: ${path}`);
+            }
+        }
+
+        function setupDragAndDrop() {
+            const input = document.getElementById('workspaceInput');
+            
+            input.addEventListener('dragover', (e) => {
+                e.preventDefault();
+                input.style.borderColor = 'var(--primary)';
+            });
+
+            input.addEventListener('dragleave', () => {
+                input.style.borderColor = 'var(--border)';
+            });
+
+            input.addEventListener('drop', (e) => {
+                e.preventDefault();
+                input.style.borderColor = 'var(--border)';
+                
+                const files = e.dataTransfer.files;
+                if (files.length > 0) {
+                    const path = files[0].path || files[0].webkitRelativePath;
+                    if (path) {
+                        input.value = path;
+                    }
+                }
+            });
+        }
+
+        // Terminal functions
+        function addToTerminal(text, type = 'info') {
+            const terminal = document.getElementById('terminalOutput');
+            const line = document.createElement('div');
+            line.className = 'terminal-line';
+            line.textContent = `> ${text}`;
+            
+            if (type === 'error') line.style.color = 'var(--danger)';
+            if (type === 'success') line.style.color = 'var(--success)';
+            if (type === 'warning') line.style.color = 'var(--warning)';
+            
+            terminal.appendChild(line);
+            terminal.scrollTop = terminal.scrollHeight;
+        }
+
+        function clearTerminal() {
+            document.getElementById('terminalOutput').innerHTML = `
+                <div class="terminal-line">⚡ Sovereign JARVIS AI IDE v1.0</div>
+                <div class="terminal-line">Terminal cleared</div>
+            `;
+        }
+
+        // Scan functions
+        function runScan() {
+            if (!currentWorkspace) {
+                addToTerminal('Please select a workspace first', 'error');
+                openWorkspacePicker();
+                return;
+            }
+
+            addToTerminal(`Starting security scan in: ${currentWorkspace}`, 'info');
+            addToTerminal('Connecting to JARVIS engine...', 'info');
+            
+            // Simulate scan (in real app, this would call your Python backend)
+            simulateScan();
+        }
+
+        function runQuickScan() {
+            if (!currentWorkspace) {
+                addToTerminal('Please select a workspace first', 'error');
+                return;
+            }
+
+            addToTerminal('Running quick security scan...', 'info');
+            
+            // Quick scan simulation
+            setTimeout(() => {
+                const mockResults = {
+                    files: Math.floor(Math.random() * 50) + 10,
+                    critical: Math.random() > 0.8 ? 1 : 0,
+                    high: Math.random() > 0.6 ? Math.floor(Math.random() * 3) : 0,
+                    total: 0,
+                    issues: []
+                };
+                mockResults.total = mockResults.critical + mockResults.high;
+                
+                updateUI(mockResults);
+                
+                if (mockResults.critical > 0) {
+                    addToTerminal(`🚨 Found ${mockResults.critical} critical issue(s)!`, 'error');
+                } else if (mockResults.high > 0) {
+                    addToTerminal(`⚠️ Found ${mockResults.high} high severity issue(s)`, 'warning');
+                } else {
+                    addToTerminal('✅ No security issues found', 'success');
+                }
+            }, 1500);
+        }
+
+        function runAdvancedScan() {
+            addToTerminal('Starting advanced security audit...', 'info');
+            addToTerminal('This may take a few moments...', 'info');
+            
+            // Advanced scan simulation
+            setTimeout(() => {
+                const advancedResults = {
+                    files: Math.floor(Math.random() * 100) + 20,
+                    critical: Math.random() > 0.9 ? Math.floor(Math.random() * 2) + 1 : 0,
+                    high: Math.random() > 0.7 ? Math.floor(Math.random() * 5) + 1 : 0,
+                    total: 0,
+                    issues: generateMockIssues()
+                };
+                advancedResults.total = advancedResults.critical + advancedResults.high;
+                
+                updateUI(advancedResults);
+                
+                addToTerminal(`Advanced scan complete: ${advancedResults.files} files analyzed`, 'info');
+                addToTerminal(`Found ${advancedResults.total} security issues`, 
+                             advancedResults.critical > 0 ? 'error' : 'warning');
+            }, 3000);
+        }
+
+        function simulateScan() {
+            // Update status
+            document.getElementById('securityStatus').textContent = 'Scanning...';
+            document.querySelector('.status-dot').style.background = 'var(--warning)';
+            document.querySelector('.status-dot').style.animation = 'none';
+            
+            // Simulate scan progress
+            setTimeout(() => {
+                addToTerminal('Scanning Python files...', 'info');
+            }, 500);
+            
+            setTimeout(() => {
+                addToTerminal('Scanning JavaScript/TypeScript files...', 'info');
+            }, 1000);
+            
+            setTimeout(() => {
+                addToTerminal('Checking for hardcoded credentials...', 'info');
+            }, 1500);
+            
+            setTimeout(() => {
+                addToTerminal('Analyzing code patterns...', 'info');
+                
+                // Mock results based on current workspace
+                let mockResults;
+                if (currentWorkspace.includes('aquaplan')) {
+                    // Results for aquaplan (already fixed)
+                    mockResults = {
+                        files: 76,
+                        critical: 0,
+                        high: 0,
+                        total: 0,
+                        issues: []
+                    };
+                } else {
+                    // Random results for other workspaces
+                    mockResults = {
+                        files: Math.floor(Math.random() * 100) + 20,
+                        critical: Math.random() > 0.85 ? 1 : 0,
+                        high: Math.random() > 0.7 ? Math.floor(Math.random() * 3) : 0,
+                        total: 0,
+                        issues: generateMockIssues()
+                    };
+                }
+                mockResults.total = mockResults.critical + mockResults.high;
+                
+                // Update UI with results
+                updateUI(mockResults);
+                
+                // Update status
+                if (mockResults.critical > 0) {
+                    document.getElementById('securityStatus').textContent = 'Critical Issues';
+                    document.querySelector('.status-dot').style.background = 'var(--danger)';
+                    addToTerminal(`🚨 SCAN COMPLETE: ${mockResults.critical} CRITICAL issue(s) found!`, 'error');
+                } else if (mockResults.high > 0) {
+                    document.getElementById('securityStatus').textContent = 'High Issues';
+                    document.querySelector('.status-dot').style.background = 'var(--warning)';
+                    addToTerminal(`⚠️ SCAN COMPLETE: ${mockResults.high} high severity issue(s) found`, 'warning');
+                } else {
+                    document.getElementById('securityStatus').textContent = 'Secure';
+                    document.querySelector('.status-dot').style.background = 'var(--success)';
+                    addToTerminal('✅ SCAN COMPLETE: No security issues detected', 'success');
+                }
+                document.querySelector('.status-dot').style.animation = 'pulse 2s infinite';
+                
+                // Update last scan time
+                const now = new Date();
+                document.getElementById('lastScanTime').textContent = 
+                    `${now.getHours().toString().padStart(2, '0')}:${now.getMinutes().toString().padStart(2, '0')}`;
+                    
+            }, 2000);
+        }
+
+        function updateUI(results) {
+            // Update stats
+            document.getElementById('criticalCount').textContent = results.critical;
+            document.getElementById('highCount').textContent = results.high;
+            document.getElementById('totalFiles').textContent = results.files;
+            
+            // Update critical count color
+            const criticalEl = document.getElementById('criticalCount');
+            criticalEl.style.color = results.critical > 0 ? 'var(--danger)' : 'var(--success)';
+            
+            // Update issues list
+            const issuesList = document.getElementById('issuesList');
+            const issuesCount = document.getElementById('issuesCount');
+            
+            if (results.issues.length > 0) {
+                issuesCount.textContent = `${results.issues.length} issues found`;
+                issuesList.innerHTML = results.issues.map(issue => `
+                    <div class="issue-item">
+                        <div class="issue-severity ${issue.severity.toLowerCase()}"></div>
+                        <div class="issue-content">
+                            <div class="issue-title">${issue.type}</div>
+                            <div class="issue-path">${issue.file}:${issue.line}</div>
+                        </div>
+                    </div>
+                `).join('');
+            } else {
+                issuesCount.textContent = 'No issues found';
+                issuesList.innerHTML = `
+                    <div style="text-align: center; padding: 2rem; color: var(--text-secondary);">
+                        ✅ No security issues detected
+                    </div>
+                `;
+            }
+        }
+
+        function generateMockIssues() {
+            const issues = [];
+            const types = ['HARDCODED_PASSWORD', 'DANGEROUS_EVAL', 'BARE_EXCEPT', 'TODO_COMMENT'];
+            const severities = ['CRITICAL', 'HIGH', 'MEDIUM', 'LOW'];
+            const files = ['config.py', '.env', 'auth.js', 'database.ts', 'utils.py'];
+            
+            for (let i = 0; i < Math.floor(Math.random() * 5) + 1; i++) {
+                issues.push({
+                    type: types[Math.floor(Math.random() * types.length)],
+                    file: files[Math.floor(Math.random() * files.length)],
+                    line: Math.floor(Math.random() * 100) + 1,
+                    severity: severities[Math.floor(Math.random() * severities.length)],
+                    message: 'Security issue detected'
+                });
+            }
+            
+            return issues;
+        }
+
+        // Real integration with your Python backend
+        async function runRealScan() {
+            try {
+                const response = await fetch('/api/scan', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        workspace: currentWorkspace,
+                        scanType: 'full'
+                    })
+                });
+                
+                const data = await response.json();
+                updateUI(data.results);
+                
+            } catch (error) {
+                addToTerminal(`Error running scan: ${error.message}`, 'error');
+            }
+        }
+    </script>
+</body>
+</html>

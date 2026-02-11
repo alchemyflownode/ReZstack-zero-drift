@@ -14,7 +14,7 @@ export class ComfyUIService {
   }
 
   async generateImage(prompt: string): Promise<string> {
-    console.log('ComfyUI generate:', prompt);
+    // AUTO-HUSH: console.log('ComfyUI generate:', prompt);
     return '';
   }
 
@@ -30,5 +30,6 @@ export class ComfyUIService {
 
 export const comfyui = new ComfyUIService();
 export default ComfyUIService;
+
 
 

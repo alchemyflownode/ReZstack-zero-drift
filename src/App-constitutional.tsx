@@ -1,4 +1,4 @@
-﻿import React, { useState } from 'react';
+import React, { useState } from 'react';
 // src/App.tsx - Add constitutional initialization
 import { installConstitutionalMiddleware } from './middleware/constitutional-middleware';
 // // geminiService placeholder
@@ -14,7 +14,7 @@ function initializeConstitutionalEra() {
   // Log constitutional activation
   console.log('%c??? CONSTITUTIONAL ERA v1.0', 
     'color: #D4AF37; font-size: 24px; font-weight: bold;');
-  console.log('All AI generation is now governed by RezSpec.');
+  // AUTO-HUSH: console.log('All AI generation is now governed by RezSpec.');
   
   // Add constitutional badge to UI
   if (typeof document !== 'undefined') {
@@ -54,7 +54,7 @@ function ChatView() {
         <DriversManualInterface 
           onGenerate={(result) => {
             // Insert constitutionally-generated code
-            console.log('Constitutional generation complete:', result);
+            // AUTO-HUSH: console.log('Constitutional generation complete:', result);
           }}
         />
       ) : (
@@ -72,6 +72,7 @@ function ChatView() {
     </div>
   );
 }
+
 
 
 

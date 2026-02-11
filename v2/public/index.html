@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RezStack V2 - AI IDE</title>
+<style>
+:root { --primary: #2a3a4a; --secondary: #0d1b2a; --accent: #4fc3f7; --text: #e0e0e0; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: sans-serif; background: var(--secondary); color: var(--text); }
+.container { display: flex; min-height: 100vh; }
+.sidebar { width: 250px; background: rgba(13,27,42,0.95); padding: 20px; }
+.main-content { flex: 1; padding: 20px; }
+.logo { font-size: 24px; color: var(--accent); margin-bottom: 20px; }
+.nav-item { padding: 10px; cursor: pointer; color: #ccc; }
+.nav-item:hover { color: white; }
+.card { background: rgba(255,255,255,0.05); padding: 20px; margin: 10px 0; border-radius: 8px; }
+.btn { background: var(--accent); color: white; border: none; padding: 10px 15px; border-radius: 5px; cursor: pointer; }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="sidebar">
+    <div class="logo">🏛️ RezStack V2</div>
+    <div class="nav-item" onclick="loadPage(`dashboard`)">📊 Dashboard</div>
+    <div class="nav-item" onclick="loadPage(`trainer`)">🤖 Model Trainer</div>
+    <div class="nav-item" onclick="loadPage(`models`)">📋 Models</div>
+    <div class="nav-item" onclick="loadPage(`audit`)">⚖️ Audit</div>
+  </div>
+  <div class="main-content">
+    <div id="dashboard"><div class="card"><h2>🏛️ Constitutional AI IDE</h2><p>Welcome to RezStack V2.</p></div></div>
+    <div id="trainer" style="display:none;"><div class="card"><h2>🤖 Train Model</h2><input id="model-name" placeholder="Model name"><br><br><button class="btn" onclick="startTraining()">Train</button></div></div>
+    <div id="models" style="display:none;"><div class="card"><h2>📋 Models</h2><div id="models-list">Loading...</div></div></div>
+    <div id="audit" style="display:none;"><div class="card"><h2>⚖️ Audit</h2><button class="btn" onclick="runAudit()">Run Audit</button><div id="audit-results"></div></div></div>
+  </div>
+</div>
+<script>
+function loadPage(page) {
+  ["dashboard","trainer","models","audit"].forEach(p => document.getElementById(p).style.display = "none");
+  document.getElementById(page).style.display = "block";
+}
+async function runAudit() {
+  try { const res = await fetch("/api/audit"); const data = await res.json();
+    document.getElementById("audit-results").innerHTML = `<p>Audit score: ${data.summary.overall?.score || 0}%</p>`;
+  } catch(e) { document.getElementById("audit-results").innerHTML = "<p>❌ Audit failed</p>"; }
+}
+async function startTraining() { alert("Training started (mock)"); }
+</script>
+</body>
+</html>

@@ -51,7 +51,7 @@ export const orchestratePrompt = async (
     });
     
     if (errorTrace?.errors && errorTrace.errors.length > 0) {
-      console.log('Attempting to fix errors:', errorTrace.errors);
+      // AUTO-HUSH: console.log('Attempting to fix errors:', errorTrace.errors);
       return {
         selectedModel: "sd_xl_base_1.0",
         reasoning: "Using fallback workflow due to previous errors",
@@ -137,3 +137,4 @@ export function generateFallbackIR(prompt: string): RezonicIR {
     }
   };
 }
+

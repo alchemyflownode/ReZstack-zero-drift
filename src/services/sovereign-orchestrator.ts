@@ -137,7 +137,7 @@ export class SovereignOrchestrator {
         available.some((m: any) => m.name === modelInfo.name)
       );
       
-      console.log(`[Orchestrator] Loaded ${this.availableModels.length} available models`);
+      // AUTO-HUSH: console.log(`[Orchestrator] Loaded ${this.availableModels.length} available models`);
       
       this.availableModels.forEach(model => {
         this.modelPerformance.set(model.name, { successes: 0, failures: 0, avgTime: 0 });
@@ -250,8 +250,8 @@ export class SovereignOrchestrator {
     const taskAnalysis = this.analyzeTask(task, physics);
     const decision = this.selectModel(taskAnalysis);
     
-    console.log(`[Orchestrator] Task: "${task.substring(0, 50)}..."`);
-    console.log(`[Orchestrator] Selected: ${decision.selectedModel}`);
+    // AUTO-HUSH: console.log(`[Orchestrator] Task: "${task.substring(0, 50);}..."`);
+    // AUTO-HUSH: console.log(`[Orchestrator] Selected: ${decision.selectedModel}`);
     
     return decision;
   }
@@ -325,3 +325,4 @@ export function getOrchestrator(): SovereignOrchestrator {
   }
   return orchestratorInstance;
 }
+

@@ -32,7 +32,7 @@ export const AutonomousCodebase: React.FC = () => {
       const codebaseMetrics = await autonomousCodebaseManager.getCodebaseMetrics('.');
       setMetrics(codebaseMetrics);
       setExecutionLogs(prev => [...prev, `[Î”â‚€] Initial analysis complete: ${newDiagnoses.length} diagnoses`]);
-    } catch (error: any) {
+    } catch (error: unknown) {
       setExecutionLogs(prev => [...prev, `[âœ—] Analysis error: ${error.message}`]);
     } finally {
       setIsAnalyzing(false);
@@ -55,7 +55,7 @@ export const AutonomousCodebase: React.FC = () => {
         `[Î”â‚€] === Execution ${result.success ? 'completed' : 'failed'} ===`
       ]);
       if (result.success) setActions(prev => prev.filter(a => a.id !== action.id));
-    } catch (error: any) {
+    } catch (error: unknown) {
       setExecutionLogs(prev => [...prev, `[âœ—] Execution error: ${error.message}`]);
     } finally {
       setIsExecuting(false);
@@ -265,5 +265,6 @@ export const AutonomousCodebase: React.FC = () => {
     </div>
   );
 };
+
 
 

@@ -1,4 +1,4 @@
-﻿// src/services/SovereignCuration.ts
+// src/services/SovereignCuration.ts
 import { TruthVerifier, VerificationProof } from './TruthVerifier.js';
 import { StateVault, VaultEntry } from './StateVault.js';
 import { WabiSariProtocol, CurationAttempt, AcceptanceVerdict } from './WabiSariProtocol.js';
@@ -40,7 +40,7 @@ export class SovereignCuration {
     context: string = 'code',
     maxAttempts: number = 3
   ): Promise<CurationResult> {
-    console.log(`🎯 Starting sovereign curation (max attempts: ${maxAttempts})`);
+    // AUTO-HUSH: console.log(`?? Starting sovereign curation (max attempts: ${maxAttempts});`);
     
     // Preserve original state
     const originalHash = this.stateVault.preserve(content, context, {
@@ -56,7 +56,7 @@ export class SovereignCuration {
     
     while (attempts < maxAttempts) {
       attempts++;
-      console.log(`\n🔄 Attempt ${attempts}/${maxAttempts}`);
+      // AUTO-HUSH: console.log(`\n?? Attempt ${attempts}/${maxAttempts}`);
       
       const attemptResult = await this.attemptCuration(currentContent, attempts);
       
@@ -75,18 +75,18 @@ export class SovereignCuration {
       }]);
       
       if (!verdict.accept && verdict.nextAction === 'ROLLBACK') {
-        console.log('⚠️ Critical drift detected - rolling back to original');
+        // AUTO-HUSH: console.log('?? Critical drift detected - rolling back to original');
         currentContent = content;
         break;
       }
       
       if (verdict.accept || (verdict.nextAction === 'ACCEPT_IMPERFECTION' && attempts >= 2)) {
-        console.log(`✅ Acceptance reached: ${verdict.reason}`);
+        // AUTO-HUSH: console.log(`? Acceptance reached: ${verdict.reason}`);
         break;
       }
       
       if (attempts >= maxAttempts) {
-        console.log(`⏱️ Max attempts (${maxAttempts}) reached`);
+        // AUTO-HUSH: console.log(`?? Max attempts (${maxAttempts}); reached`);
         break;
       }
     }
@@ -101,8 +101,8 @@ export class SovereignCuration {
       currentErrors
     );
     
-    console.log(`\n📊 Final Score: ${finalResult.vibeScore}/100 (${finalResult.status})`);
-    console.log(`📝 Diff lines: ${finalResult.diff.split('Line').length - 1}`);
+    // AUTO-HUSH: console.log(`\n?? Final Score: ${finalResult.vibeScore}/100 (${finalResult.status});`);
+    // AUTO-HUSH: console.log(`?? Diff lines: ${finalResult.diff.split('Line');.length - 1}`);
     
     return finalResult;
   }
@@ -120,13 +120,13 @@ export class SovereignCuration {
     // 3. Apply fixes
     let curatedContent = content;
     if (violations.length > 0) {
-      console.log(`  Found ${violations.length} violations`);
+      // AUTO-HUSH: console.log(`  Found ${violations.length} violations`);
       curatedContent = this.applyFixes(content, violations);
       
       // Verify fixes didn't break anything
       const postVerification = await this.truthVerifier.verifyTypescript(curatedContent);
       if (postVerification.errors.length > verification.errors.length) {
-        console.log('  ⚠️ Fixes introduced new errors - reverting');
+        // AUTO-HUSH: console.log('  ?? Fixes introduced new errors - reverting');
         curatedContent = content;
       }
     }
@@ -171,7 +171,7 @@ export class SovereignCuration {
       }
       
       // Law: Architectural Silence - no console.log in production-like code
-      if (line.includes('console.log(') && !line.trim().startsWith('//')) {
+      if (line.includes('// AUTO-HUSH: console.log('); && !line.trim().startsWith('//')) {
         violations.push({
           law: 'Architectural Silence',
           line: lineNum,
@@ -242,7 +242,7 @@ export class SovereignCuration {
           if (violation.description.includes('unhandled error')) {
             // Can't auto-fix this - would require structural changes
             // Just add a warning comment
-            fixedLine = `${originalLine} // ⚠️ Sovereign: potential unhandled error`;
+            fixedLine = `${originalLine} // ?? Sovereign: potential unhandled error`;
           }
           break;
       }
@@ -313,3 +313,4 @@ export class SovereignCuration {
     };
   }
 }
+

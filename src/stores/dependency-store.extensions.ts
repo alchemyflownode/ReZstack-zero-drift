@@ -38,14 +38,14 @@ export const enableFileWatcher = async () => {
     });
     
     watcher.on('change', () => {
-      console.log('File changed, rescanning...');
+      // AUTO-HUSH: console.log('File changed, rescanning...');
       startScan();
     });
     
     return () => watcher.close();
   } catch (error) {
     console.error('File watcher not available:', error);
-    return () => {};
+    return () => { throw new Error("Unimplemented cleanup"); };
   }
 };
 
@@ -95,7 +95,7 @@ export const createGitHubIssueForUnused = async (token: string, owner: string, r
   const unusedFiles = files.filter(f => !f.isUsed);
   
   if (unusedFiles.length === 0) {
-    console.log('No unused files to report');
+    // AUTO-HUSH: console.log('No unused files to report');
     return;
   }
   
@@ -127,7 +127,7 @@ ${unusedFiles.map(f => `- \`${f.name}\` (${f.lineCount} lines, path: \`${f.path}
     
     if (!response.ok) throw new Error(`GitHub API error: ${response.status}`);
     const issue = await response.json();
-    console.log('Created GitHub issue:', issue.html_url);
+    // AUTO-HUSH: console.log('Created GitHub issue:', issue.html_url);
     return issue;
   } catch (error) {
     console.error('Failed to create GitHub issue:', error);
@@ -148,7 +148,7 @@ export const checkHealthThreshold = (threshold: number = 70): boolean => {
     return false;
   }
   
-  console.log(`✅ Project health (${health.healthScore}%) meets threshold`);
+  // AUTO-HUSH: console.log(`✅ Project health (${health.healthScore}%); meets threshold`);
   return true;
 };
 
@@ -237,18 +237,18 @@ export const batchDeleteUnused = async (maxFilesToDelete: number = 5) => {
   const { files, deleteUnusedFile } = useDependencyStore.getState();
   const unusedFiles = files.filter(f => !f.isUsed).slice(0, maxFilesToDelete);
   
-  console.log(`Deleting ${unusedFiles.length} unused files...`);
+  // AUTO-HUSH: console.log(`Deleting ${unusedFiles.length} unused files...`);
   
   for (const file of unusedFiles) {
     try {
       await deleteUnusedFile(file.id);
-      console.log(`✅ Deleted: ${file.name}`);
+      // AUTO-HUSH: console.log(`✅ Deleted: ${file.name}`);
     } catch (error) {
       console.error(`❌ Failed to delete ${file.name}:`, error);
     }
   }
   
-  console.log(`Batch delete complete. Deleted ${unusedFiles.length} files.`);
+  // AUTO-HUSH: console.log(`Batch delete complete. Deleted ${unusedFiles.length} files.`);
 };
 
 /**
@@ -328,7 +328,7 @@ export const sendSlackNotification = async (webhookUrl: string) => {
     });
     
     if (!response.ok) throw new Error('Slack API error');
-    console.log('✅ Slack notification sent');
+    // AUTO-HUSH: console.log('✅ Slack notification sent');
   } catch (error) {
     console.error('❌ Failed to send Slack notification:', error);
   }
@@ -347,3 +347,5 @@ export default {
   getHealthTrend,
   sendSlackNotification
 };
+
+

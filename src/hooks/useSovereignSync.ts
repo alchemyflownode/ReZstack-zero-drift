@@ -21,7 +21,7 @@ class SovereignWebSocketManager {
       this.ws = new WebSocket('ws://localhost:3001/sovereign');
       
       this.ws.onopen = () => {
-        console.log('✅ Sovereign WebSocket connected');
+        // AUTO-HUSH: console.log('✅ Sovereign WebSocket connected');
         this.isConnected = true;
         this.reconnectAttempts = 0;
         this.emit('connected', null);
@@ -44,13 +44,13 @@ class SovereignWebSocketManager {
       };
 
       this.ws.onclose = () => {
-        console.log('Sovereign WebSocket disconnected');
+        // AUTO-HUSH: console.log('Sovereign WebSocket disconnected');
         this.isConnected = false;
         this.connectionCallbacks.forEach(cb => cb(false));
         this.attemptReconnect();
       };
     } catch (error) {
-      console.log('⚠️ Sovereign WebSocket not available, using mock mode');
+      // AUTO-HUSH: console.log('⚠️ Sovereign WebSocket not available, using mock mode');
       this.isConnected = false;
       this.connectionCallbacks.forEach(cb => cb(false));
     }
@@ -59,7 +59,7 @@ class SovereignWebSocketManager {
   private attemptReconnect() {
     if (this.reconnectAttempts < this.maxReconnectAttempts) {
       this.reconnectAttempts++;
-      console.log(`Attempting reconnect (${this.reconnectAttempts}/${this.maxReconnectAttempts})...`);
+      // AUTO-HUSH: console.log(`Attempting reconnect (${this.reconnectAttempts}/${this.maxReconnectAttempts});...`);
       setTimeout(() => this.connect(), 3000);
     }
   }
@@ -96,7 +96,7 @@ class SovereignWebSocketManager {
     if (this.ws?.readyState === WebSocket.OPEN) {
       this.ws.send(JSON.stringify({ type: event, payload: data }));
     } else {
-      console.log(`[MOCK] ${event}:`, data);
+      // AUTO-HUSH: console.log(`[MOCK] ${event}:`, data);
       // Simulate server response for mock mode
       setTimeout(() => {
         if (event === 'SOVEREIGN:RECORD_INTERVENTION') {
@@ -252,3 +252,4 @@ export const useSovereignSync = () => {
     isElectron: false
   };
 };
+

@@ -1,0 +1,2 @@
+﻿FROM llama2:7b
+SYSTEM """You are a Constitutional AI System that prioritizes ethics and integrity."""

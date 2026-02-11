@@ -1,20 +1,30 @@
-// src/stores/multimodal-store.ts
-import { create } from 'zustand';
-import { zeroDriftAI } from '../services/zero-drift.ts';
+﻿import { create } from 'zustand';
+import { zeroDriftAI } from '../services/zero-drift';
+import { HardenedRezStackRouter } from '../services/hardened-router';
+import { getOrchestrator } from '../main/sovreign-orchestrator';
 
-// Define types at the top
+// Initialize routers
+const smartRouter = new HardenedRezStackRouter();
+const orchestrator = getOrchestrator();
+
 interface Message {
   id: string;
   content: string;
   isUser: boolean;
   model?: string;
   thinking?: boolean;
-  // Added 'BYPASSED' to support new testing mode
-  sovereignStatus?: 'STABLE' | 'DRIFTING' | 'CRITICAL' | 'PENDING_VERIFICATION' | 'BYPASSED';
+  sovereignStatus?: 'STABLE' | 'VIGILANT' | 'CRITICAL' | 'BYPASSED';
   vibeScore?: number;
   violations?: string[];
-  fixesApplied?: string[]; // Track fixes
+  fixesApplied?: string[];
   timestamp?: string;
+  routingInfo?: {
+    selectedModel: string;
+    reasoning: string;
+    confidence: number;
+    estimatedVRAM: string;
+    alternatives: any[];
+  };
 }
 
 interface OllamaStatus {
@@ -30,6 +40,7 @@ interface MultimodalStore {
   selectedModel: string;
   ollamaStatus: OllamaStatus;
   isGenerating: boolean;
+  smartRouterEnabled: boolean;
   
   // Actions
   sendMessage: (content: string, options?: { bypassCuration?: boolean }) => Promise<void>;
@@ -37,8 +48,8 @@ interface MultimodalStore {
   checkOllamaConnection: () => Promise<void>;
   loadModels: () => Promise<void>;
   clearMessages: () => void;
-  recordCodeIntervention: (action: string, content: string) => void;
   refineWithZeroDrift: (messageId: string, content: string) => Promise<void>;
+  toggleSmartRouter: () => void;
 }
 
 export const useMultimodalStore = create<MultimodalStore>((set, get) => ({
@@ -46,6 +57,7 @@ export const useMultimodalStore = create<MultimodalStore>((set, get) => ({
   messages: [],
   availableModels: [],
   selectedModel: '',
+  smartRouterEnabled: true,
   ollamaStatus: {
     isConnected: false,
     isChecking: false,
@@ -54,15 +66,14 @@ export const useMultimodalStore = create<MultimodalStore>((set, get) => ({
   },
   isGenerating: false,
   
-  // Actions
+  toggleSmartRouter: () => set((state) => ({ smartRouterEnabled: !state.smartRouterEnabled })),
+  
   setSelectedModel: (model: string) => set({ selectedModel: model }),
   
   clearMessages: () => set({ messages: [] }),
   
   checkOllamaConnection: async () => {
-    set((state) => ({ 
-      ollamaStatus: { ...state.ollamaStatus, isChecking: true } 
-    }));
+    set((state) => ({ ollamaStatus: { ...state.ollamaStatus, isChecking: true } }));
     
     try {
       const response = await fetch('http://localhost:11434/api/tags');
@@ -94,7 +105,6 @@ export const useMultimodalStore = create<MultimodalStore>((set, get) => ({
         const data = await response.json();
         const models = data.models?.map((m: any) => m.name) || [];
         
-        // Set default model if not set
         set((state) => ({ 
           availableModels: models,
           selectedModel: state.selectedModel || (models.length > 0 ? models[0] : ''),
@@ -112,7 +122,7 @@ export const useMultimodalStore = create<MultimodalStore>((set, get) => ({
   
   sendMessage: async (content: string, options?: { bypassCuration?: boolean }) => {
     const state = get();
-    const { selectedModel, messages } = state;
+    const { selectedModel, messages, smartRouterEnabled } = state;
     const { bypassCuration = false } = options || {};
 
     // Add user message
@@ -126,10 +136,9 @@ export const useMultimodalStore = create<MultimodalStore>((set, get) => ({
     // Add thinking message
     const thinkingMessage: Message = {
       id: (Date.now() + 1).toString(),
-      content: 'Thinking...',
+      content: '🧠 Constitutional AI analyzing request...',
       isUser: false,
       thinking: true,
-      model: selectedModel,
       timestamp: new Date().toISOString()
     };
     
@@ -139,18 +148,52 @@ export const useMultimodalStore = create<MultimodalStore>((set, get) => ({
     });
     
     try {
-      // ?? FIX: Send RAW content to prevent self-censorship
-      // We do NOT append "Sovereign Context" here anymore.
+      let modelToUse = selectedModel;
+      let routingInfo = null;
+      
+      // ===== SMART ROUTER INTEGRATION =====
+      if (smartRouterEnabled && !bypassCuration) {
+        try {
+          console.log('🎯 Smart Router: Analyzing request...');
+          const route = await smartRouter.route({ 
+            prompt: content,
+            context: {}
+          });
+          
+          modelToUse = route.model;
+          routingInfo = {
+            selectedModel: route.model,
+            reasoning: route.reason,
+            confidence: route.confidence,
+            estimatedVRAM: route.estimatedVRAM,
+            alternatives: route.alternatives || []
+          };
+          
+          console.log(`✅ Smart Router selected: ${route.model} (${route.confidence}% confidence)`);
+        } catch (error) {
+          console.error('Smart Router failed, using default model:', error);
+        }
+      }
+      
+      // ===== OLLAMA GENERATION =====
       const response = await fetch('http://localhost:11434/api/generate', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          model: selectedModel || 'llama3.2:latest',
-          prompt: content, // Raw prompt
+          model: modelToUse,
+          prompt: bypassCuration ? content : `You are the RezStack Sovereign Constitutional AI. 
+Follow these laws:
+1. NEVER use 'any' or 'unknown' types
+2. NEVER use lodash (use native structuredClone)
+3. NEVER use console.log in production
+4. ALWAYS handle errors with try/catch
+
+${content}`,
           stream: false,
           options: {
-            temperature: bypassCuration ? 0.8 : 0.7, // Slightly higher temp for creative raw code
-            top_p: 0.9
+            temperature: bypassCuration ? 0.8 : 0.3,
+            top_p: 0.9,
+            num_predict: 2048
           }
         })
       });
@@ -161,44 +204,46 @@ export const useMultimodalStore = create<MultimodalStore>((set, get) => ({
       
       const data = await response.json();
       const rawResponse = data.response;
-
-      // ?? LOGIC SPLIT: Bypass vs Curated
       
+      // ===== CONSTITUTIONAL CURATION =====
       let finalMessage: Message;
-
+      
       if (bypassCuration) {
-        // Mode: BYPASSED (Uncensored/Raw)
+        // BYPASS MODE - Raw output
         finalMessage = {
           id: Date.now().toString(),
           content: rawResponse,
           isUser: false,
-          model: selectedModel,
+          model: modelToUse,
           sovereignStatus: 'BYPASSED',
-          vibeScore: 0, // No score calculated
+          vibeScore: 0,
           violations: [],
-          timestamp: new Date().toISOString()
+          fixesApplied: [],
+          timestamp: new Date().toISOString(),
+          routingInfo
         };
       } else {
-        // Mode: NORMAL (Curated)
+        // CONSTITUTIONAL MODE - Apply zero-drift curation
         const curation = zeroDriftAI.curate(rawResponse);
         
-        console.log('?? Zero-Drift Audit:', {
-          violations: curation.violations,
-          fixes: curation.fixesApplied,
+        console.log('⚖️ Constitutional Audit:', {
           score: curation.vibeScore,
-          status: curation.status
+          status: curation.status,
+          violations: curation.violations.length,
+          fixes: curation.fixesApplied.length
         });
 
         finalMessage = {
           id: Date.now().toString(),
-          content: curation.correctedCode,
+          content: curation.correctedCode || rawResponse,
           isUser: false,
-          model: selectedModel,
-          sovereignStatus: curation.status,
-          vibeScore: curation.vibeScore,
-          violations: curation.violations,
-          fixesApplied: curation.fixesApplied,
-          timestamp: new Date().toISOString()
+          model: modelToUse,
+          sovereignStatus: curation.status || 'STABLE',
+          vibeScore: curation.vibeScore || 100,
+          violations: curation.violations || [],
+          fixesApplied: curation.fixesApplied || [],
+          timestamp: new Date().toISOString(),
+          routingInfo
         };
       }
       
@@ -228,9 +273,12 @@ export const useMultimodalStore = create<MultimodalStore>((set, get) => ({
         if (thinkingIndex !== -1) {
           newMessages[thinkingIndex] = {
             id: Date.now().toString(),
-            content: `Error: ${error.message || 'Failed to generate response'}`,
+            content: `❌ Constitutional Error: ${error.message || 'Failed to generate response'}\n\nMake sure Ollama is running with: ollama serve`,
             isUser: false,
             model: 'error',
+            sovereignStatus: 'CRITICAL',
+            vibeScore: 0,
+            violations: ['Ollama connection failed'],
             timestamp: new Date().toISOString()
           };
         }
@@ -243,18 +291,13 @@ export const useMultimodalStore = create<MultimodalStore>((set, get) => ({
     }
   },
   
-  // Refine Logic
   refineWithZeroDrift: async (messageId: string, content: string) => {
-    const { selectedModel, messages, isGenerating } = get();
-    
-    if (isGenerating) return;
+    const { messages, selectedModel } = get();
     
     const thinkingId = `refine-${Date.now()}`;
-    
-    // Add thinking message
     const thinkingMessage: Message = {
       id: thinkingId,
-      content: 'Applying aggressive refinements...',
+      content: '⚖️ Constitutional refinement in progress...',
       isUser: false,
       thinking: true,
       model: selectedModel,
@@ -267,94 +310,34 @@ export const useMultimodalStore = create<MultimodalStore>((set, get) => ({
     });
     
     try {
-      // Construct a strict prompt for AI to fix itself
-      const refinementPrompt = `You are a code refiner. Rewrite the following code to be 100% compliant with Sovereign Standards:
-1. Remove all 'any' types. Use explicit interfaces or types.
-2. Remove all 'unknown' types. Use specific types.
-3. Remove all lodash imports (cloneDeep, etc.). Replace with native JS (structuredClone, Object.freeze, etc.).
-4. Remove all console.log statements.
-5. Ensure proper TypeScript syntax.
-
-Current Code:
- ${content}
-
-Refactored Code:`;
+      // Apply constitutional curation directly
+      const curation = zeroDriftAI.curate(content);
       
-      const response = await fetch('http://localhost:11434/api/generate', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          model: selectedModel || 'llama3.2:latest',
-          prompt: refinementPrompt,
-          stream: false,
-          options: {
-            temperature: 0.2, // Low temp for deterministic fixes
-            top_p: 0.8
-          }
-        })
-      });
+      const refinedMessage: Message = {
+        id: `refined-${Date.now()}`,
+        content: curation.correctedCode,
+        isUser: false,
+        model: selectedModel,
+        sovereignStatus: curation.status || 'STABLE',
+        vibeScore: curation.vibeScore || 100,
+        violations: curation.violations || [],
+        fixesApplied: curation.fixesApplied || [],
+        timestamp: new Date().toISOString()
+      };
       
-      if (!response.ok) {
-        throw new Error(`Refinement failed: ${response.status}`);
-      }
-      
-      const data = await response.json();
-      
-      // Re-run curation on result
-      const curation = zeroDriftAI.curate(data.response);
-      
-      console.log('? Zero-Drift Refinement:', {
-        oldScore: messages.find(m => m.id === messageId)?.vibeScore,
-        newScore: curation.vibeScore,
-        status: curation.status
-      });
-      
-      // Replace thinking message with refined response
       set((state) => {
         const newMessages = state.messages.map(m => 
-          m.id === thinkingId ? {
-            id: `refined-${Date.now()}`,
-            content: curation.correctedCode,
-            isUser: false,
-            model: selectedModel,
-            sovereignStatus: curation.status,
-            vibeScore: curation.vibeScore,
-            violations: curation.violations,
-            fixesApplied: curation.fixesApplied,
-            timestamp: new Date().toISOString()
-          } : m
+          m.id === thinkingId ? refinedMessage : m
         );
-        
         return { 
           messages: newMessages,
           isGenerating: false 
         };
       });
       
-    } catch (error: any) {
+    } catch (error) {
       console.error('Refinement failed:', error);
-      
-      set((state) => {
-        const newMessages = state.messages.map(m => 
-          m.id === thinkingId ? {
-            id: `error-${Date.now()}`,
-            content: `? Zero-Drift refinement failed: ${error.message || 'Unknown error'}`,
-            isUser: false,
-            model: 'error',
-            timestamp: new Date().toISOString()
-          } : m
-        );
-        
-        return { 
-          messages: newMessages,
-          isGenerating: false 
-        };
-      });
+      set({ isGenerating: false });
     }
-  },
-  
-  recordCodeIntervention: (action: string, content: string) => {
-    console.log('Code intervention recorded:', { action, content });
   }
 }));
-

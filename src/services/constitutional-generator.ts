@@ -36,24 +36,24 @@ export class ConstitutionalGenerator {
    * The ONLY allowed generation path in the constitutional era
    */
   async generateSovereignCode(userIntent: string): Promise<ConstitutionalGenerationResult> {
-    console.log('??? Constitutional generation initiated...');
+    // AUTO-HUSH: console.log('??? Constitutional generation initiated...');
     
     // PHASE 1: Compile intent to constitutional spec
     const spec = rezCompiler.compile(userIntent);
-    console.log('? Spec compiled:', spec.normalizedIntent.domain);
+    // AUTO-HUSH: console.log('? Spec compiled:', spec.normalizedIntent.domain);
     
     // PHASE 2: Build constitutional prompt
     const prompt = this.buildConstitutionalPrompt(spec);
     
     // PHASE 3: Generate with AI (limited by capability budget)
-    console.log('? Generating with AI...');
+    // AUTO-HUSH: console.log('? Generating with AI...');
     const rawCode = await this.aiService.generate(prompt, {
       maxTokens: spec.capabilityBudget.tokens,
       temperature: 0.2 // Low for determinism
     });
     
     // PHASE 4: Constitutional curation
-    console.log('?? Curating constitutionally...');
+    // AUTO-HUSH: console.log('?? Curating constitutionally...');
     const curation = zeroDriftAI.curateAgainstConstitution(rawCode, spec);
     
     // PHASE 5: Apply auto-corrections if needed
@@ -71,7 +71,7 @@ export class ConstitutionalGenerator {
     // PHASE 7: Sign the artifact
     const signature = this.signArtifact(spec, finalCode);
 
-    console.log('?? Constitutional generation complete!');
+    // AUTO-HUSH: console.log('?? Constitutional generation complete!');
 
     return {
       spec,
@@ -183,3 +183,4 @@ export function getSovereignGenerator(aiService: AIService): ConstitutionalGener
   }
   return sovereignGenerator;
 }
+

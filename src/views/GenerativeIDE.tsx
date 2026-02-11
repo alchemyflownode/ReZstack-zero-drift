@@ -99,7 +99,7 @@ export const GenerativeIDE: React.FC<GenerativeIDEProps> = ({ availableModels = 
         if (names.includes('llama3.2:latest')) setSelectedModel('llama3.2:latest');
         else if (names.length > 0) setSelectedModel(names[0]);
       } catch (err) {
-        console.log("Using fallback models...");
+        // AUTO-HUSH: console.log("Using fallback models...");
         setModels(['llama3.2:latest', 'codellama', 'mistral']);
       }
     };
@@ -435,7 +435,7 @@ function processData(input: ProcessDataInput) {
             placeholder="Describe what you want to build with precision..." 
             maxLength={2000}
           />
-          <div className="flex gap-3 mt-4">
+          <div className="flex" style={{ gap: 'var(--space-3)', marginTop: 'var(--space-3)' }}>
             <button 
               onClick={handleGenerate}
               disabled={isGenerating || !prompt.trim()}
@@ -491,7 +491,7 @@ function processData(input: ProcessDataInput) {
             </div>
           </div>
           
-          <div className="flex items-center gap-2">
+          <div className="flex items-center" style={{ gap: 'var(--space-2)' }}>
             <div className="text-[10px] text-slate-500">
               {showRaw ? 'RAW OUTPUT' : 'CURATED OUTPUT'}
             </div>
@@ -619,5 +619,3 @@ function processData(input: ProcessDataInput) {
 };
 
 export default GenerativeIDE;
-
-

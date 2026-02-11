@@ -61,7 +61,7 @@ function ChatView() {
       await loadModels();
 
       if (isElectron) {
-        console.log("?? Running in Electron");
+        // AUTO-HUSH: console.log("?? Running in Electron");
       }
     };
     initialize();
@@ -448,3 +448,4 @@ function App() {
 }
 
 export default App;
+

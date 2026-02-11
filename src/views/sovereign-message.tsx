@@ -10,7 +10,7 @@ export const ChatView: React.FC = () => {
   // Mock store call - Replace this with your actual Zustand store import
   const sendMessage = async (content: string, options: { bypassCuration?: boolean }) => {
     setIsGenerating(true);
-    console.log("Sending to Store:", { content, bypass: options.bypassCuration });
+    // AUTO-HUSH: console.log("Sending to Store:", { content, bypass: options.bypassCuration });
     
     // Simulate network delay
     await new Promise(resolve => setTimeout(resolve, 1500));
@@ -141,3 +141,4 @@ export const ChatView: React.FC = () => {
     </div>
   );
 };
+

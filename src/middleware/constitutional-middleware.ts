@@ -37,7 +37,7 @@ Redirecting to constitutional generation...
         }
         const result = await sovereignGenerator.generateSovereignCode(prompt);
         return result.code;
-      } catch (error: any) {
+      } catch (error: unknown) {
         throw new Error(`Constitutional generation failed: ${error.message}`);
       }
     }
@@ -103,3 +103,4 @@ All AI generation is now governed by RezSpec v1.0.
 Direct model access is forbidden.
 DriversManual is the only interface.
 `);
+

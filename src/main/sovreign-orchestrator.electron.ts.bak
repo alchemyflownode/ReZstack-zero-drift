@@ -1,0 +1,160 @@
+import { BrowserWindow, ipcMain, app } from 'electron';
+import { spawn, exec } from 'child_process';
+import path from 'path';
+import fs from 'fs-extra';
+
+export class SovereignOrchestrator {
+  private mainWindow: BrowserWindow;
+  private monitorProcess: any = null;
+  private isMonitoring = false;
+  private resonanceDir: string;
+
+  constructor(window: BrowserWindow) {
+    this.mainWindow = window;
+    this.resonanceDir = path.join(app.getAppPath(), '.rezstack');
+    this.ensureResonanceDir();
+  }
+
+  private ensureResonanceDir() {
+    if (!fs.existsSync(this.resonanceDir)) {
+      fs.mkdirpSync(this.resonanceDir);
+    }
+
+    const vibeMonitorPath = path.join(this.resonanceDir, 'vibe_monitor.json');
+    if (!fs.existsSync(vibeMonitorPath)) {
+      fs.writeJsonSync(vibeMonitorPath, {
+        score: 100,
+        status: 'STABLE',
+        timestamp: new Date().toISOString(),
+        pedalTone: 'RESONANT',
+        violations: []
+      });
+    }
+  }
+
+  public startMonitoring() {
+    if (this.isMonitoring) return;
+
+    const scriptPath = path.join(app.getAppPath(), 'scripts', 'SovereignMonitor.ps1');
+    
+    if (!fs.existsSync(scriptPath)) {
+      console.error('SovereignMonitor.ps1 not found at:', scriptPath);
+      return;
+    }
+
+    // AUTO-HUSH: console.log('?? Starting Sovereign Monitor...');
+    
+    this.monitorProcess = spawn('powershell.exe', [
+      '-ExecutionPolicy', 'Bypass',
+      '-NoProfile',
+      '-NonInteractive',
+      '-File', `"${scriptPath}"`,
+      '-AppPath', `"${app.getAppPath()}"`
+    ]);
+
+    this.monitorProcess.stdout.on('data', (data: Buffer) => {
+      const output = data.toString().trim();
+      // AUTO-HUSH: console.log('[Sovereign Monitor]:', output);
+      
+      if (output.includes('CRITICAL_DRIFT')) {
+        const match = output.match(/Vibe Score: (\d+)%/);
+        const score = match ? parseInt(match[1]) : 0;
+        
+        this.mainWindow.webContents.send('SOVEREIGN:CRITICAL_DRIFT', {
+          score,
+          timestamp: Date.now(),
+          message: 'Critical architectural drift detected'
+        });
+      }
+    });
+
+    this.monitorProcess.stderr.on('data', (data: Buffer) => {
+      console.error('[Sovereign Monitor Error]:', data.toString());
+    });
+
+    this.monitorProcess.on('close', (code: number) => {
+      // AUTO-HUSH: console.log(`[Sovereign Monitor] exited with code ${code}`);
+      this.isMonitoring = false;
+      this.monitorProcess = null;
+    });
+
+    this.isMonitoring = true;
+  }
+
+  public async triggerRecovery() {
+    const scriptPath = path.join(app.getAppPath(), 'scripts', 'SovereignRecover.ps1');
+    
+    return new Promise((resolve, reject) => {
+      exec(`powershell -ExecutionPolicy Bypass -File "${scriptPath}" -AppPath "${app.getAppPath()}"`, 
+        (error, stdout, stderr) => {
+          if (error) {
+            console.error('Recovery failed:', error);
+            reject(error);
+          } else {
+            // AUTO-HUSH: console.log('Recovery output:', stdout);
+            
+            const vibePath = path.join(this.resonanceDir, 'vibe_monitor.json');
+            fs.writeJsonSync(vibePath, {
+              score: 100,
+              status: 'STABLE',
+              timestamp: new Date().toISOString(),
+              pedalTone: 'RESONANT',
+              violations: []
+            });
+            
+            resolve(stdout);
+          }
+        }
+      );
+    });
+  }
+
+  public setupIPC() {
+    ipcMain.on('SOVEREIGN:START_MONITOR', () => {
+      this.startMonitoring();
+    });
+    
+    ipcMain.on('SOVEREIGN:TRIGGER_RECOVERY', async () => {
+      try {
+        await this.triggerRecovery();
+        this.mainWindow.webContents.send('SOVEREIGN:RECOVERY_COMPLETE', {
+          success: true,
+          timestamp: Date.now()
+        });
+      } catch (error) {
+        this.mainWindow.webContents.send('SOVEREIGN:RECOVERY_COMPLETE', {
+          success: false,
+          error: error.message,
+          timestamp: Date.now()
+        });
+      }
+    });
+    
+    ipcMain.on('SOVEREIGN:RECORD_INTERVENTION', (_, event) => {
+      const enforcementPath = path.join(this.resonanceDir, 'enforcement_log.json');
+      let log = [];
+      
+      if (fs.existsSync(enforcementPath)) {
+        log = fs.readJsonSync(enforcementPath);
+      }
+      
+      log.push({
+        ...event,
+        timestamp: new Date().toISOString()
+      });
+      
+      fs.writeJsonSync(enforcementPath, log);
+      
+      this.mainWindow.webContents.send('PS1:ENFORCEMENT_EVENT', event);
+    });
+  }
+
+  public stopMonitoring() {
+    if (this.monitorProcess) {
+      this.monitorProcess.kill();
+      this.monitorProcess = null;
+      this.isMonitoring = false;
+    }
+  }
+}
+

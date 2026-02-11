@@ -126,7 +126,7 @@ class AutonomousCodebaseManager {
       this.executedActions.push(action);
       return { success: true, changes, logs };
       
-    } catch (error: any) {
+    } catch (error: unknown) {
       logs.push(`[Î”â‚€] Action failed: ${error.message}`);
       return { success: false, changes, logs };
     }
@@ -200,5 +200,6 @@ class AutonomousCodebaseManager {
 }
 
 export const autonomousCodebaseManager = new AutonomousCodebaseManager();
+
 
 

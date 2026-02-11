@@ -1,0 +1,13 @@
+# Sovereign JARVIS Dependencies
+# All dependencies are local-only, no cloud services
+
+# HTTP client for Ollama API (local)
+requests>=2.28.0
+
+# Note: All other dependencies are from Python standard library:
+# - sqlite3 (built-in)
+# - subprocess (built-in)
+# - pathlib (built-in)
+# - dataclasses (built-in)
+# - json (built-in)
+# - re (built-in)
