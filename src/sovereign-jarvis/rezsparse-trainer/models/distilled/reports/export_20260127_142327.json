@@ -1,0 +1,9 @@
+[
+  {
+    "name": "production_constitutional_predictor.pkl",
+    "category": "Models",
+    "size_mb": 1.2,
+    "status": "audited",
+    "constitutional_score": 1.0
+  }
+]

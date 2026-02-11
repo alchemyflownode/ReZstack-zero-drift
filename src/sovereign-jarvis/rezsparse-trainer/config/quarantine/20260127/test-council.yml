@@ -1,0 +1,44 @@
+﻿name: Test Constitutional Council
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test-council:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'
+        
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install torch transformers fastapi uvicorn pydantic
+        
+    - name: Run syntax check on Constitutional Council
+      run: |
+        python -m py_compile constitutional_council.py
+        echo "✓ Constitutional Council syntax is valid"
+        
+    - name: Basic import test
+      run: |
+        python -c "import constitutional_council; print('✓ Constitutional Council module imports successfully')"
+        
+    - name: Run basic tests
+      run: |
+        python -c "
+from constitutional_council import ConstitutionalCouncil
+print('Testing Constitutional Council initialization...')
+council = ConstitutionalCouncil()
+print(f'✓ Council initialized with {len(council.council_proposers)} models')
+print('Sovereign AI test passed!')
+"

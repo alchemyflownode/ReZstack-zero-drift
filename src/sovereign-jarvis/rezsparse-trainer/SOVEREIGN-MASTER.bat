@@ -1,0 +1,53 @@
+@echo off
+chcp 65001 >nul
+title ?? SOVEREIGN AI MASTER CONTROL
+color 0A
+
+echo ?????????????????????????????????????????????????????????????????????????????
+echo ?              SOVEREIGN AI ECOSYSTEM - MASTER CONTROL                     ?
+echo ?         Trainer ? Acceleration ? Swarm ? Claude ? Ollama                 ?
+echo ?????????????????????????????????????????????????????????????????????????????
+echo.
+
+echo [1/6] ?? Starting Ollama...
+start "" "C:\Users\Zphoenix\AppData\Local\Programs\Ollama\Ollama.exe"
+timeout /t 3 /nobreak >nul
+
+echo [2/6] ?? Starting RezStack Swarm...
+cd /d "G:\okiru\app builder\RezStackFinal2\RezStackFinal\src\rezonic-swarm"
+start /MIN cmd /k "python simple-swarm.py"
+timeout /t 3 /nobreak >nul
+
+echo [3/6] ?? Starting Constitutional Bridge...
+cd /d "G:\okiru\app builder\RezStackFinal2\RezStackFinal\src\constitutional_bridge"
+start /MIN cmd /k "python main.py"
+timeout /t 3 /nobreak >nul
+
+echo [4/6] ?? Starting JARVIS API...
+cd /d "G:\okiru\app builder\RezStackFinal2\RezStackFinal\src\sovereign-jarvis"
+start /MIN cmd /k "python main.py"
+timeout /t 3 /nobreak >nul
+
+echo [5/6] ?? Starting Sovereign Chat UI...
+cd /d "G:\okiru\app builder\RezStackFinal2\RezStackFinal"
+start /MIN cmd /k "npm run dev"
+timeout /t 5 /nobreak >nul
+
+echo [6/6] ?? Launching Trainer Dashboard...
+cd /d "G:\okiru-pure\rezsparse-trainer"
+start "" http://localhost:5176/chat
+start "" http://localhost:8000/docs
+start "" http://localhost:8080
+
+echo.
+echo ? SOVEREIGN AI ECOSYSTEM FULLY OPERATIONAL!
+echo.
+echo   ?? Sovereign Chat:    http://localhost:5176/chat
+echo   ?? Swarm API:         http://localhost:8000/docs
+echo   ?? JARVIS IDE:        http://localhost:8080
+echo   ?? Trainer:           G:\okiru-pure\rezsparse-trainer
+echo   ?? Acceleration:      G:\Rez-Acceleration
+echo.
+echo   ?? Models: sovereign-constitutional, pizza-vs-burger-classifier, +24 more
+echo.
+pause

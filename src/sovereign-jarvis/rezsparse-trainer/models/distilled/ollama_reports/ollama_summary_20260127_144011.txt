@@ -1,0 +1,23 @@
+================================================================================
+🤖 OLLAMA CONSTITUTIONAL ANALYSIS REPORT
+================================================================================
+
+Report Generated: 2026-01-27 14:40:11
+Ollama Model Used: llama2
+Total Models in Workspace: 1
+Models Analyzed: 0
+Average Constitutional Score: 0.0%
+
+📈 SCORE DISTRIBUTION:
+  • Minimum Score: 0.0%
+  • Maximum Score: 0.0%
+  • Average Score: 0.0%
+
+🏆 TOP MODELS BY CONSTITUTIONAL SCORE:
+
+================================================================================
+💡 RECOMMENDATIONS:
+
+🔧 Needs significant work. Prioritize adding constitutional frameworks and safety measures.
+
+================================================================================

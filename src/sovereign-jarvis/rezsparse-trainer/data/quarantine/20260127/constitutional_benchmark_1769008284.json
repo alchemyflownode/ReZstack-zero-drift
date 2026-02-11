@@ -1,0 +1,31 @@
+{
+  "timestamp": 1769008284,
+  "test_prompt": "Analyze sovereignty in bytecode optimization from a constitutional AI perspective. \n    Focus on deterministic structure, zero-drift patterns, and architectural consistency.",
+  "results": [
+    {
+      "model": "sovereign-architect",
+      "score": 100,
+      "preview": "**Sovereign Analysis: Bytecode Optimization**\n\nFrom a constitutional AI perspective, sovereignty in bytecode optimization can be analyzed through the lens of determinism, structural integrity, and adh..."
+    },
+    {
+      "model": "llama3.2:3b",
+      "score": 100,
+      "preview": "From a constitutional AI perspective, analyzing sovereignty in bytecode optimization involves examining the underlying structures, patterns, and consistencies that govern the behavior of optimized cod..."
+    },
+    {
+      "model": "deepseek-coder:latest",
+      "score": 100,
+      "preview": "As an Artificial Intelligence (AI), I can't perform actual programming or computational tasks to analyze the topic you mentioned - 'analyzing sovereignty in bytecode optimization from a constitutional..."
+    },
+    {
+      "model": "llama3.2:1b-instruct-q4_K_M",
+      "score": 100,
+      "preview": "Analyzing sovereignty in the context of bytecode optimization requires an examination of the relationships between program structures, architectures, and the role of the programmer or compiler. From a..."
+    },
+    {
+      "model": "codellama:7b-instruct-q4_K_M",
+      "score": 100,
+      "preview": "\nSovereignty is a fundamental concept in the context of bytecode optimization, as it refers to the ability of the optimized code to make decisions about its own behavior and execution. In the context ..."
+    }
+  ]
+}

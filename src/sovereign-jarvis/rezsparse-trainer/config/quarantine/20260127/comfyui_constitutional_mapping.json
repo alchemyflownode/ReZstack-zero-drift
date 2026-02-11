@@ -1,0 +1,84 @@
+﻿{
+    "ConstitutionalPriorities":  {
+                                     "LOW":  [
+                                                 "AIFSH",
+                                                 "audio_encoders",
+                                                 "deepbooru"
+                                             ],
+                                     "HIGH":  [
+                                                  "controlnet",
+                                                  "animatediff_models",
+                                                  "embeddings"
+                                              ],
+                                     "MEDIUM":  [
+                                                    "upscale_models",
+                                                    "ipadapter",
+                                                    "style_models"
+                                                ],
+                                     "ESSENTIAL":  [
+                                                       "checkpoints",
+                                                       "vae",
+                                                       "clip",
+                                                       "loras"
+                                                   ]
+                                 },
+    "Timestamp":  "2026-01-23 02:38:57",
+    "Directories":  [
+                        {
+                            "Name":  ".constitutional",
+                            "FileCount":  6,
+                            "SizeMB":  0
+                        },
+                        {
+                            "Name":  "__pycache__",
+                            "FileCount":  1,
+                            "SizeMB":  0.01
+                        },
+                        {
+                            "Name":  "config",
+                            "FileCount":  2,
+                            "SizeMB":  0
+                        },
+                        {
+                            "Name":  "council",
+                            "FileCount":  1,
+                            "SizeMB":  0
+                        },
+                        {
+                            "Name":  "data",
+                            "FileCount":  4,
+                            "SizeMB":  0.71
+                        },
+                        {
+                            "Name":  "integration",
+                            "FileCount":  1,
+                            "SizeMB":  0
+                        },
+                        {
+                            "Name":  "logs",
+                            "FileCount":  1,
+                            "SizeMB":  0.01
+                        },
+                        {
+                            "Name":  "models",
+                            "FileCount":  5,
+                            "SizeMB":  2.82
+                        },
+                        {
+                            "Name":  "scripts",
+                            "FileCount":  1,
+                            "SizeMB":  0.01
+                        },
+                        {
+                            "Name":  "src",
+                            "FileCount":  28,
+                            "SizeMB":  0.23
+                        },
+                        {
+                            "Name":  "tests",
+                            "FileCount":  1,
+                            "SizeMB":  0
+                        }
+                    ],
+    "ModelsDirectory":  "G:\\okiru-pure\\rezsparse-trainer"
+}

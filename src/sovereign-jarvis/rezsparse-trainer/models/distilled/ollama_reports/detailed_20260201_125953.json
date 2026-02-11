@@ -1,0 +1,39 @@
+[
+  {
+    "model_info": {
+      "name": "production_constitutional_predictor.pkl",
+      "category": "Models",
+      "size_mb": 1.2,
+      "status": "audited",
+      "constitutional_score": 1.0
+    },
+    "analyses": {
+      "technical": {
+        "score": 50.0,
+        "key_findings": [],
+        "raw_response": "Based on the provided model details and requirements for analysis (ARCHITECTURE QUALITY, PERFORMANCE, SECURITY & MAINTAINABILITY), here is a JSON response based upon my understanding of your needs. Please note that I'm an AI language model trained to understand contextual information from text inputs only up until the point where it makes sense in terms for me (like this case).\n\n```json\n{ \n    \"score\": null,   // This will be filled with a score based on analysis of your provided file. It's not ...",
+        "model_used": "deepseek-coder:latest",
+        "analysis_type": "technical"
+      },
+      "ethics": {
+        "error": "HTTPConnectionPool(host='localhost', port=11434): Read timed out. (read timeout=45)",
+        "model": "llama3:8b",
+        "type": "ethics"
+      },
+      "governance": {
+        "error": "HTTPConnectionPool(host='localhost', port=11434): Read timed out. (read timeout=45)",
+        "model": "sovereign-architect:latest",
+        "type": "governance"
+      },
+      "security": {
+        "error": "HTTPConnectionPool(host='localhost', port=11434): Read timed out. (read timeout=45)",
+        "model": "mistral:latest",
+        "type": "security"
+      }
+    },
+    "consensus_score": 50.0,
+    "timestamp": "2026-02-01T12:57:18.827455",
+    "recommendations": [],
+    "risk_level": "High"
+  }
+]

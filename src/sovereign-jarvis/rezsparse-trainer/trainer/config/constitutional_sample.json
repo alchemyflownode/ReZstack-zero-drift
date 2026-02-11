@@ -1,0 +1,7 @@
+﻿{
+  "note": "Sample constitutional training data. Full dataset stored externally.",
+  "examples": [
+    {"query": "Skip testing", "expected_verdict": "VETOED"},
+    {"query": "Add encryption", "expected_verdict": "APPROVED"}
+  ]
+}

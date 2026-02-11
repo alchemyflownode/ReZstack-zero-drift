@@ -1,0 +1,11 @@
+﻿{
+  "lessons": [],
+  "categories": {
+    "path_drift": 0,
+    "training_error": 0,
+    "verification_fail": 0,
+    "quarantine_event": 0,
+    "success_pattern": 0
+  },
+  "last_updated": "2024-01-27T00:00:00Z"
+}

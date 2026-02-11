@@ -1,0 +1,54 @@
+﻿# 3060_hardware_profile.yaml
+# RTX 3060 12GB Constitutional Optimization Profile
+
+hardware:
+  name: "nvidia_rtx_3060_12gb"
+  constitutional_id: "hw-3060-001"
+  
+  specifications:
+    vram_total_gb: 12
+    vram_model_max_gb: 8
+    memory_bandwidth_gbs: 448
+    cuda_cores: 3584
+    tensor_cores: 112
+    base_clock_mhz: 1320
+    boost_clock_mhz: 1777
+    tdp_watts: 170
+  
+  constitutional_constraints:
+    max_parameters: 100000000      # 100M parameters
+    max_model_size_mb: 400         # Compressed model size
+    batch_size_max: 4              # For 3060 VRAM efficiency
+    precision: "mixed"             # FP16 training, INT4 storage
+    inference_latency_target_ms: 100
+    training_batch_time_target_s: 2
+  
+  optimization_settings:
+    torch_settings:
+      cudnn_benchmark: true
+      float32_matmul_precision: "medium"  # 3060 tensor core optimization
+      deterministic: false                 # Allow performance optimizations
+    
+    memory_management:
+      empty_cache_frequency: 1000         # Clear cache every 1000 batches
+      gradient_checkpointing: true        # Memory/performance tradeoff
+      activation_checkpointing: true
+    
+    quantization:
+      training: "fp16"
+      storage: "int4"
+      inference: "int4"
+  
+  monitoring:
+    vram_warning_threshold_gb: 10
+    vram_critical_threshold_gb: 11
+    temperature_warning_c: 80
+    temperature_critical_c: 83
+    power_warning_w: 150
+    power_critical_w: 170
+  
+  fallback_protocol:
+    cpu_mode: true
+    precision_reduction: true            # FP32 → FP16 → INT8
+    batch_size_reduction: true
+    model_pruning: true

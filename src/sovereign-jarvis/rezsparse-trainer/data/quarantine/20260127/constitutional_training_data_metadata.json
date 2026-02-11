@@ -1,0 +1,11 @@
+﻿{
+    "artifact_type":  "data",
+    "verification_required":  [
+                                  "Constitutional alignment check",
+                                  "Re-training under RezStack constraints"
+                              ],
+    "source":  "D:\\AI\\Ollama_Models",
+    "original_path":  "D:\\AI\\Ollama_Models\\constitutional_training_data.json",
+    "quarantined_date":  "2026-01-27 12:55:17",
+    "status":  "UNTRUSTED"
+}

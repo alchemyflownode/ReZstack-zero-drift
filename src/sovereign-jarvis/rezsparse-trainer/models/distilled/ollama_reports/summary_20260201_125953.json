@@ -1,0 +1,25 @@
+{
+  "report_type": "comprehensive_constitutional_analysis",
+  "generated": "2026-02-01T12:59:53.442803",
+  "total_models_analyzed": 1,
+  "consensus_score_stats": {
+    "average": 50.0,
+    "min": 50.0,
+    "max": 50.0,
+    "median": 50.0
+  },
+  "risk_distribution": {
+    "High": 1
+  },
+  "top_recommendations": [],
+  "models_analyzed": [
+    "production_constitutional_predictor.pkl"
+  ],
+  "analysis_models_used": [
+    "sovereign-architect:latest",
+    "deepseek-coder:latest",
+    "llama3:8b",
+    "mistral:latest",
+    "qwen3-vl:8b"
+  ]
+}

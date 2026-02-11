@@ -1,0 +1,13 @@
+﻿{
+    "artifact_type":  "data",
+    "verification_required":  [
+                                  "Constitutional alignment check",
+                                  "Re-training under RezStack constraints",
+                                  "First principles validation"
+                              ],
+    "source":  "D:\\AI\\Ollama_Models",
+    "policy_reference":  "Foreign Artifact Policy v1.0",
+    "original_path":  "D:\\AI\\Ollama_Models\\constitutional_manifest.json",
+    "quarantined_date":  "2026-01-27 12:45:14",
+    "status":  "UNTRUSTED - Requires re-distillation"
+}

@@ -1,0 +1,42 @@
+﻿"""
+MINIMAL TRAINER - Bridges your Constitutional AI modules
+Actual training logic is in your git repo
+"""
+
+import sys
+import os
+sys.path.append(os.path.dirname(os.path.dirname(__file__)))
+
+class TrainingBridge:
+    """Bridge to your existing training code in git repo"""
+    
+    @staticmethod
+    def get_training_files():
+        """List training files that should be recovered"""
+        return [
+            "sovereign_trainer.py",
+            "constitutional_judge.py", 
+            "constitutional_core.py",
+            "training_data/",
+            "models/"
+        ]
+    
+    @staticmethod
+    def check_git_repo():
+        """Check if git repo has training files"""
+        import subprocess
+        try:
+            result = subprocess.run(
+                ["git", "ls-remote", "git@github.com:alchemyflownode/rezsparse-sovereign-ai.git"],
+                capture_output=True,
+                text=True
+            )
+            return "constitutional" in result.stdout.lower()
+        except:
+            return False
+
+# Export what you ACTUALLY have
+__all__ = ['TrainingBridge']
+
+print("⚡ Training Bridge loaded")
+print("🔗 Your actual training code is in git@github.com:alchemyflownode/rezsparse-sovereign-ai.git")

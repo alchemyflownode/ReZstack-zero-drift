@@ -1,0 +1,7 @@
+@echo off
+set GIT_TERMINAL_PROMPT=0
+set GCM_INTERACTIVE=Never
+set GIT_ASKPASS=echo
+set GIT_TRACE=0
+set GIT_CURL_VERBOSE=0
+git %*

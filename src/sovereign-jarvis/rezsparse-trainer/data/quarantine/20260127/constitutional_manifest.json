@@ -1,0 +1,7 @@
+﻿{
+    "governance_oracle":  {
+                              "path":  "D:/AI/Ollama_Models/production_constitutional_predictor.pkl",
+                              "sha256":  "5B54A502D99D0A1FEF6CA4D75F64F1554C7CA72DA1E549D9B162A0E3C586834F",
+                              "role":  "constitutional_validator_v6.0"
+                          }
+}

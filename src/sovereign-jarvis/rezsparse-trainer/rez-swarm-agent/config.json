@@ -1,0 +1,46 @@
+﻿{
+  "version": "1.0.0",
+  "name": "rez-swarm-agent",
+  "description": "Sovereign AI Runtime for Claude Code + Local Models",
+  "constitutional_model": "constitutional_model.pt",
+  "ollama_url": "http://localhost:11434",
+  "default_model": "qwen3-coder:7b",
+  "governance_level": "advanced",
+  "deterministic_mode": true,
+  "policies": {
+    "file_safety": "only_edit_py_files_in_src",
+    "network_safety": "no_unauthorized_http",
+    "command_safety": "no_rm_rf_without_backup",
+    "data_safety": "no_pii_extraction_without_consent"
+  },
+  "entropy_verification": true,
+  "hardware_fingerprint": true,
+  "audit_trail": true,
+  "max_context_length": 4096,
+  "temperature": 0.2,
+  "max_tokens": 2048,
+  "monitoring": {
+    "drift_detection": true,
+    "entropy_checks": true,
+    "performance_tracking": true
+  },
+  "directories": {
+    "memorez": "memorez",
+    "quarantine": "quarantine",
+    "reports": "reports",
+    "sessions": "sessions",
+    "state": "state",
+    "core": "core",
+    "scripts": "scripts",
+    "lessons": "lessons"
+  },
+  "models": {
+    "primary": "qwen3-coder:7b",
+    "fallback": "mistral:latest",
+    "governance": "sovereign-architect:latest",
+    "technical": "deepseek-coder:latest",
+    "ethics": "llama3:8b"
+  },
+  "created": "2026-02-01",
+  "updated": "2026-02-01"
+}

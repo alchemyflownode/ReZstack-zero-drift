@@ -1,0 +1,31 @@
+﻿{
+  "version": "1.0.0",
+  "name": "MEMOREZ",
+  "description": "Persistent RezStack Consciousness",
+  "created": "2024-01-27T00:00:00Z",
+  "project_root": "G:\\okiru-pure\\rezsparse-trainer",
+  "memory": {
+    "max_lessons": 1000,
+    "session_history_days": 30,
+    "checkpoint_retention_days": 7
+  },
+  "paths": {
+    "models": "models",
+    "data": "data", 
+    "config": "config",
+    "trainer": "trainer",
+    "api": "api",
+    "docker": "docker"
+  },
+  "drift_protection": {
+    "verify_before_action": true,
+    "auto_create_directories": true,
+    "quarantine_unknown": true,
+    "backup_before_overwrite": true
+  },
+  "training": {
+    "min_checkpoint_age_hours": 6,
+    "max_parallel_training": 1,
+    "auto_validate": true
+  }
+}

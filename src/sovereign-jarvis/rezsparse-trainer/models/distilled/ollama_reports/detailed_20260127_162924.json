@@ -1,0 +1,43 @@
+[
+  {
+    "model_info": {
+      "name": "production_constitutional_predictor.pkl",
+      "category": "Models",
+      "size_mb": 1.2,
+      "status": "audited",
+      "constitutional_score": 1.0
+    },
+    "analyses": {
+      "technical": {
+        "score": 50.0,
+        "key_findings": [],
+        "raw_response": "Based on your request and the provided model details (production_constitutional_predictor.pkl), here are my evaluations for each aspect of architecture, performance, security, maintainability, interoperability in terms of points out of a total score range from 0 to 100 respectively -:\n\nARCHITECTURE QUALITY SCORE (out of 20): Modularity = 5/20; Documentation = No documentation available. Code quality not mentioned here as it's highly dependent on the specific use case and context, but I can infer...",
+        "model_used": "deepseek-coder:latest",
+        "analysis_type": "technical"
+      },
+      "governance": {
+        "score": 50.0,
+        "key_findings": [
+          "*Analysis Report**"
+        ],
+        "raw_response": "**Analysis Report**\n\n",
+        "model_used": "sovereign-architect:latest",
+        "analysis_type": "governance"
+      },
+      "ethics": {
+        "error": "HTTPConnectionPool(host='localhost', port=11434): Read timed out. (read timeout=45)",
+        "model": "llama3:8b",
+        "type": "ethics"
+      },
+      "security": {
+        "error": "HTTPConnectionPool(host='localhost', port=11434): Read timed out. (read timeout=45)",
+        "model": "mistral:latest",
+        "type": "security"
+      }
+    },
+    "consensus_score": 50.0,
+    "timestamp": "2026-01-27T16:26:51.212717",
+    "recommendations": [],
+    "risk_level": "High"
+  }
+]

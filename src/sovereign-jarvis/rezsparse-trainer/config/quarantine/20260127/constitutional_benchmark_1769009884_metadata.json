@@ -1,0 +1,11 @@
+﻿{
+    "artifact_type":  "config",
+    "verification_required":  [
+                                  "Constitutional alignment check",
+                                  "Re-training under RezStack constraints"
+                              ],
+    "source":  "C:\\Users\\Zphoenix\\rezsparse-sovereign-ai",
+    "original_path":  "C:\\Users\\Zphoenix\\rezsparse-sovereign-ai\\constitutional_benchmark_1769009884.json",
+    "quarantined_date":  "2026-01-27 12:55:18",
+    "status":  "UNTRUSTED"
+}
