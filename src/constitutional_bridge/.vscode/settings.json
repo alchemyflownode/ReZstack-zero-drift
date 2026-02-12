@@ -1,0 +1,17 @@
+﻿{
+  "continue.models": [
+    {
+      "title": "Constitutional Claude (Mistral)",
+      "provider": "ollama",
+      "model": "mistral:latest"
+    },
+    {
+      "title": "Constitutional Claude (Llama 3.2)",
+      "provider": "ollama",
+      "model": "llama3.2:latest"
+    }
+  ],
+  "continue.showDialogOnStart": false,
+  "continue.enableTabAutocomplete": true,
+  "editor.inlineSuggest.enabled": true
+}

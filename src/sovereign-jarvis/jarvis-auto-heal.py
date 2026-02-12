@@ -59,13 +59,14 @@ class JARVISAutoHealer:
         """Scan workspace for security vulnerabilities"""
         self.issues = []
         
-        # Scan Python files
+        # Scan Python files - with encoding fallback
         for py_file in self.workspace.rglob("*.py"):
             self.scan_python_file(py_file)
         
         # Scan JavaScript/TypeScript files
-        for js_file in self.workspace.rglob("*.{js,jsx,ts,tsx}"):
-            self.scan_js_file(js_file)
+        for js_file in self.workspace.rglob("*"):
+            if js_file.suffix in ['.js', '.jsx', '.ts', '.tsx']:
+                self.scan_js_file(js_file)
         
         # Scan for hardcoded credentials
         self.scan_hardcoded_credentials()
@@ -74,11 +75,22 @@ class JARVISAutoHealer:
         return self.issues
     
     def scan_python_file(self, filepath):
-        """Scan Python file for vulnerabilities"""
-        with open(filepath, 'r', encoding='utf-8') as f:
-            content = f.read()
-            lines = content.split('\n')
-            
+        """Scan Python file for vulnerabilities - with encoding fallback"""
+        encodings = ['utf-8', 'latin-1', 'cp1252', 'iso-8859-1']
+        
+        for encoding in encodings:
+            try:
+                with open(filepath, 'r', encoding=encoding) as f:
+                    content = f.read()
+                break
+            except UnicodeDecodeError:
+                continue
+        else:
+            print(f"   ⚠️  Could not decode {filepath.name} - skipping")
+            return
+        
+        lines = content.split('\n')
+        
         for i, line in enumerate(lines, 1):
             # Bare except
             if re.search(r'except\s*:', line):
@@ -101,11 +113,22 @@ class JARVISAutoHealer:
                 })
     
     def scan_js_file(self, filepath):
-        """Scan JavaScript/TypeScript file for vulnerabilities"""
-        with open(filepath, 'r', encoding='utf-8') as f:
-            content = f.read()
-            lines = content.split('\n')
-            
+        """Scan JavaScript/TypeScript file for vulnerabilities - with encoding fallback"""
+        encodings = ['utf-8', 'latin-1', 'cp1252', 'iso-8859-1']
+        
+        for encoding in encodings:
+            try:
+                with open(filepath, 'r', encoding=encoding) as f:
+                    content = f.read()
+                break
+            except UnicodeDecodeError:
+                continue
+        else:
+            print(f"   ⚠️  Could not decode {filepath.name} - skipping")
+            return
+        
+        lines = content.split('\n')
+        
         for i, line in enumerate(lines, 1):
             # TODO comments
             if 'TODO' in line and '//' in line:
@@ -126,19 +149,9 @@ class JARVISAutoHealer:
                     'content': line.strip(),
                     'severity': 'LOW'
                 })
-            
-            # Any type in TypeScript
-            if '.ts' in str(filepath) and ': any' in line:
-                self.issues.append({
-                    'file': str(filepath),
-                    'line': i,
-                    'type': 'ANY_TYPE',
-                    'content': line.strip(),
-                    'severity': 'MEDIUM'
-                })
     
     def scan_hardcoded_credentials(self):
-        """Scan for hardcoded API keys and passwords"""
+        """Scan for hardcoded API keys and passwords - with encoding fallback"""
         patterns = {
             'API_KEY': r'(api[_-]?key|apikey|token|secret)\s*[=:]\s*[''"][A-Za-z0-9_\-]{16,}[''"]',
             'PASSWORD': r'(password|passwd|pwd)\s*[=:]\s*[''"][^''"]{8,}[''"]',
@@ -146,13 +159,23 @@ class JARVISAutoHealer:
         }
         
         for file in self.workspace.rglob("*"):
-            if file.suffix in ['.py', '.js', '.ts', '.jsx', '.tsx', '.env', '.json']:
-                try:
-                    with open(file, 'r', encoding='utf-8') as f:
-                        content = f.read()
-                        lines = content.split('\n')
-                        
+            if file.suffix in ['.py', '.js', '.ts', '.jsx', '.tsx', '.env', '.json', '.yml', '.yaml', '.ini', '.cfg', '.conf']:
+                encodings = ['utf-8', 'latin-1', 'cp1252', 'iso-8859-1']
+                content = None
+                
+                for encoding in encodings:
+                    try:
+                        with open(file, 'r', encoding=encoding) as f:
+                            content = f.read()
+                        break
+                    except:
+                        continue
+                
+                if content:
+                    lines = content.split('\n')
+                    
                     for pattern_name, pattern in patterns.items():
+                        import re
                         matches = re.finditer(pattern, content, re.IGNORECASE)
                         for match in matches:
                             line_num = content[:match.start()].count('\n') + 1
@@ -163,8 +186,6 @@ class JARVISAutoHealer:
                                 'content': match.group(),
                                 'severity': 'CRITICAL'
                             })
-                except:
-                    pass
     
     def apply_fixes(self):
         """Apply automatic fixes for all detected issues"""
@@ -183,8 +204,18 @@ class JARVISAutoHealer:
     def fix_bare_except(self, issue):
         """Fix bare except: 'except:' → 'except Exception as e:'"""
         filepath = Path(issue['file'])
-        with open(filepath, 'r', encoding='utf-8') as f:
-            lines = f.readlines()
+        encodings = ['utf-8', 'latin-1', 'cp1252', 'iso-8859-1']
+        
+        for encoding in encodings:
+            try:
+                with open(filepath, 'r', encoding=encoding) as f:
+                    lines = f.readlines()
+                break
+            except:
+                continue
+        else:
+            print(f"   ⚠️  Could not fix {filepath.name} - encoding issue")
+            return
         
         lines[issue['line']-1] = lines[issue['line']-1].replace('except:', 'except Exception as e:')
         
@@ -192,13 +223,23 @@ class JARVISAutoHealer:
             f.writelines(lines)
     
     def fix_dangerous_eval(self, issue):
-        """Fix dangerous eval: Add warning and input validation"""
+        """Fix dangerous eval: Add warning comment and input validation suggestion"""
         filepath = Path(issue['file'])
-        with open(filepath, 'r', encoding='utf-8') as f:
-            lines = f.readlines()
+        encodings = ['utf-8', 'latin-1', 'cp1252', 'iso-8859-1']
+        
+        for encoding in encodings:
+            try:
+                with open(filepath, 'r', encoding=encoding) as f:
+                    lines = f.readlines()
+                break
+            except:
+                continue
+        else:
+            print(f"   ⚠️  Could not fix {filepath.name} - encoding issue")
+            return
         
         # Add safety warning comment
-        lines.insert(issue['line']-1, f"# CONSTITUTIONAL SAFETY: eval() detected - ensure input is sanitized\n")
+        lines.insert(issue['line']-1, f"# CONSTITUTIONAL SAFETY: eval() detected - ensure input is sanitized and consider using ast.literal_eval()\n")
         
         with open(filepath, 'w', encoding='utf-8') as f:
             f.writelines(lines)
@@ -206,12 +247,20 @@ class JARVISAutoHealer:
     def fix_hardcoded_creds(self, issue):
         """Fix hardcoded credentials: Replace with environment variables"""
         filepath = Path(issue['file'])
-        with open(filepath, 'r', encoding='utf-8') as f:
-            lines = f.readlines()
+        encodings = ['utf-8', 'latin-1', 'cp1252', 'iso-8859-1']
+        
+        for encoding in encodings:
+            try:
+                with open(filepath, 'r', encoding=encoding) as f:
+                    lines = f.readlines()
+                break
+            except:
+                continue
+        else:
+            return
         
         # Comment out hardcoded value and add env var comment
-        line = lines[issue['line']-1]
-        lines[issue['line']-1] = f"# CONSTITUTIONAL FIX: Moved to environment variable\n# {line}os.environ.get('SECRET_KEY')\n"
+        lines[issue['line']-1] = f"# CONSTITUTIONAL FIX: Moved to environment variable\n# {lines[issue['line']-1].rstrip()}\nos.environ.get('SECRET_KEY')\n"
         
         with open(filepath, 'w', encoding='utf-8') as f:
             f.writelines(lines)
@@ -219,8 +268,17 @@ class JARVISAutoHealer:
     def fix_todo_comment(self, issue):
         """Fix TODO comments: Add JARVIS ticket reference"""
         filepath = Path(issue['file'])
-        with open(filepath, 'r', encoding='utf-8') as f:
-            lines = f.readlines()
+        encodings = ['utf-8', 'latin-1', 'cp1252', 'iso-8859-1']
+        
+        for encoding in encodings:
+            try:
+                with open(filepath, 'r', encoding=encoding) as f:
+                    lines = f.readlines()
+                break
+            except:
+                continue
+        else:
+            return
         
         # Add JARVIS- prefix to TODO
         lines[issue['line']-1] = lines[issue['line']-1].replace('TODO', 'TODO[JARVIS]')
@@ -231,8 +289,17 @@ class JARVISAutoHealer:
     def fix_console_log(self, issue):
         """Fix console.log: Comment out or replace with constitutional silence"""
         filepath = Path(issue['file'])
-        with open(filepath, 'r', encoding='utf-8') as f:
-            lines = f.readlines()
+        encodings = ['utf-8', 'latin-1', 'cp1252', 'iso-8859-1']
+        
+        for encoding in encodings:
+            try:
+                with open(filepath, 'r', encoding=encoding) as f:
+                    lines = f.readlines()
+                break
+            except:
+                continue
+        else:
+            return
         
         # Comment out console.log
         lines[issue['line']-1] = f"// CONSTITUTIONAL SILENCE: {lines[issue['line']-1].strip()}\n"
@@ -243,8 +310,17 @@ class JARVISAutoHealer:
     def fix_any_type(self, issue):
         """Fix 'any' type: Replace with 'unknown' or specific interface"""
         filepath = Path(issue['file'])
-        with open(filepath, 'r', encoding='utf-8') as f:
-            lines = f.readlines()
+        encodings = ['utf-8', 'latin-1', 'cp1252', 'iso-8859-1']
+        
+        for encoding in encodings:
+            try:
+                with open(filepath, 'r', encoding=encoding) as f:
+                    lines = f.readlines()
+                break
+            except:
+                continue
+        else:
+            return
         
         # Replace ': any' with ': unknown'
         lines[issue['line']-1] = lines[issue['line']-1].replace(': any', ': unknown')
@@ -255,8 +331,17 @@ class JARVISAutoHealer:
     def fix_lodash_clone(self, issue):
         """Fix lodash.cloneDeep: Replace with structuredClone"""
         filepath = Path(issue['file'])
-        with open(filepath, 'r', encoding='utf-8') as f:
-            lines = f.readlines()
+        encodings = ['utf-8', 'latin-1', 'cp1252', 'iso-8859-1']
+        
+        for encoding in encodings:
+            try:
+                with open(filepath, 'r', encoding=encoding) as f:
+                    lines = f.readlines()
+                break
+            except:
+                continue
+        else:
+            return
         
         # Replace cloneDeep with structuredClone
         lines[issue['line']-1] = lines[issue['line']-1].replace('_.cloneDeep', 'structuredClone')
@@ -275,7 +360,7 @@ class JARVISAutoHealer:
             
             # Commit with descriptive message
             commit_msg = f"🔧 JARVIS Auto-Heal: Fixed {len(self.fixes_applied)} security vulnerabilities\n\n"
-            for fix in self.fixes_applied[:10]:  # List first 10 fixes
+            for fix in self.fixes_applied[:10]:
                 commit_msg += f"- {fix['type']} in {Path(fix['file']).name}:{fix['line']}\n"
             
             result = subprocess.run(['git', 'commit', '-m', commit_msg], capture_output=True, text=True)
@@ -336,9 +421,6 @@ class JARVISAutoHealer:
         return report
 
 
-# ============================================================================
-# JARVIS CLI COMMAND
-# ============================================================================
 if __name__ == "__main__":
     import sys
     
