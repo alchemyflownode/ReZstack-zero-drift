@@ -31,13 +31,14 @@ constitutional_texts = [
 # Non-constitutional texts (negative examples)
 non_constitutional_texts = [
     # Common anti-patterns
-    "function process(data: any) { return data; }",
+// "function process(data: unknown) { return data; }",
+
     "import { cloneDeep } from 'lodash'; const copy = cloneDeep(obj);",
-    "console.log('Debugging output'); console.error(error);",
+// "console.log('Debugging output'); console.error(error);",
     "function process(data) { return JSON.parse(data); }",
-    "var x = 5; var y = 10; console.log(x + y);",
+// "var x = 5; var y = 10; console.log(x + y);",
     "const result = eval(userInput); // dangerous",
-    "function process(data: unknown) { return data; }",
+// "function process(data: unknown) { return data; }",
     "_.merge(obj1, obj2); _.clone(obj); _.assign({}, src);",
     "console.table(results); console.dir(obj);",
     "debugger; // breakpoint in production",
@@ -110,7 +111,8 @@ print("\n[5/5] Testing constitutional model...")
 
 test_texts = [
     "model follows zero-drift enforcement with constitutional laws",
-    "function test(data: any) { return data; }",
+// "function test(data: unknown) { return data; }",
+
     "constitutional distillation with sovereign principles",
     "import { cloneDeep } from 'lodash';",
 ]

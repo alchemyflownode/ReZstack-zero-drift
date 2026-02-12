@@ -1,0 +1,28 @@
+﻿# Compiled files
+*.js
+*.d.ts
+*.js.map
+*.pyc
+__pycache__/
+*.pt
+*.pkl
+*.zip
+
+# Dependencies
+node_modules/
+venv/
+.env
+
+# Logs
+logs/
+*.log
+.jarvis/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Keep source files
+!src/**/*.ts
+!src/**/*.tsx
+!src/**/*.py

@@ -1,0 +1,178 @@
+﻿"""
+Sovereign JARVIS API - Constitutional AI Assistant with App Enhancer
+Port: 8002
+CORS: Enabled for Sovereign Chat (5176)
+"""
+
+from fastapi import FastAPI, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
+from pydantic import BaseModel
+from typing import Optional, Dict, Any
+import uvicorn
+import sys
+from pathlib import Path
+from datetime import datetime
+
+# Add path for enhancer
+sys.path.append(str(Path(__file__).parent.parent.parent / "services"))
+
+# Import enhancer if available
+try:
+    from jarvis_app_enhancer import JARVISAppEnhancer
+    enhancer = JARVISAppEnhancer()
+    ENHANCER_AVAILABLE = True
+    print("✅ JARVIS App Enhancer loaded successfully")
+except ImportError as e:
+    ENHANCER_AVAILABLE = False
+    enhancer = None
+    print(f"⚠️ JARVIS App Enhancer not available: {e}")
+
+app = FastAPI(title="Sovereign JARVIS API", version="3.1.0")
+
+# ============================================================================
+# CORS MIDDLEWARE - THIS FIXES THE PROBLEM!
+# ============================================================================
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:5176", "http://localhost:5173", "http://localhost:3000"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+# ============================================================================
+# HEALTH ENDPOINTS
+# ============================================================================
+@app.get("/")
+async def root():
+    return {
+        "service": "Sovereign JARVIS API",
+        "version": "3.1.0",
+        "status": "active",
+        "port": 8002,
+        "cors": "enabled",
+        "enhancer": "loaded" if ENHANCER_AVAILABLE else "not available",
+        "endpoints": ["/", "/health", "/chat", "/api/jarvis/enhance"]
+    }
+
+@app.get("/health")
+async def health():
+    return {
+        "status": "healthy",
+        "service": "JARVIS API",
+        "port": 8002,
+        "timestamp": datetime.now().isoformat(),
+        "enhancer": ENHANCER_AVAILABLE
+    }
+
+# ============================================================================
+# CHAT ENDPOINT
+# ============================================================================
+class ChatRequest(BaseModel):
+    message: str
+    context: Optional[Dict] = None
+
+@app.post("/chat")
+async def chat(request: ChatRequest):
+    return {
+        "response": f"JARVIS received: {request.message}",
+        "timestamp": datetime.now().isoformat()
+    }
+
+# ============================================================================
+# JARVIS APP ENHANCER ENDPOINT
+# ============================================================================
+class EnhanceRequest(BaseModel):
+    command: str = "scan"
+    path: str = "."
+    auto_deploy: bool = True
+
+@app.post("/api/jarvis/enhance")
+async def jarvis_enhance(request: EnhanceRequest):
+    """JARVIS App Enhancer - Scan, Fix, Enhance applications"""
+    
+    if not ENHANCER_AVAILABLE:
+        return {
+            "status": "error",
+            "message": "JARVIS App Enhancer not available",
+            "command": request.command
+        }
+    
+    try:
+        if request.command == "scan":
+            result = enhancer.scan_application(request.path)
+            return {
+                "status": "success",
+                "command": "scan",
+                "path": request.path,
+                "files_scanned": result.get("files_scanned", 0),
+                "issues_found": len(result.get("issues", [])),
+                "fixable": result.get("fixable_count", 0),
+                "timestamp": datetime.now().isoformat()
+            }
+        
+        elif request.command == "fix":
+            scan = enhancer.scan_application(request.path)
+            fixable = [i for i in scan["issues"] if i.get("fixable", False)]
+            fixes = enhancer.apply_fixes(fixable)
+            return {
+                "status": "success",
+                "command": "fix",
+                "path": request.path,
+                "issues_fixed": fixes.get("applied", 0),
+                "failed": fixes.get("failed", 0),
+                "backup_created": fixes.get("backup_created", False),
+                "timestamp": datetime.now().isoformat()
+            }
+        
+        elif request.command == "status":
+            result = enhancer.scan_application(request.path)
+            return {
+                "status": "success",
+                "command": "status",
+                "path": request.path,
+                "files_scanned": result.get("files_scanned", 0),
+                "issues_found": len(result.get("issues", [])),
+                "fixable": result.get("fixable_count", 0),
+                "timestamp": datetime.now().isoformat()
+            }
+        
+        else:
+            return {
+                "status": "error",
+                "message": f"Unknown command: {request.command}",
+                "valid_commands": ["scan", "fix", "status"]
+            }
+            
+    except Exception as e:
+        return {
+            "status": "error",
+            "message": str(e),
+            "command": request.command,
+            "timestamp": datetime.now().isoformat()
+        }
+
+# ============================================================================
+# LIST ENDPOINTS (for debugging)
+# ============================================================================
+@app.get("/routes")
+async def get_routes():
+    """List all registered routes"""
+    routes = []
+    for route in app.routes:
+        routes.append({
+            "path": route.path,
+            "methods": list(route.methods) if hasattr(route, 'methods') else []
+        })
+    return {"routes": routes}
+
+if __name__ == "__main__":
+    print("=" * 60)
+    print("🤖 SOVEREIGN JARVIS API v3.1")
+    print("📍 http://localhost:8002")
+    print("🔗 Endpoints: /, /health, /chat, /api/jarvis/enhance")
+    print("=" * 60)
+    print(f"✅ App Enhancer: {'LOADED' if ENHANCER_AVAILABLE else 'NOT AVAILABLE'}")
+    print(f"✅ CORS: Enabled for http://localhost:5176")
+    print("=" * 60)
+    uvicorn.run(app, host="0.0.0.0", port=8002)

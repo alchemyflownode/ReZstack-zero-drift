@@ -1,10 +1,10 @@
-// src/views/GenerativeIDE.tsx
-import React, { useState, useEffect, useRef } from 'react';
+﻿import React, { useState, useEffect, useRef } from 'react';
 import { 
   Zap, Lock, Unlock, Shield, Code, ChevronDown, Terminal, 
   Play, FileText, Brain, Copy, RotateCcw, AlertTriangle,
   CheckCircle, XCircle, Sparkles, Cpu, Eye, EyeOff
 } from 'lucide-react';
+import { SovereignCommandPalette } from '../components/SovereignCommandPalette';
 
 interface GenerativeIDEProps {
   availableModels?: string[];
@@ -99,7 +99,6 @@ export const GenerativeIDE: React.FC<GenerativeIDEProps> = ({ availableModels = 
         if (names.includes('llama3.2:latest')) setSelectedModel('llama3.2:latest');
         else if (names.length > 0) setSelectedModel(names[0]);
       } catch (err) {
-        // AUTO-HUSH: console.log("Using fallback models...");
         setModels(['llama3.2:latest', 'codellama', 'mistral']);
       }
     };
@@ -112,6 +111,15 @@ export const GenerativeIDE: React.FC<GenerativeIDEProps> = ({ availableModels = 
       outputRef.current.scrollTop = outputRef.current.scrollHeight;
     }
   }, [output, showRaw]);
+
+  const handleExecuteCommand = (cmd: string) => {
+    setPrompt(cmd);
+    setTimeout(() => {
+      if (outputRef.current) {
+        outputRef.current.scrollIntoView({ behavior: 'smooth' });
+      }
+    }, 100);
+  };
 
   const handleGenerate = async () => {
     if (!prompt.trim()) return;
@@ -140,10 +148,8 @@ export const GenerativeIDE: React.FC<GenerativeIDEProps> = ({ availableModels = 
       const data = await response.json();
       const rawCode = data.response;
 
-      // Curate using zero-drift AI service
       const curation = zeroDriftAI.curate(rawCode);
 
-      // Update vibe state
       const status = curation.vibeScore >= 90 ? 'STABLE' : 
                      curation.vibeScore >= 70 ? 'DRIFTING' : 'CRITICAL';
       
@@ -254,45 +260,12 @@ function processData(input: ProcessDataInput) {
 
   return (
     <div className="flex h-screen bg-[#050508] text-slate-200 font-mono overflow-hidden">
-      {/* Navigation Bar */}
-      <div className="absolute top-0 left-0 right-0 z-50 bg-black/70 backdrop-blur-lg border-b border-white/10 px-6 py-3 flex justify-between items-center">
-        <div className="flex items-center gap-4">
-          <a 
-            href="#/chat" 
-            className="text-xs px-3 py-1.5 bg-white/5 hover:bg-white/10 rounded-lg transition-colors flex items-center gap-2"
-          >
-            ← Back to Chat
-          </a>
-          <div className="flex items-center gap-2">
-            <Brain size={18} className="text-purple-500" />
-            <span className="text-sm font-medium">Generative IDE</span>
-            <span className="text-xs px-2 py-0.5 bg-purple-500/20 text-purple-400 border border-purple-500/30 rounded">
-              Zero-Drift v1.0
-            </span>
-          </div>
-        </div>
-        <div className="flex items-center gap-3">
-          <div className={`px-3 py-1 rounded-lg text-xs flex items-center gap-2 ${
-            vibe.status === 'STABLE' ? 'bg-green-500/10 text-green-400 border border-green-500/20' :
-            vibe.status === 'DRIFTING' ? 'bg-amber-500/10 text-amber-400 border border-amber-500/20' :
-            'bg-red-500/10 text-red-400 border border-red-500/20'
-          }`}>
-            {vibe.status === 'STABLE' ? <CheckCircle size={12} /> : 
-             vibe.status === 'DRIFTING' ? <AlertTriangle size={12} /> : 
-             <XCircle size={12} />}
-            Vibe: {vibe.score}%
-          </div>
-          <button
-            onClick={() => setShowRaw(!showRaw)}
-            className="text-xs px-3 py-1.5 bg-white/5 hover:bg-white/10 rounded-lg transition-colors flex items-center gap-2"
-          >
-            {showRaw ? <EyeOff size={12} /> : <Eye size={12} />}
-            {showRaw ? 'Hide Raw' : 'Show Raw'}
-          </button>
-        </div>
-      </div>
+      
+      <SovereignCommandPalette 
+        onExecute={handleExecuteCommand}
+        className="w-80 flex-shrink-0"
+      />
 
-      {/* Sidebar: Control & Foundation */}
       <aside className="w-1/3 border-r border-white/10 bg-[#0a0a0f]/80 backdrop-blur-2xl flex flex-col relative pt-16">
         <div className="p-6 border-b border-white/5 flex justify-between items-center bg-gradient-to-r from-pink-500/5 to-transparent">
           <div>
@@ -304,14 +277,12 @@ function processData(input: ProcessDataInput) {
           <button 
             onClick={() => setIsLocked(!isLocked)}
             className={`p-2 rounded border transition-all ${isLocked ? 'bg-green-500/10 border-green-500/30 text-green-400' : 'bg-white/5 border-white/10 text-slate-400'}`}
-            title={isLocked ? "Auto-curation enabled" : "Auto-curation paused"}
           >
             {isLocked ? <Lock size={16} /> : <Unlock size={16} />}
           </button>
         </div>
 
         <div className="flex-1 p-6 space-y-6 overflow-y-auto">
-          {/* Compliance Card */}
           <div className="bg-white/5 border border-white/10 rounded-xl p-4">
             <div className="flex items-center justify-between mb-3">
               <h3 className="text-[10px] uppercase text-slate-500 flex items-center gap-2">
@@ -330,7 +301,6 @@ function processData(input: ProcessDataInput) {
               {vibe.status}
             </div>
             
-            {/* Violation List */}
             {vibe.violations.length > 0 && (
               <div className="mt-4 pt-4 border-t border-white/10">
                 <div className="text-[10px] uppercase text-slate-500 mb-2">Violations Fixed:</div>
@@ -345,7 +315,6 @@ function processData(input: ProcessDataInput) {
               </div>
             )}
             
-            {/* Fixes Applied */}
             {vibe.fixesApplied.length > 0 && (
               <div className="mt-4 pt-4 border-t border-white/10">
                 <div className="text-[10px] uppercase text-slate-500 mb-2">Fixes Applied:</div>
@@ -361,7 +330,6 @@ function processData(input: ProcessDataInput) {
             )}
           </div>
 
-          {/* Neural Engine Selector */}
           <div className="bg-white/5 border border-white/10 rounded-xl p-4">
              <h3 className="text-[10px] uppercase text-slate-500 mb-3 flex items-center gap-2">
                <Cpu size={12} /> Neural Engine
@@ -385,7 +353,6 @@ function processData(input: ProcessDataInput) {
              </div>
           </div>
           
-          {/* Quick Prompts */}
           <div className="bg-white/5 border border-white/10 rounded-xl p-4">
              <h3 className="text-[10px] uppercase text-slate-500 mb-3 flex items-center gap-2">
                <Sparkles size={12} /> Quick Prompts
@@ -414,7 +381,6 @@ function processData(input: ProcessDataInput) {
           </div>
         </div>
 
-        {/* Prompt Input */}
         <div className="p-4 bg-[#050508]/50 border-t border-white/5">
           <div className="flex items-center justify-between mb-2">
             <label className="text-xs text-slate-500">Architectural Directive</label>
@@ -435,7 +401,7 @@ function processData(input: ProcessDataInput) {
             placeholder="Describe what you want to build with precision..." 
             maxLength={2000}
           />
-          <div className="flex" style={{ gap: 'var(--space-3)', marginTop: 'var(--space-3)' }}>
+          <div className="flex gap-3 mt-3">
             <button 
               onClick={handleGenerate}
               disabled={isGenerating || !prompt.trim()}
@@ -461,7 +427,6 @@ function processData(input: ProcessDataInput) {
               <button
                 onClick={handleReCurate}
                 className="px-4 py-3 rounded-xl text-[10px] font-black uppercase tracking-widest bg-amber-600/20 hover:bg-amber-600/30 text-amber-400 border border-amber-500/30"
-                title="Re-apply zero-drift curation"
               >
                 <RotateCcw size={12} />
               </button>
@@ -473,7 +438,6 @@ function processData(input: ProcessDataInput) {
         </div>
       </aside>
 
-      {/* Main Editor View */}
       <main className="flex-1 flex flex-col bg-[#050508] pt-16">
         <div className="h-12 border-b border-white/10 flex items-center px-6 justify-between">
           <div className="flex items-center gap-6">
@@ -491,7 +455,7 @@ function processData(input: ProcessDataInput) {
             </div>
           </div>
           
-          <div className="flex items-center" style={{ gap: 'var(--space-2)' }}>
+          <div className="flex items-center gap-2">
             <div className="text-[10px] text-slate-500">
               {showRaw ? 'RAW OUTPUT' : 'CURATED OUTPUT'}
             </div>
@@ -518,7 +482,6 @@ function processData(input: ProcessDataInput) {
           </div>
         </div>
 
-        {/* Output Display */}
         <div 
           ref={outputRef}
           className="flex-1 overflow-auto bg-[#0a0a0f]"
@@ -581,7 +544,6 @@ function processData(input: ProcessDataInput) {
           )}
         </div>
         
-        {/* Status Bar */}
         <div className="border-t border-white/10 p-3 text-xs text-slate-500">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4">
@@ -601,7 +563,7 @@ function processData(input: ProcessDataInput) {
                 <div className="flex items-center gap-2">
                   <Terminal size={12} />
                   <span className="text-slate-400">
-                    Generated {(lastGeneration.timestamp ? new Date(lastGeneration.timestamp).toLocaleTimeString() : "")}
+                    Generated {new Date(lastGeneration.timestamp).toLocaleTimeString()}
                   </span>
                 </div>
               )}

@@ -1,60 +1,41 @@
-import { useEffect, useState } from 'react';
+﻿import { useState, useEffect } from 'react';
 
 interface ElectronAPI {
-  isDev: boolean;
   platform: string;
   version: {
     electron: string;
     node: string;
-    chrome: string;
   };
-  execute: (command: string) => Promise<any>;
-  ollama: {
-    status: () => Promise<any>;
-  };
-  terminal: {
-    health: () => Promise<any>;
-  };
-  fs: {
-    readFile: (path: string) => Promise<{ success: boolean; content?: string; error?: string }>;
-    writeFile: (path: string, content: string) => Promise<{ success: boolean; error?: string }>;
-    selectFolder: () => Promise<string | null>;
-  };
+  openFolder: () => Promise<string | null>;
+  saveFile: (content: string) => Promise<string | null>;
 }
 
-declare global {
-  interface Window {
-    electron?: ElectronAPI;
-  }
-}
-
-const getElectron = (): ElectronAPI | null => {
-  if (typeof window !== 'undefined' && window.electron) {
-    return window.electron;
-  }
-  return null;
-};
-
-export function useElectron() {
+export const useElectron = () => {
   const [isElectron, setIsElectron] = useState(false);
   const [electron, setElectron] = useState<ElectronAPI | null>(null);
 
   useEffect(() => {
-    const electronAPI = getElectron();
-    setIsElectron(!!electronAPI);
-    setElectron(electronAPI);
-    
-    if (electronAPI) {
-      // AUTO-HUSH: console.log('✅ Electron API detected');
-    } else {
-      // AUTO-HUSH: console.log('🌐 Running in browser mode');
+    // Check if running in Electron
+    if (window.navigator.userAgent.toLowerCase().includes('electron')) {
+      setIsElectron(true);
+      // Mock electron API for web development
+      setElectron({
+        platform: process.platform,
+        version: {
+          electron: '27.0.0',
+          node: process.version
+        },
+        openFolder: async () => {
+          console.log('Electron: open folder requested');
+          return null;
+        },
+        saveFile: async (content: string) => {
+          console.log('Electron: save file requested', content.substring(0, 50));
+          return null;
+        }
+      });
     }
   }, []);
 
   return { isElectron, electron };
-}
-
-export function isRunningInElectron(): boolean {
-  return typeof window !== 'undefined' && !!window.electron;
-}
-
+};

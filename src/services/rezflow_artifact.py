@@ -1,155 +1,187 @@
 ﻿"""
-Rezflow Artifact V1 - Deterministic Media Compilation
-Sovereign AI - Constitutional Media Format
-FIXED: Dataclass field order (required fields before optional defaults)
+Rezflow Artifact Cache - Deterministic Media Compiler
+Caches and verifies artifacts with constitutional watermarking
 """
 
-import torch
-import json
 import hashlib
-from dataclasses import dataclass
-from typing import Dict, Any, Optional
+import json
+import time
 from pathlib import Path
+from typing import Dict, Any, Optional, Union
 from datetime import datetime
 
-@dataclass
-class RezflowArtifactV1:
-    """Sovereign media execution plan - compiled once, run anywhere."""
+class RezflowArtifactCache:
+    """
+    Deterministic artifact cache with constitutional watermarking
+    Ensures bitwise-identical media compilation
+    """
     
-    # REQUIRED FIELDS (NO DEFAULTS) - MUST COME FIRST
-    title: str
-    clip_embedding: torch.Tensor
-    t5_embedding: torch.Tensor
+    def __init__(self, cache_path: Optional[Path] = None):
+        if cache_path is None:
+            cache_path = Path.home() / ".rezflow" / "artifacts"
+        self.cache_path = cache_path
+        self.cache_path.mkdir(parents=True, exist_ok=True)
+        self.metadata_path = self.cache_path / "metadata.json"
+        self._load_metadata()
     
-    # OPTIONAL FIELDS (WITH DEFAULTS) - MUST COME AFTER REQUIRED
-    protocol_version: str = "REZFLOW-V1"
-    author: str = "Sovereign AI"
-    compiled_at: Optional[str] = None
-    negative_embeddings: Optional[Dict[str, torch.Tensor]] = None
-    seed: int = 42
-    cfg_scale: float = 7.5
-    steps: int = 30
-    sampler: str = "euler"
-    attention_patterns: Optional[Dict[str, Any]] = None
-    top_k: int = 64
-    block_size: int = 512
-    local_window: int = 64
-    vae_tile_size: int = 8
-    vae_overlap: int = 2
-    content_hash: Optional[str] = None
-    signature: Optional[str] = None
-    
-    def __post_init__(self):
-        if self.compiled_at is None:
-            self.compiled_at = datetime.utcnow().isoformat()
-        
-        if self.content_hash is None:
-            self.content_hash = self.compute_content_hash()
-    
-    def compute_content_hash(self) -> str:
-        """Deterministic hash of all content."""
-        data = {
-            "title": self.title,
-            "seed": self.seed,
-            "cfg_scale": self.cfg_scale,
-            "steps": self.steps,
-            "sampler": self.sampler,
-        }
-        
-        # Add embedding hashes if they exist
-        if self.clip_embedding is not None:
-            data["clip_hash"] = hashlib.sha256(
-                self.clip_embedding.cpu().numpy().tobytes()
-            ).hexdigest()
-        
-        if self.t5_embedding is not None:
-            data["t5_hash"] = hashlib.sha256(
-                self.t5_embedding.cpu().numpy().tobytes()
-            ).hexdigest()
-        
-        return hashlib.sha256(
-            json.dumps(data, sort_keys=True).encode()
-        ).hexdigest()[:16]
-    
-    def save(self, path: str):
-        """Save artifact to .rezflow file."""
-        save_data = {
-            "protocol_version": self.protocol_version,
-            "meta": {
-                "title": self.title,
-                "author": self.author,
-                "compiled_at": self.compiled_at,
-                "content_hash": self.content_hash,
-                "signature": self.signature,
-            },
-            "embeddings": {},
-            "execution_plan": {
-                "seed": self.seed,
-                "cfg_scale": self.cfg_scale,
-                "steps": self.steps,
-                "sampler": self.sampler,
-                "attention": {
-                    "top_k": self.top_k,
-                    "block_size": self.block_size,
-                    "local_window": self.local_window,
-                },
-                "vae": {
-                    "tile_size": self.vae_tile_size,
-                    "overlap": self.vae_overlap,
-                }
+    def _load_metadata(self):
+        """Load or create metadata index"""
+        if self.metadata_path.exists():
+            with open(self.metadata_path, 'r') as f:
+                self.metadata = json.load(f)
+        else:
+            self.metadata = {
+                "version": "3.1.0",
+                "created": datetime.now().isoformat(),
+                "artifacts": {},
+                "constitutional_hash": self._generate_constitutional_hash()
             }
-        }
-        
-        # Add embeddings if they exist
-        if self.clip_embedding is not None:
-            save_data["embeddings"]["clip"] = self.clip_embedding.half().tolist()
-        
-        if self.t5_embedding is not None:
-            save_data["embeddings"]["t5"] = self.t5_embedding.half().tolist()
-        
-        if self.negative_embeddings:
-            save_data["embeddings"]["negative"] = {
-                k: v.half().tolist() for k, v in self.negative_embeddings.items()
-            }
-        
-        torch.save(save_data, path)
-        print(f"💾 Artifact saved: {path}")
+            self._save_metadata()
     
-    @classmethod
-    def load(cls, path: str):
-        """Load artifact from .rezflow file."""
-        data = torch.load(path, map_location="cpu")
+    def _save_metadata(self):
+        """Save metadata index"""
+        with open(self.metadata_path, 'w') as f:
+            json.dump(self.metadata, f, indent=2)
+    
+    def _generate_constitutional_hash(self) -> str:
+        """Generate sovereign watermark"""
+        seed = "SOVEREIGN_AI_v3.1_REZFLOW"
+        return hashlib.sha3_512(seed.encode()).hexdigest()[:16]
+    
+    def _hash_content(self, content: Union[str, bytes]) -> str:
+        """Generate deterministic hash"""
+        if isinstance(content, str):
+            content = content.encode('utf-8')
+        return hashlib.sha3_512(content).hexdigest()
+    
+    def store(self, content: Union[str, bytes], metadata: Dict[str, Any] = None) -> str:
+        """
+        Store content in cache with watermark
+        Returns deterministic hash key
+        """
+        # Generate hash
+        content_hash = self._hash_content(content)
         
-        # Extract embeddings
-        clip_emb = torch.tensor(data["embeddings"]["clip"]) if "clip" in data.get("embeddings", {}) else None
-        t5_emb = torch.tensor(data["embeddings"]["t5"]) if "t5" in data.get("embeddings", {}) else None
+        # Add constitutional watermark
+        if isinstance(content, str):
+            watermarked = f"/* REZFLOW ARTIFACT v3.1 - HASH: {content_hash[:8]} */\n{content}"
+        else:
+            watermarked = content
         
-        negative_embs = {}
-        if "negative" in data.get("embeddings", {}):
-            negative_embs = {k: torch.tensor(v) for k, v in data["embeddings"]["negative"].items()}
+        # Store artifact
+        artifact_path = self.cache_path / f"{content_hash[:16]}.artifact"
+        if isinstance(watermarked, str):
+            artifact_path.write_text(watermarked, encoding='utf-8')
+        else:
+            artifact_path.write_bytes(watermarked)
         
-        return cls(
-            title=data["meta"]["title"],
-            clip_embedding=clip_emb,
-            t5_embedding=t5_emb,
-            protocol_version=data["protocol_version"],
-            author=data["meta"]["author"],
-            compiled_at=data["meta"]["compiled_at"],
-            negative_embeddings=negative_embs,
-            seed=data["execution_plan"]["seed"],
-            cfg_scale=data["execution_plan"]["cfg_scale"],
-            steps=data["execution_plan"]["steps"],
-            sampler=data["execution_plan"]["sampler"],
-            attention_patterns=data["execution_plan"].get("attention_patterns"),
-            top_k=data["execution_plan"]["attention"]["top_k"],
-            block_size=data["execution_plan"]["attention"]["block_size"],
-            local_window=data["execution_plan"]["attention"]["local_window"],
-            vae_tile_size=data["execution_plan"]["vae"]["tile_size"],
-            vae_overlap=data["execution_plan"]["vae"]["overlap"],
-            content_hash=data["meta"]["content_hash"],
-            signature=data["meta"]["signature"],
-        )
+        # Update metadata
+        self.metadata["artifacts"][content_hash[:16]] = {
+            "hash": content_hash,
+            "timestamp": time.time(),
+            "size": len(content),
+            "metadata": metadata or {},
+            "constitutional": True
+        }
+        self._save_metadata()
+        
+        return content_hash[:16]
+    
+    def retrieve(self, hash_key: str) -> Optional[str]:
+        """Retrieve artifact by hash key"""
+        artifact_path = self.cache_path / f"{hash_key}.artifact"
+        if artifact_path.exists():
+            # Verify hash
+            content = artifact_path.read_text(encoding='utf-8')
+            # Remove watermark and verify
+            if "/* REZFLOW ARTIFACT" in content:
+                content = content.split('*/\n', 1)[-1]
+            return content
+        return None
+    
+    def verify(self, hash_key: str) -> bool:
+        """Verify artifact integrity"""
+        artifact_path = self.cache_path / f"{hash_key}.artifact"
+        if not artifact_path.exists():
+            return False
+        
+        # Check if hash exists in metadata
+        if hash_key not in self.metadata["artifacts"]:
+            return False
+        
+        # Verify content hash
+        content = artifact_path.read_text(encoding='utf-8')
+        if "/* REZFLOW ARTIFACT" in content:
+            content = content.split('*/\n', 1)[-1]
+        
+        current_hash = self._hash_content(content)[:16]
+        return current_hash == hash_key
+    
+    def list_artifacts(self) -> Dict[str, Any]:
+        """List all cached artifacts"""
+        return self.metadata["artifacts"]
+    
+    def clear_cache(self, older_than_days: int = 30):
+        """Clear old artifacts"""
+        now = time.time()
+        to_delete = []
+        
+        for key, data in self.metadata["artifacts"].items():
+            age_days = (now - data["timestamp"]) / 86400
+            if age_days > older_than_days:
+                to_delete.append(key)
+        
+        for key in to_delete:
+            artifact_path = self.cache_path / f"{key}.artifact"
+            if artifact_path.exists():
+                artifact_path.unlink()
+            del self.metadata["artifacts"][key]
+        
+        self._save_metadata()
+        return len(to_delete)
+    
+    def get_stats(self) -> Dict[str, Any]:
+        """Get cache statistics"""
+        total_size = 0
+        for key in self.metadata["artifacts"]:
+            artifact_path = self.cache_path / f"{key}.artifact"
+            if artifact_path.exists():
+                total_size += artifact_path.stat().st_size
+        
+        return {
+            "total_artifacts": len(self.metadata["artifacts"]),
+            "total_size_bytes": total_size,
+            "cache_path": str(self.cache_path),
+            "constitutional_hash": self.metadata.get("constitutional_hash"),
+            "version": self.metadata["version"]
+        }
 
-# Create shared artifact directory
-ARTIFACT_DIR = Path("G:/okiru/rezstack-artifacts")
-ARTIFACT_DIR.mkdir(exist_ok=True, parents=True)
+# Global singleton instance
+_rezflow_cache = None
+
+def get_rezflow_cache() -> RezflowArtifactCache:
+    """Get or create global Rezflow cache instance"""
+    global _rezflow_cache
+    if _rezflow_cache is None:
+        _rezflow_cache = RezflowArtifactCache()
+    return _rezflow_cache
+
+# For testing
+if __name__ == "__main__":
+    cache = RezflowArtifactCache(Path("./test_cache"))
+    
+    # Test storing
+    hash_key = cache.store("test content", {"type": "test"})
+    print(f"Stored with hash: {hash_key}")
+    
+    # Test retrieving
+    content = cache.retrieve(hash_key)
+    print(f"Retrieved: {content}")
+    
+    # Test verification
+    verified = cache.verify(hash_key)
+    print(f"Verified: {verified}")
+    
+    # Get stats
+    stats = cache.get_stats()
+    print(f"Stats: {stats}")

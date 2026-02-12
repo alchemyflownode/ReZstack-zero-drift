@@ -1,15 +1,215 @@
+﻿/* ============================================================================
+   SOVEREIGN AI - FAANG GRADE PREMIUM UI
+   Apple Minimal • Zero Drift • Constitutional
+   =========================================================================== */
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+@layer base {
+  :root {
+    /* Apple Pro - Neutral palette, zero gradients */
+    --background: 0 0% 7%;        /* #121212 - Deep neutral */
+    --surface: 0 0% 9%;           /* #171717 - Elevated */
+    --surface-hover: 0 0% 11%;    /* #1c1c1c - Subtle hover */
+    --border: 0 0% 18%;          /* #2e2e2e - Visible but quiet */
+    --border-subtle: 0 0% 14%;   /* #242424 - Almost invisible */
+    
+    /* Text - Maximum legibility */
+    --text-primary: 0 0% 98%;     /* #fafafa - Clean white */
+    --text-secondary: 0 0% 75%;   /* #bfbfbf - Soft gray */
+    --text-tertiary: 0 0% 55%;    /* #8c8c8c - Muted */
+    
+    /* Accent - Single, precise blue */
+    --accent: 211 100% 50%;      /* #0066ff - Pure signal */
+    --accent-hover: 211 100% 45%; /* #0055cc - Intent */
+    --accent-pressed: 211 100% 40%; /* #0044aa - Affordance */
+    
+    /* Status - Functional, not decorative */
+    --success: 152 60% 45%;       /* #2e8b57 - Sea green */
+    --warning: 30 100% 50%;       /* #ff9500 - Pure orange */
+    --error: 0 65% 55%;          /* #d65f5f - Desaturated red */
+    
+    /* Typography */
+    --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    --font-mono: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', monospace;
+  }
+}
+
+/* ============================================================================
+   Base - Zero decoration, pure function
+   =========================================================================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-  margin: 0;
-  min-width: 320px;
-  min-height: 100vh;
+  font-family: var(--font-sans);
+  background-color: hsl(var(--background));
+  color: hsl(var(--text-primary));
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* ============================================================================
+   Splitter - Apple Precision (1px, intelligent)
+   =========================================================================== */
+.gutter {
+  background-color: transparent;
+  position: relative;
+  transition: all 0.1s ease;
+  z-index: 10;
+}
+
+.gutter:hover {
+  background-color: rgba(128, 128, 128, 0.1);
+}
+
+.gutter.gutter-horizontal {
+  cursor: col-resize;
+  width: 1px !important;
+  background-image: none;
+}
+
+.gutter.gutter-vertical {
+  cursor: row-resize;
+  height: 1px !important;
+  background-image: none;
+}
+
+/* Invisible hit area - FAANG grade interaction */
+.gutter.gutter-horizontal::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -4px;
+  right: -4px;
+  bottom: 0;
+  cursor: col-resize;
+}
+
+.gutter.gutter-vertical::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: -4px;
+  right: 0;
+  bottom: -4px;
+  cursor: row-resize;
+}
+
+/* Handle indicator - Ultra subtle, only on hover */
+.gutter:not(:hover)::before {
+  opacity: 0;
+}
+
+.gutter.gutter-horizontal:hover::before {
+  content: '⋮⋮';
+  position: absolute;
+  left: -8px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: rgba(255, 255, 255, 0.3);
+  font-size: 12px;
+  letter-spacing: -2px;
+  font-weight: 100;
+}
+
+.gutter.gutter-vertical:hover::before {
+  content: '⋯⋯';
+  position: absolute;
+  left: 50%;
+  top: -10px;
+  transform: translateX(-50%);
+  color: rgba(255, 255, 255, 0.3);
+  font-size: 12px;
+  letter-spacing: 2px;
+  font-weight: 100;
+}
+
+/* ============================================================================
+   Scrollbar - Invisible until needed
+   =========================================================================== */
+::-webkit-scrollbar {
+  width: 0px;
+  height: 0px;
+  background: transparent;
+}
+
+:hover::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(128, 128, 128, 0.2);
+  border-radius: 0;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(128, 128, 128, 0.3);
+}
+
+/* ============================================================================
+   Selection - Professional blue
+   =========================================================================== */
+::selection {
+  background: rgba(0, 102, 255, 0.2);
+  color: hsl(var(--text-primary));
+}
+
+/* ============================================================================
+   Focus - Accessible but minimal
+   =========================================================================== */
+*:focus {
+  outline: none;
+}
+
+*:focus-visible {
+  outline: 2px solid rgba(0, 102, 255, 0.5);
+  outline-offset: 2px;
+}
+
+/* ============================================================================
+   Terminal - Clean, readable
+   =========================================================================== */
+.terminal-font {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+/* ============================================================================
+   Animations - Zero drift, zero jank
+   =========================================================================== */
+.transition-all {
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.2, 0, 0, 1);
+  transition-duration: 100ms;
+}
+
+/* ============================================================================
+   Utility - FAANG spacing system
+   =========================================================================== */
+.pane-content {
+  padding: 16px;
+}
+
+.section-header {
+  padding: 8px 12px;
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: hsl(var(--text-tertiary));
+  border-bottom: 1px solid hsl(var(--border-subtle));
 }

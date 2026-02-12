@@ -1,0 +1,32 @@
+﻿import React from 'react';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { MultimodalStoreProvider } from './stores/multimodal-store';
+
+// Views
+import ChatView from './views/ChatView';
+import Dashboard from './views/Dashboard';
+
+const AppContent: React.FC = () => {
+  return (
+    <div className="min-h-screen bg-background text-foreground">
+      <Routes>
+        <Route path="/" element={<Navigate to="/chat" replace />} />
+        <Route path="/chat" element={<ChatView />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+      </Routes>
+    </div>
+  );
+};
+
+// ✅ ONLY ONE BrowserRouter - right here!
+const App: React.FC = () => {
+  return (
+    <BrowserRouter>
+      <MultimodalStoreProvider>
+        <AppContent />
+      </MultimodalStoreProvider>
+    </BrowserRouter>
+  );
+};
+
+export default App;

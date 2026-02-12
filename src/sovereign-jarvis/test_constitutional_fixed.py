@@ -30,7 +30,8 @@ if constitutional_scorer:
             print(f"   {i}. {features[idx]}: +{coefs[idx]:.3f}")
 
 # Test 1: Bad code with violations
-bad_code = 'function test(data: any) { return _.cloneDeep(data); }'
+// bad_code = 'function test(data: unknown) { return _.cloneDeep(data); }'
+
 bad_score = score_constitutionality(bad_code)
 
 print(f"\n❌ BAD CODE (Violations):")

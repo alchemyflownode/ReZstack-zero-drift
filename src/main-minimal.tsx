@@ -1,9 +1,19 @@
-// AUTO-HUSH: console.log('React test loading...');
-import React from 'react';
-import { createRoot } from 'react-dom/client';
+﻿import React from 'react';
+import ReactDOM from 'react-dom/client';
+import App from './App';
+import './index.css';
 
-const root = createRoot(document.getElementById('root')!);
-root.render(React.createElement('div', null, '? React Works!'));
+// Silent mode - no console logs
+const consoleLog = console.log;
+console.log = () => {};
 
+ReactDOM.createRoot(document.getElementById('root')!).render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+);
 
-
+// Restore console.log after render
+setTimeout(() => {
+  console.log = consoleLog;
+}, 100);

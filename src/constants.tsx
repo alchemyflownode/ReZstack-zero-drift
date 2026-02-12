@@ -1,4 +1,4 @@
-
+﻿
 import React from 'react';
 import { LayoutDashboard, Zap, Brain, Settings, ShieldCheck, Database, Palette, Cable } from 'lucide-react';
 // Fix: Added PerformanceMetric to the import list from types
@@ -185,5 +185,6 @@ export const PERFORMANCE_MOCK: PerformanceMetric[] = [
   { time: '10:25', tokensPerSec: 62, memoryUsage: 75, gpuLoad: 92 },
   { time: '10:30', tokensPerSec: 44, memoryUsage: 71, gpuLoad: 50 },
 ];
+
 
 

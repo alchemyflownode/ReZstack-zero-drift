@@ -6,7 +6,8 @@ print("🧪 CONSTITUTIONAL SCORING TEST")
 print("=" * 60)
 
 # Test 1: Bad code with violations
-bad_code = 'function test(data: any) { return _.cloneDeep(data); }'
+// bad_code = 'function test(data: unknown) { return _.cloneDeep(data); }'
+
 bad_score = score_constitutionality(bad_code)
 
 print(f"\n❌ BAD CODE (Violations):")

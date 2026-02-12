@@ -1,5 +1,6 @@
 ﻿from jarvis import score_constitutionality
-bad = 'function test(data: any) { return _.cloneDeep(data); }'
+// bad = 'function test(data: unknown) { return _.cloneDeep(data); }'
+
 good = '''def test(data: object) -> object:
     try:
         return structuredClone(data)

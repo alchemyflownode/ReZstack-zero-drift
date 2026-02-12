@@ -1,107 +1,125 @@
-﻿/* App.css - RezStack Application Styles */
+﻿@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-.app {
-  min-height: 100vh;
-  background: #0a0a0f;
-  color: #e2e2e2;
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+  }
 }
 
-/* Router container */
-.router-container {
-  width: 100%;
-  height: 100vh;
-  overflow: hidden;
+@layer components {
+  .glass-panel {
+    @apply bg-white/10 backdrop-blur-lg border border-white/20 rounded-xl;
+  }
+  
+  .sovereign-gradient {
+    @apply bg-gradient-to-r from-purple-600 to-pink-600;
+  }
+  
+  .terminal-scrollbar::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  
+  .terminal-scrollbar::-webkit-scrollbar-track {
+    @apply bg-gray-900;
+  }
+  
+  .terminal-scrollbar::-webkit-scrollbar-thumb {
+    @apply bg-purple-500/50 rounded-full;
+  }
+  
+  .terminal-scrollbar::-webkit-scrollbar-thumb:hover {
+    @apply bg-purple-500;
+  }
 }
 
-/* Page transitions */
-.page-enter {
-  opacity: 0;
-  transform: translateY(10px);
+@layer utilities {
+  .text-shadow {
+    text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+  
+  .text-shadow-lg {
+    text-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  }
+  
+  .animate-pulse-slow {
+    animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
 }
 
-.page-enter-active {
-  opacity: 1;
-  transform: translateY(0);
-  transition: opacity 300ms, transform 300ms;
-}
-
-.page-exit {
-  opacity: 1;
-}
-
-.page-exit-active {
-  opacity: 0;
-  transition: opacity 300ms;
-}
-
-/* Link styles */
-a {
-  color: #8b5cf6;
-  text-decoration: none;
-  transition: color 0.2s;
-}
-
-a:hover {
-  color: #a78bfa;
-}
-
-/* Button reset */
-button {
-  font-family: inherit;
-  cursor: pointer;
-}
-
-button:disabled {
-  cursor: not-allowed;
-  opacity: 0.5;
-}
-
-/* Scrollbar styling */
+/* Custom scrollbar for entire app */
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 10px;
+  height: 10px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #0d0d14;
-  border-radius: 4px;
+  @apply bg-gray-900;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #374151;
-  border-radius: 4px;
+  @apply bg-gray-700 rounded-full;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #8b5cf6;
+  @apply bg-gray-600;
 }
 
-/* Utility classes */
-.text-gradient {
-  background: linear-gradient(135deg, #8b5cf6, #4f46e5);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+/* Constitutional watermark */
+.constitutional-watermark {
+  position: relative;
 }
 
-.card {
-  background: #1e1e2e;
-  border: 1px solid #374151;
-  border-radius: 12px;
-  padding: 20px;
-}
-
-.btn-primary {
-  background: linear-gradient(135deg, #4f46e5, #8b5cf6);
-  color: white;
-  border: none;
-  padding: 12px 24px;
-  border-radius: 8px;
-  font-weight: 600;
-  transition: all 0.2s;
-}
-
-.btn-primary:hover:not(:disabled) {
-  opacity: 0.9;
-  transform: translateY(-1px);
+.constitutional-watermark::after {
+  content: "⚖️ SOVEREIGN AI";
+  position: absolute;
+  bottom: 4px;
+  right: 8px;
+  font-size: 10px;
+  color: rgba(168, 85, 247, 0.3);
+  pointer-events: none;
+  font-family: monospace;
 }
