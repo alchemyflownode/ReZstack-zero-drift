@@ -26,3 +26,7 @@ Thumbs.db
 !src/**/*.ts
 !src/**/*.tsx
 !src/**/*.py
+
+.vite/
+
+node_modules/
